@@ -3,4 +3,4 @@
 
 void initHumiditySensor();
 
-long measureHumidity();
+float measureHumidity();

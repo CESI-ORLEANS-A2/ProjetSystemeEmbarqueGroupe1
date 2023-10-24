@@ -5,7 +5,12 @@ void switchToStandardMode() {
     mode = STANDARD_MODE;
     switchLEDToGreen();
 };
-void runStandardModeStep() {};
+void quitStandardMode() {
+
+}
+void runStandardModeStep() {
+    acquisition(&saveData);
+};
 
 void printSwitchToStandard() {
     Serial.println(F("Passage en mode standard"));

@@ -1,14 +1,24 @@
 #include "includes/sensor.hpp"
 
-// Représente un capteur
+/*!
+ * @brief Constructeur de la classe Sensor
+ *
+ * @param name Nom du capteur
+ * @param protocol Protocole utilisé par le capteur
+ * @param device Adresse ou pin du capteur
+ * @param enabled Si le capteur est activé
+ * @param economy Si le capteur est activé en mode économique
+ * @param init Fonction d'initialisation du capteur
+ * @param measure Fonction de mesure du capteur
+ */
 Sensor::Sensor(
     const char* name,
     const int protocol,
     const int device,
-    bool enabled,
+    int enabled,
     bool economy,
     void (*init)(),
-    long (*measure)()
+    float (*measure)()
 ) :
     name(name),
     protocol(protocol),
@@ -30,8 +40,13 @@ Sensor::Sensor(
     }
 }
 
-long Sensor::acquisition() {
-    if (!this->enabled) return NULL;
+/*!
+ * @brief Fonction d'acquisition des données du capteur
+ *
+ * @return Valeur (nombre réel) mesurée par le capteur
+ */
+float Sensor::acquisition() {
+    if (!getSetting(this->enabled)) return NULL;
 
     if (this->measure != NULL)
         return this->measure();
@@ -47,13 +62,24 @@ long Sensor::acquisition() {
     }
 }
 
+/*!
+ * @brief Fonction d'initialisation du capteur en I2C
+ */
 void Sensor::initI2C() {
 
 };
+/*!
+ * @brief Fonction d'initialisation du capteur en analogique
+ */
 void Sensor::initAnalog() {
     pinMode(this->device, INPUT);
 };
 
+/*!
+ * @brief Fonction de mesure du capteur en analogique
+ *
+ * @return Valeur (nombre réel) mesurée par le capteur
+ */
 long Sensor::measureAnalog() {
     return analogRead(this->device);
 };

@@ -1,3 +1,6 @@
+#ifndef Interpreter_h
+#define Interpreter_h
+
 #include "consts.hpp"
 #include "main.hpp"
 
@@ -26,3 +29,11 @@ void commandHelp(char* command);
 void commandList();
 void commandLive();
 void commandMode(char* mode);
+void commandEnable(int id = NULL);
+void commandDisable(int id = NULL);
+void commandSet(char* variable, int value);
+void commandGet(char* variable);
+void commandReset();
+void commandLast();
+
+#endif

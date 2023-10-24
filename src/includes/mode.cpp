@@ -48,6 +48,8 @@ void redButtonPressed() {
             printBuffer();
 #endif
             break;
+        case ERROR_MODE:
+            restart();
         }
     }
 }

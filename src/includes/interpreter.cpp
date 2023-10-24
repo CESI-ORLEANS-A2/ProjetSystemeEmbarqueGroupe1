@@ -268,27 +268,38 @@ void commandMode(char* modeArg) {
         if (mode == CONFIGURATION_MODE)
             printModeAlreadyEnabled();
         else
-            switchToMode(CONFIGURATION_MODE);
+            switchToMode(mode);
     }
     else if (strcmp_P(modeArg, PSTR("maintenance")) == 0) {
         if (mode == MAINTENANCE_MODE)
             printModeAlreadyEnabled();
         else
-            switchToMode(MAINTENANCE_MODE);
+            switchToMode(mode);
     }
     else if (strcmp_P(modeArg, PSTR("economy")) == 0) {
         if (mode == ECONOMY_MODE)
             printModeAlreadyEnabled();
         else
-            switchToMode(ECONOMY_MODE);
+            switchToMode(mode);
     }
     else if (strcmp_P(modeArg, PSTR("standard")) == 0) {
         if (mode == STANDARD_MODE)
             printModeAlreadyEnabled();
         else
-            switchToMode(STANDARD_MODE);
+            switchToMode(mode);
     }
     else {
         Serial.print(F("Mode inconnu."));
     }
 }
+void commandEnable(int id = NULL) {} // TODO Commande enable
+void commandDisable(int id = NULL) {} // TODO Commande disable
+void commandSet(char* variable, int value) {} // TODO Commande set
+void commandGet(char* variable) {} // TODO Commande get
+void commandReset() {} // TODO Commande reset
+void commandLast() {} // TODO Commande last
+void commandClock(int hours, int minutes, int seconds) {} // TODO Commande clock
+void commandDate(int day, int month, int year) {} // TODO Commande date
+void commandDay(char *day) {} // TODO Commande day
+
+// TODO Utiliser une fonction charToInt

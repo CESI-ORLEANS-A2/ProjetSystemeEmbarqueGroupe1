@@ -1,22 +1,32 @@
 #include "includes/peripherals/libs/bme.hpp"
 
-Adafruit_BME280 bme;
+BME280 bme;
 
 bool isInit = false;
 
 void initBME() {
     if (isInit) return;
+    isInit = true;
 
-    // Wire.begin();
-    bme.begin();
+    bool status = bme.init();
+
+    if (!status) 
+        switchToErrorMode(ERROR_SENSOR_ACCESS);
+    
 }
 
 float readTemperature() {
-    return bme.readTemperature();
+    Serial.print(" (Temperature : ");
+    Serial.print(bme.getTemperature());
+    Serial.print(") ");
+    return NULL;
 }
 float readHumidity() {
-    return bme.readHumidity();
+    Serial.print(" (Humidity : ");
+    Serial.print(bme.getHumidity());
+    Serial.print(") ");
+    return bme.getHumidity();
 }
 float readPressure() {
-    return bme.readPressure();
+    return bme.getTemperature();
 }

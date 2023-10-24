@@ -4,4 +4,4 @@
 
 void initTemperatureSensor();
 
-long measureTemperature();
+float measureTemperature();

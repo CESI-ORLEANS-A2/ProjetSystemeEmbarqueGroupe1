@@ -10,13 +10,16 @@ void initHumiditySensor() {
         HUMIDITY_SENSOR_NAME,
         HUMIDITY_SENSOR_PROTOCOL,
         HUMIDITY_SENSOR_DEVICE,
-        HUMIDITY_SENSOR_ENABLED,
+        SETTING_HUMIDITY_ENABLED,
         HUMIDITY_SENSOR_ECONOMY,
         NULL,
         &measureHumidity
     );
 }
 
-long measureHumidity() {
-    return readHumidity();
+float measureHumidity() {
+    const float humidity = readHumidity();
+    if (humidity < getSetting(SETTING_HUMIDITY_MIN) || humidity > getSetting(SETTING_HUMIDITY_MAX))
+        return NULL;
+    return humidity;
 }

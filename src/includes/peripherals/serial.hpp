@@ -2,11 +2,11 @@
 #define Serial_h
 
 #include <Arduino.h>
-#include "consts.hpp"
-
-extern bool isSerialInit;
+#include "main.hpp"
 
 void initSerial();
 void print(String message);
+
+void printData();
 
 #endif

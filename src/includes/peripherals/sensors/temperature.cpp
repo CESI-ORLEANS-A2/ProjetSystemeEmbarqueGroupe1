@@ -10,13 +10,16 @@ void initTemperatureSensor() {
         TEMPERATURE_SENSOR_NAME,
         TEMPERATURE_SENSOR_PROTOCOL,
         TEMPERATURE_SENSOR_DEVICE,
-        TEMPERATURE_SENSOR_ENABLED,
+        SETTING_TEMPERATURE_ENABLED,
         TEMPERATURE_SENSOR_ECONOMY,
         NULL,
         &measureTemperature
     );
 }
 
-long measureTemperature() {
-    return readTemperature();
+float measureTemperature() {
+    const float temperature = readTemperature();
+    if (temperature < getSetting(SETTING_TEMPERATURE_MIN) || temperature > getSetting(SETTING_TEMPERATURE_MAX))
+        return NULL;
+    return temperature;
 }

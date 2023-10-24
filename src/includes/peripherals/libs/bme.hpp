@@ -1,8 +1,9 @@
 #include "consts.hpp"
+#include "includes/modes/error.hpp"
 
-#include <Adafruit_BME280.h>
+#include <Seeed_BME280.h>
 
-extern Adafruit_BME280 bme;
+extern BME280 bme;
 extern bool isInit;
 
 

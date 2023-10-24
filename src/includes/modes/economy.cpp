@@ -4,7 +4,12 @@ void switchToEconomyMode() {
     previousMode = mode;
     mode = ECONOMY_MODE;
 };
-void runEconomyModeStep() {};
+void quitEconomyMode() {
+    
+}
+void runEconomyModeStep() {
+    acquisition(&saveData);
+};
 
 void printSwitchToEconomy() {
     Serial.println(F("Passage en mode économique"));

@@ -1,3 +1,6 @@
+#ifndef Mode_h
+#define Mode_h
+
 #include "main.hpp"
 
 // Déclenché lorsqu'on appuie sur le bouton rouge pendant BUTTON_DELAY
@@ -12,3 +15,5 @@ void stopLiveMode();
 void switchToMode(int newMode);
 
 void printMode();
+
+#endif

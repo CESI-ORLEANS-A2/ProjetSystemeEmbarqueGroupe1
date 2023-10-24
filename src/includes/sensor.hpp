@@ -5,30 +5,38 @@
 #include <Wire.h>
 
 #include "consts.hpp"
+#include "settings.hpp"
 
-extern bool wireInitialized;
-
+/*!
+ * @brief Classe représentant un capteur
+ *
+ * Cette classe contient les informations relatives à un capteur. 
+ * 
+ * Elle permet de faciliter la récupération des données des capteurs en fournissant
+ * une interface commune pour tous les capteurs. Elle fourni notamment une méthode d'initialisation
+ * et une méthode de mesure.
+ */
 class Sensor {
 public:
     Sensor(
         const char* name,
         int protocol,
         int device,
-        bool enabled,
+        int enabled,
         bool economy,
         void (*init)() = NULL,
-        long (*measure)() = NULL
+        float (*measure)() = NULL
     );
 
     const char* name;
     const int protocol;
     const int device;
-    bool enabled;
+    int enabled;
     bool economy;
     void (*init)();
-    long (*measure)();
+    float (*measure)();
 
-    long acquisition();
+    float acquisition();
 
     void initI2C();
     void initAnalog();

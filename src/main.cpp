@@ -1,43 +1,83 @@
+/*!
+ * @file main.cpp
+ * 
+ * @mainpage Station Météo
+ * 
+ * @section intro Introduction
+ * 
+ * Ce projet est le programme pour une station météo réalisée dans 
+ * le cadre d'un bloc d'apprentissage au CESI.
+ * 
+ * @section author Auteurs
+ * 
+ * Réalisé par : 
+ * - Alban ([@0xybo](https://github.com/0xybo))
+ * - Hugo ()
+ * - Adam ()
+ * - Romain ()
+ * - Matthieu ()
+ * 
+ * @section license License
+ * 
+ * MIT License
+ * 
+ * Copyright (c) 2023 Alban G. (@0xybo), Hugo H. (), Adam B. (), Romain (), Matthieu ()
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+*/
+
 #include "main.hpp"
 
 int mode = STANDARD_MODE;
 int previousMode = STANDARD_MODE;
 bool liveMode = false;
+float lastMeasurements[NUMBER_OF_SENSORS];
 
-// Contient une représentation (structure) de chaque capteur
 Sensor* sensors[NUMBER_OF_SENSORS];
 
 void setup() {
+    updateSettingsFromEEPROM();
     initLED();
     switchLEDToGreen();
     initTimer(); // Initialisation des compteurs
 
-    Serial.begin(SERIAL_BAUD_RATE); // Initialisation du port série (communication avec l'ordinateur)
-    // TODO Initialisation carte SD
-    // TODO Initialisation GPS => SoftwareSerial
-
-    // TODO mettre dans un fichier boutons.cpp, fonction initButtons
-    pinMode(RED_BUTTON_PIN, INPUT_PULLUP); 
-    pinMode(GREEN_BUTTON_PIN, INPUT_PULLUP);
-
-    // TODO bouttons.cpp, fonction initButtonsInterrupts
-    attachButtonInterrupt(RED_BUTTON_PIN, BUTTON_DELAY, redButtonPressed); // Initialisation des interruptions sur le bouton rouge ainsi que son timer pour le délai
-    attachButtonInterrupt(GREEN_BUTTON_PIN, BUTTON_DELAY, greenButtonPressed); // Initialisation des interruptions sur le bouton vert ainsi que son timer pour le délai
+    initSerial();
+    initButtons();
 
     // Initialisation des capteurs
     initTemperatureSensor();
     initHumiditySensor();
     // initPressureSensor();
     // initBrightnessSensor();
-    
-    if (Serial) Serial.println(F("Station Météo v3"));
 
+    initClock();
+    initGPS();
+    
 #if INTERPRETER // Initialisation de l'interpréteur si activé
     initInterpreter();
 #endif
 
     if (digitalRead(RED_BUTTON_PIN) == LOW) // Si le bouton rouge est appuyé au démarrage, on passe en mode configuration
         switchToConfigurationMode();
+    else mount();
+
+    initButtonsInterrupt();
 }
 
 void loop() {
@@ -60,4 +100,8 @@ void loop() {
         runMaintenanceModeStep();
         break;
     }
+}
+
+void restart() {
+    // TODO Activé le pin reset
 }
