@@ -1,4 +1,4 @@
-#include "includes/peripherals/libs/dht.hpp"
+#include "peripherals/libs/dht.hpp"
 
 DHTNEW dht(TEMPERATURE_SENSOR_DEVICE);
 bool readThisStep = false;

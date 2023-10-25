@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Station_Méteo_Groupe_1:  Fichier source de /mnt/c/Users/godie/Cours/10. CESI A2/Blocs/01 - Systeme embarque/Livrables/Station_Meteo_Groupe_1/include/settings.hpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Station_Méteo_Groupe_1<span id="projectnumber">&#160;v0.0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(1); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('d5/d0f/settings_8hpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">settings.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d5/d0f/settings_8hpp.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef Settings_h</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define Settings_h</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="../../df/dd7/consts_8hpp.html">consts.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;EEPROM.h&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">struct </span><a class="code hl_struct" href="../../dc/d23/structSetting.html">Setting</a></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordtype">char</span>* <a class="code hl_variable" href="../../dc/d23/structSetting.html#a192a67d2c4de59c7ca5bdf3adc176483">name</a>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="../../dc/d23/structSetting.html#a1fe21f3468a1c2146921faf0a0cf47c4">defaultValue</a>;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="../../dc/d23/structSetting.html#ac5b3f93091112f484c79334185038e91">value</a>; </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>};</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">extern</span> <a class="code hl_struct" href="../../dc/d23/structSetting.html">Setting</a> <a class="code hl_variable" href="../../d5/d0f/settings_8hpp.html#a0e9c3db9b01c9a667cbe93f8913b933a">settings</a>[<a class="code hl_define" href="../../df/dd7/consts_8hpp.html#a4b22ce614859e622108ad3476ca1cf43">NUMBER_OF_SETTINGS</a>];</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d5/d0f/settings_8hpp.html#af71d0f49d8fd5ffb34f938f92893f72e">updateSettingsFromEEPROM</a>();</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d5/d0f/settings_8hpp.html#ac633daaf23d0cb452aaddd6c2a1c60d4">resetSettings</a>();</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="keywordtype">double</span> <a class="code hl_function" href="../../d5/d0f/settings_8hpp.html#a3140f4a5b868fbcb2779d8fbc8e6f5a0">getSetting</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d5/d0f/settings_8hpp.html#a82e9d5c6a14f8cbb2ed8a5d7993f59b7">setSetting</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, <span class="keywordtype">double</span> value);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aconsts_8hpp_html"><div class="ttname"><a href="../../df/dd7/consts_8hpp.html">consts.hpp</a></div></div>
+<div class="ttc" id="aconsts_8hpp_html_a4b22ce614859e622108ad3476ca1cf43"><div class="ttname"><a href="../../df/dd7/consts_8hpp.html#a4b22ce614859e622108ad3476ca1cf43">NUMBER_OF_SETTINGS</a></div><div class="ttdeci">#define NUMBER_OF_SETTINGS</div><div class="ttdoc">Nombre de paramètres modifiables disponibles.</div><div class="ttdef"><b>Definition</b> consts.hpp:216</div></div>
+<div class="ttc" id="asettings_8hpp_html_a0e9c3db9b01c9a667cbe93f8913b933a"><div class="ttname"><a href="../../d5/d0f/settings_8hpp.html#a0e9c3db9b01c9a667cbe93f8913b933a">settings</a></div><div class="ttdeci">Setting settings[NUMBER_OF_SETTINGS]</div><div class="ttdoc">Paramètres de la station météo.</div><div class="ttdef"><b>Definition</b> settings.cpp:3</div></div>
+<div class="ttc" id="asettings_8hpp_html_a3140f4a5b868fbcb2779d8fbc8e6f5a0"><div class="ttname"><a href="../../d5/d0f/settings_8hpp.html#a3140f4a5b868fbcb2779d8fbc8e6f5a0">getSetting</a></div><div class="ttdeci">double getSetting(int id)</div><div class="ttdoc">Récupère la valeur d'un paramètre depuis le tableau settings.</div><div class="ttdef"><b>Definition</b> settings.cpp:98</div></div>
+<div class="ttc" id="asettings_8hpp_html_a82e9d5c6a14f8cbb2ed8a5d7993f59b7"><div class="ttname"><a href="../../d5/d0f/settings_8hpp.html#a82e9d5c6a14f8cbb2ed8a5d7993f59b7">setSetting</a></div><div class="ttdeci">void setSetting(int id, double value)</div><div class="ttdoc">Sauvegarde la valeur d'un paramètre dans l'EEPROM.</div><div class="ttdef"><b>Definition</b> settings.cpp:101</div></div>
+<div class="ttc" id="asettings_8hpp_html_ac633daaf23d0cb452aaddd6c2a1c60d4"><div class="ttname"><a href="../../d5/d0f/settings_8hpp.html#ac633daaf23d0cb452aaddd6c2a1c60d4">resetSettings</a></div><div class="ttdeci">void resetSettings()</div><div class="ttdoc">Réinitialise les paramètres de la station météo à leurs valeurs par défaut.</div><div class="ttdef"><b>Definition</b> settings.cpp:90</div></div>
+<div class="ttc" id="asettings_8hpp_html_af71d0f49d8fd5ffb34f938f92893f72e"><div class="ttname"><a href="../../d5/d0f/settings_8hpp.html#af71d0f49d8fd5ffb34f938f92893f72e">updateSettingsFromEEPROM</a></div><div class="ttdeci">void updateSettingsFromEEPROM()</div><div class="ttdoc">Met à jour les paramètres de la station météo à partir de l'EEPROM.</div><div class="ttdef"><b>Definition</b> settings.cpp:82</div></div>
+<div class="ttc" id="astructSetting_html"><div class="ttname"><a href="../../dc/d23/structSetting.html">Setting</a></div><div class="ttdef"><b>Definition</b> settings.hpp:8</div></div>
+<div class="ttc" id="astructSetting_html_a192a67d2c4de59c7ca5bdf3adc176483"><div class="ttname"><a href="../../dc/d23/structSetting.html#a192a67d2c4de59c7ca5bdf3adc176483">Setting::name</a></div><div class="ttdeci">char * name</div><div class="ttdef"><b>Definition</b> settings.hpp:9</div></div>
+<div class="ttc" id="astructSetting_html_a1fe21f3468a1c2146921faf0a0cf47c4"><div class="ttname"><a href="../../dc/d23/structSetting.html#a1fe21f3468a1c2146921faf0a0cf47c4">Setting::defaultValue</a></div><div class="ttdeci">double defaultValue</div><div class="ttdef"><b>Definition</b> settings.hpp:10</div></div>
+<div class="ttc" id="astructSetting_html_ac5b3f93091112f484c79334185038e91"><div class="ttname"><a href="../../dc/d23/structSetting.html#ac5b3f93091112f484c79334185038e91">Setting::value</a></div><div class="ttdeci">double value</div><div class="ttdef"><b>Definition</b> settings.hpp:11</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="../../d5/d0f/settings_8hpp.html">settings.hpp</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
+</body>
+</html>
