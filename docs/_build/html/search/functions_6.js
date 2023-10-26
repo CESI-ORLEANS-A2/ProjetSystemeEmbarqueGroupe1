@@ -1,4 +1,31 @@
 var searchData=
 [
-  ['hue2rgb_0',['hue2rgb',['../da/dfe/ChainableLED_8cpp.html#af369a113a2fa54f4ff955ee15a0258cb',1,'ChainableLED.cpp']]]
+  ['fat_5fdate_0',['FAT_DATE',['../d8/d3d/SdFat_8h.html#a44899ad42ddf32ff1c1a73b5251b304a',1,'SdFat.h']]],
+  ['fat_5fday_1',['FAT_DAY',['../d8/d3d/SdFat_8h.html#a4cc8bc105529bf9e9c11e8ef099d68b0',1,'SdFat.h']]],
+  ['fat_5fhour_2',['FAT_HOUR',['../d8/d3d/SdFat_8h.html#ae7c733d49a5570054f6db3bd53332ba1',1,'SdFat.h']]],
+  ['fat_5fminute_3',['FAT_MINUTE',['../d8/d3d/SdFat_8h.html#a1b09676a41ae6c9e19664bdcd5b1d34e',1,'SdFat.h']]],
+  ['fat_5fmonth_4',['FAT_MONTH',['../d8/d3d/SdFat_8h.html#a429bc2d96f5bc26dc3bd6cc2bd535b84',1,'SdFat.h']]],
+  ['fat_5fsecond_5',['FAT_SECOND',['../d8/d3d/SdFat_8h.html#a4d553e2088d42e01d6c08ee84e611b00',1,'SdFat.h']]],
+  ['fat_5ftime_6',['FAT_TIME',['../d8/d3d/SdFat_8h.html#a375720927be5a39475d48b2d75dae29a',1,'SdFat.h']]],
+  ['fat_5fyear_7',['FAT_YEAR',['../d8/d3d/SdFat_8h.html#a279a75f907dd2603543c7bdad00ff603',1,'SdFat.h']]],
+  ['fatcount_8',['fatCount',['../d4/d82/classSdVolume.html#ad0985d6a2a136aedacd7678977b0e015',1,'SdVolume']]],
+  ['fatget_9',['fatGet',['../d4/d82/classSdVolume.html#ac0a20360ebc30dc314befba967389714',1,'SdVolume']]],
+  ['fatput_10',['fatPut',['../d4/d82/classSdVolume.html#a1c3281f89bd526ec7217d75487693ce1',1,'SdVolume']]],
+  ['fatputeoc_11',['fatPutEOC',['../d4/d82/classSdVolume.html#aae1923e6e22c2bede1ea92a36db7ef22',1,'SdVolume']]],
+  ['fatstartblock_12',['fatStartBlock',['../d4/d82/classSdVolume.html#a05f8847162b9d9f77b1b8db95cd63cec',1,'SdVolume']]],
+  ['fattype_13',['fatType',['../d4/d82/classSdVolume.html#a85adb29d404b08b1b58e9f105b60ea8d',1,'SdVolume']]],
+  ['file_14',['file',['../dc/d18/classSDLib_1_1File.html#ad34490d697d9e56859f566534b360c54',1,'SDLib::File::File(SdFile f, const char *name)'],['../dc/d18/classSDLib_1_1File.html#a7dcb21db9e1623e84b9c3dee81c12617',1,'SDLib::File::File(void)']]],
+  ['filesize_15',['fileSize',['../d0/dca/classSdFile.html#add58372b89c922511bc425d84b07dc5f',1,'SdFile']]],
+  ['fillbyhms_16',['fillByHMS',['../d8/da8/classDS1307.html#a634cb9fba03c1e4346e0d8dc9ced53ff',1,'DS1307']]],
+  ['fillbyymd_17',['fillByYMD',['../d8/da8/classDS1307.html#a84d8f58bb9cb6a7d7edf174182300a79',1,'DS1307']]],
+  ['filldayofweek_18',['fillDayOfWeek',['../d8/da8/classDS1307.html#aaf80b7344706d2b628670798665ae934',1,'DS1307']]],
+  ['find_19',['find',['../dc/de8/classStream.html#a4f529a9d7309aedf535fb1a6757a5675',1,'Stream::find(char target)'],['../dc/de8/classStream.html#abe254745b98af8037d10fef6126e42df',1,'Stream::find(uint8_t *target, size_t length)'],['../dc/de8/classStream.html#ad851401f2318cdb1de05707e021b81d9',1,'Stream::find(char *target, size_t length)'],['../dc/de8/classStream.html#a250f5e805979bad3efb0ef33038de457',1,'Stream::find(uint8_t *target)'],['../dc/de8/classStream.html#a4bab30ccd324efd461dee46a2339f673',1,'Stream::find(char *target)']]],
+  ['findmulti_20',['findMulti',['../dc/de8/classStream.html#a5fb669d95dbf5b7b8a8e900c53d62a1e',1,'Stream']]],
+  ['finduntil_21',['finduntil',['../dc/de8/classStream.html#ae644144154e17da36a1b89123847b5b1',1,'Stream::findUntil(uint8_t *target, size_t targetLen, char *terminate, size_t termLen)'],['../dc/de8/classStream.html#a3a9497de614792103ab8cb4759e01a69',1,'Stream::findUntil(char *target, size_t targetLen, char *terminate, size_t termLen)'],['../dc/de8/classStream.html#a167c5236fd76df40d4894aa48e99aa98',1,'Stream::findUntil(uint8_t *target, char *terminator)'],['../dc/de8/classStream.html#ad1f5f6600832396fb38a897baf4de35b',1,'Stream::findUntil(char *target, char *terminator)']]],
+  ['firstcluster_22',['firstCluster',['../d0/dca/classSdFile.html#a854b7555bd774ff668558bf919636edd',1,'SdFile']]],
+  ['flush_23',['flush',['../dc/d18/classSDLib_1_1File.html#af87fa862de707575b8badd044a5af80e',1,'SDLib::File::flush()'],['../dc/d5d/classUDP.html#a2bf28910b39ccd0da18c27d451552b45',1,'UDP::flush()'],['../d9/df9/classPrint.html#add7f8450dfdc7f94eeec685f220573f7',1,'Print::flush()'],['../dd/d56/classHardwareSerial.html#a33a5d5c5ffa184e2c303a21152fa2abe',1,'HardwareSerial::flush()'],['../d1/d37/classClient.html#a2ddbd7aa6b5d18e1e463c359b22829aa',1,'Client::flush()']]],
+  ['formatline_24',['formatline',['../d0/ded/sd_8cpp.html#a8ba3e4e79865f28ac7ffd9da7caf2450',1,'formatLine(char *line):&#160;sd.cpp'],['../d5/d98/sd_8hpp.html#a8ba3e4e79865f28ac7ffd9da7caf2450',1,'formatLine(char *line):&#160;sd.cpp']]],
+  ['freechain_25',['freeChain',['../d4/d82/classSdVolume.html#aebd5fc75f04c7c1a9653f78a47f0b39f',1,'SdVolume']]],
+  ['freeram_26',['FreeRam',['../d5/db2/SdFatUtil_8h.html#a2969f64e4dfaab2726d1913f610b995c',1,'SdFatUtil.h']]],
+  ['fromstring_27',['fromstring',['../d5/d65/classIPAddress.html#ad74ee82b3ceb7144b6b1af47b0664cce',1,'IPAddress::fromString(const char *address)'],['../d5/d65/classIPAddress.html#ac9dce336d67ba114670ce9d29168984b',1,'IPAddress::fromString(const String &amp;address)']]]
 ];

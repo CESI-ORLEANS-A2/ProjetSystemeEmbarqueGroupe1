@@ -12,16 +12,16 @@
  *
  * Réalisé par :
  * - Alban ([@0xybo](https://github.com/0xybo))
- * - Hugo ()
- * - Adam ()
- * - Romain ()
- * - Matthieu ()
+ * - Hugo ([@HuHel](https://github.com/HuHel))
+ * - Adam ([@aaben40](https://github.com/aaben40))
+ * - Romain ([@RomainHemart](https://github.com/RomainHemart))
+ * - Matthieu ([@Aureste-o](https://github.com/Aureste-o))
  *
  * @section license License
  *
  * MIT License
  *
- * Copyright (c) 2023 Alban G. (@0xybo), Hugo H. (), Adam B. (), Romain H. (), Matthieu M. ()
+ * Copyright (c) 2023 Alban G. (@0xybo), Hugo H. (@HuHel), Adam B. (@aaben40), Romain H. (@RomainHemart), Matthieu M. (@Aureste-o)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -53,25 +53,27 @@ Sensor* sensors[NUMBER_OF_SENSORS];
 
 void setup() {
     initSettings();
+#if SETTINGS_IN_EEPROM
     updateSettingsFromEEPROM();
-    initLED();
-    initTimer(); // Initialisation des compteurs
+#endif
+    initLED(); // Initialisation de la LED
+    initTimer(); // Initialisation du compteur
 
-    initSerial();
-    initButtons();
+    initSerial(); // Initialisation du port série
+    initButtons(); // Initialisation des boutons (sans les interruptions)
 
     // Initialisation des capteurs
     initTemperatureSensor();
     initHumiditySensor();
-    // initPressureSensor();
-    // initBrightnessSensor();
+    // initPressureSensor(); // TODO Capteur de pression
+    // initBrightnessSensor(); // TODO Capteur de luminosité
 
-    initClock();
-    initGPS();
+    initClock(); // Initialisation de l'horloge
+    initGPS(); // Initialisation du GPS
 
     if (digitalRead(RED_BUTTON_PIN) == LOW) // Si le bouton rouge est appuyé au démarrage, on passe en mode configuration
         switchToConfigurationMode();
-    else {
+    else { // Sinon, on monte la carte SD et on passe la LED en vert
         mount();
         switchLEDToGreen();
     }
@@ -80,7 +82,7 @@ void setup() {
     initInterpreter();
 #endif
 
-    initButtonsInterrupt();
+    initButtonsInterrupt(); // Initialisation des interruptions des boutons
 }
 
 void loop() {
@@ -103,8 +105,4 @@ void loop() {
         runMaintenanceModeStep();
         break;
     }
-}
-
-void restart() {
-    // TODO Activé le pin reset
 }

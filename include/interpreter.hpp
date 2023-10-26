@@ -13,6 +13,10 @@ extern char inputBuffer[INPUT_BUFFER_SIZE];
  * @brief Taille le ligne de commandé entrée par l'utilisateur.
 */
 extern int inputLength;
+/**
+ * @brief Un charactère espace en mémoire Flash.
+*/
+static const char* spaceChar;
 
 /**
  * @brief Initialise l'interpréteur de commandes.
@@ -60,7 +64,7 @@ void runInterpreterStep();
  * @ref printUnknownCommand()
  * @ref MAINTENANCE_MODE
 */
-void runCommand(char* command);
+void runCommand();
 
 /**
  * @brief Affiche le prompt de l'interpréteur de commandes.
@@ -193,7 +197,7 @@ void commandEnable(int id = NULL);
 void commandDisable(int id = NULL);
 /**
  * @brief Change la valeur d'un paramètre.
- * 
+ *
  * @ref settings
  * @ref setSetting()
  * @ref NUMBER_OF_SETTINGS
@@ -215,7 +219,7 @@ void commandGet(char* variable);
 void commandReset();
 /**
  * @brief Affiche les dernières données enregistrées.
- * 
+ *
  * @ref printData()
 */
 void commandLast();

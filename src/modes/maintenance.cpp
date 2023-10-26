@@ -5,10 +5,10 @@ void switchToMaintenanceMode() {
     mode = MAINTENANCE_MODE;
     switchLEDToYellow();
 
-    // TODO Démonter la carte SD
+    unmount();
 }
 void quitMaintenanceMode() {
-    // TODO Remonter la carte SD
+    mount();
 }
 void runMaintenanceModeStep() {
 #if INTERPRETER
@@ -21,10 +21,11 @@ void runMaintenanceModeStep() {
                 return;
             }
         }
-    }
-#endif
-
+        acquisition(&printData);
+    } else acquisition(NULL);
+#else
     acquisition(&printData);
+#endif
 };
 void printSwitchToMaintenance() {
     Serial.println(F("Passage en mode maintenance"));

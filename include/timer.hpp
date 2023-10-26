@@ -32,6 +32,7 @@ void initTimer();
  * @param delay Le délais en microsecondes
  * @param handler La fonction à exécuter à la fin du délais
  * 
+ * Références : 
  * @ref callback
  * @ref counter
  * @ref remains

@@ -42,6 +42,7 @@ extern Setting settings[NUMBER_OF_SETTINGS];
  * 
  * Les paramètres par défaut sont définis dans consts.hpp .
  * 
+ * Références : 
  * @ref settings
  * @ref Setting
  * @ref SETTING_ACQUISITION_DELAY
@@ -97,6 +98,7 @@ void initSettings();
  * Si le paramètre en question n'est pas définit dans l'EEPROM, la valeur par défaut
  * est utilisée.
  * 
+ * Références : 
  * @ref settings
  * @ref EEPROM
  * @ref NUMBER_OF_SETTINGS
@@ -109,6 +111,7 @@ void updateSettingsFromEEPROM();
  * Les paramètres par défaut sont définis dans consts.hpp .
  * Les paramètres sont ensuite sauvegardés dans l'EEPROM.
  * 
+ * Références : 
  * @ref settings
  * @ref EEPROM
  * @ref DEFAULT_SETTINGS
@@ -122,6 +125,7 @@ void resetSettings();
  * 
  * @return La valeur du paramètre
  * 
+ * Références : 
  * @ref settings
 */
 long getSetting(int id);
@@ -130,6 +134,7 @@ long getSetting(int id);
  * 
  * Le tableau settings est également mis à jour.
  * 
+ * Références : 
  * @ref EEPROM
 */
 void setSetting(int id, long value);

@@ -7,9 +7,6 @@ DTHNew
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/RobTillaart/DHTNew/blob/master/LICENSE)
 [![GitHub release](https://img.shields.io/github/release/RobTillaart/DHTNew.svg?maxAge=3600)](https://github.com/RobTillaart/DHTNew/releases)
 
-
-# DHTNew
-
 Arduino library for DHT11 and DHT22 (and compatible) with automatic sensor type recognition.
 
 

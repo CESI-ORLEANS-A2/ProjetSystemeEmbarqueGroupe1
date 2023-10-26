@@ -8,10 +8,9 @@ void initHumiditySensor() {
     initBME();
     sensors[HUMIDITY_SENSOR] = new Sensor(
         HUMIDITY_SENSOR_NAME,
-        HUMIDITY_SENSOR_PROTOCOL,
         HUMIDITY_SENSOR_DEVICE,
         SETTING_HUMIDITY_ENABLED,
-        HUMIDITY_SENSOR_ECONOMY,
+        SETTING_HUMIDITY_ECONOMY_ENABLED,
         NULL,
         &measureHumidity
     );

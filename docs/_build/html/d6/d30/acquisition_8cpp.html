@@ -106,12 +106,16 @@ Fonctions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:ab49a5cee0ca11699cc8d79deaab108fb" id="r_ab49a5cee0ca11699cc8d79deaab108fb"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab49a5cee0ca11699cc8d79deaab108fb">previousAcquisition</a> = NULL</td></tr>
+<tr class="memdesc:ab49a5cee0ca11699cc8d79deaab108fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stocke le timestamp du début de la dernière acquisition.  <br /></td></tr>
 <tr class="separator:ab49a5cee0ca11699cc8d79deaab108fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa58ff38484ff06317eaa8ca0f11c7b5" id="r_aaa58ff38484ff06317eaa8ca0f11c7b5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa58ff38484ff06317eaa8ca0f11c7b5">errors</a> [<a class="el" href="../../df/dd7/consts_8hpp.html#aa8f8564a6944121058f4c4278894ead1">NUMBER_OF_SENSORS</a>]</td></tr>
+<tr class="memdesc:aaa58ff38484ff06317eaa8ca0f11c7b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tableau de booléens indiquant si un capteur a réussi à acquérir une donnée.  <br /></td></tr>
 <tr class="separator:aaa58ff38484ff06317eaa8ca0f11c7b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4abfb477f89f314bf0ccf282f899ebe" id="r_ad4abfb477f89f314bf0ccf282f899ebe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4abfb477f89f314bf0ccf282f899ebe">underAcquisition</a> = false</td></tr>
+<tr class="memdesc:ad4abfb477f89f314bf0ccf282f899ebe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si une acquisition est en cours.  <br /></td></tr>
 <tr class="separator:ad4abfb477f89f314bf0ccf282f899ebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabf5fb545987de59138fea59a7eb0332" id="r_aabf5fb545987de59138fea59a7eb0332"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aabf5fb545987de59138fea59a7eb0332">numberOfErrors</a> = <a class="el" href="../../df/dd7/consts_8hpp.html#aa8f8564a6944121058f4c4278894ead1">NUMBER_OF_SENSORS</a></td></tr>
+<tr class="memdesc:aabf5fb545987de59138fea59a7eb0332"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre d'erreur restantes dans l'acquisition en cours.  <br /></td></tr>
 <tr class="separator:aabf5fb545987de59138fea59a7eb0332"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentation des fonctions</h2>
@@ -146,6 +150,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Tableau de booléens indiquant si un capteur a réussi à acquérir une donnée. </p>
+<p>Ce tableau est initialisé à true pour chaque capteur au début de l'acquisition. L'acquisition continue tant qu'il reste au moins une erreur sauf si la durée d'acquisition dépasse une valeur maximale.</p>
+<p>La taille de ce tableau est repportée dans la variable numberOfSensors</p>
+
 </div>
 </div>
 <a id="aabf5fb545987de59138fea59a7eb0332" name="aabf5fb545987de59138fea59a7eb0332"></a>
@@ -159,6 +167,9 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Nombre d'erreur restantes dans l'acquisition en cours. </p>
+<p>L'acquisition démarre avec un nombre d'erreur équivalent au nombre de capteurs disponibles. À chaque fois qu'un capteur réussi à acquérir une donnée, le nombre d'erreur est décrémenté. Lorsque le nombre d'erreur atteint 0, l'acquisition est terminée. </p>
 
 </div>
 </div>
@@ -174,6 +185,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Stocke le timestamp du début de la dernière acquisition. </p>
+<p>Cette variable permet à la fois de savoir si la dernière acquisition est a plus de x secondes pour pouvoir en relancer une et de savoir si l'acquisition en cours ne dépasse pas une durée maximale. </p>
+
 </div>
 </div>
 <a id="ad4abfb477f89f314bf0ccf282f899ebe" name="ad4abfb477f89f314bf0ccf282f899ebe"></a>
@@ -187,6 +201,9 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Indique si une acquisition est en cours. </p>
+<p>La fonction acquisition est exécutée à chaque cycle de la boucle <a class="el" href="../../de/dfb/src_2main_8cpp.html#afe461d27b9c48d5921c00d521181f12f">loop</a> , peut importe si une acquisition est en cours ou non et si des capteurs sont en erreur. </p>
 
 </div>
 </div>

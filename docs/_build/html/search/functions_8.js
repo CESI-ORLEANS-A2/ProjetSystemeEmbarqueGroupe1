@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['lastread_0',['lastRead',['../d4/da9/classDHTNEW.html#a2e86b4e547d04381eb6863fe4597bd39',1,'DHTNEW']]],
-  ['loop_1',['loop',['../df/d0a/main_8cpp.html#afe461d27b9c48d5921c00d521181f12f',1,'main.cpp']]]
+  ['hardwareserial_0',['HardwareSerial',['../dd/d56/classHardwareSerial.html#a89894dd01eb368e1a9f16319c2a149ca',1,'HardwareSerial']]],
+  ['hue2rgb_1',['hue2rgb',['../da/dfe/ChainableLED_8cpp.html#af369a113a2fa54f4ff955ee15a0258cb',1,'ChainableLED.cpp']]]
 ];

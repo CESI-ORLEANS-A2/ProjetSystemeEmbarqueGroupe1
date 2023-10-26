@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Station_Méteo_Groupe_1:  Fichier source de /mnt/c/Users/godie/Cours/10. CESI A2/Blocs/01 - Systeme embarque/Livrables/Station_Meteo_Groupe_1/libs/Arduino_AVR/Client.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Station_Méteo_Groupe_1<span id="projectnumber">&#160;v0.0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(1); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('d4/d20/Client_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Client.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d4/d20/Client_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">  Client.h - Base class that provides Client</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">  Copyright (c) 2011 Adrian McEwen.  All right reserved.</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"></span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">  This library is free software; you can redistribute it and/or</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">  modify it under the terms of the GNU Lesser General Public</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">  License as published by the Free Software Foundation; either</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">  version 2.1 of the License, or (at your option) any later version.</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"></span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">  This library is distributed in the hope that it will be useful,</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">  but WITHOUT ANY WARRANTY; without even the implied warranty of</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">  Lesser General Public License for more details.</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"></span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">  You should have received a copy of the GNU Lesser General Public</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">  License along with this library; if not, write to the Free Software</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">*/</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#ifndef client_h</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#define client_h</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;<a class="code" href="../../d8/d19/Print_8h.html">Print.h</a>&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;<a class="code" href="../../de/dd1/Stream_8h.html">Stream.h</a>&quot;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;<a class="code" href="../../da/d36/IPAddress_8h.html">IPAddress.h</a>&quot;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="foldopen" id="foldopen00026" data-start="{" data-end="};">
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="../../d1/d37/classClient.html">   26</a></span><span class="keyword">class </span><a class="code hl_class" href="../../d1/d37/classClient.html">Client</a> : <span class="keyword">public</span> <a class="code hl_class" href="../../dc/de8/classStream.html">Stream</a> {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="../../d1/d37/classClient.html#adc54fb66dfe79bc1ca8a08151ac39ae2">   29</a></span>  <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code hl_function" href="../../d1/d37/classClient.html#adc54fb66dfe79bc1ca8a08151ac39ae2">connect</a>(<a class="code hl_class" href="../../d5/d65/classIPAddress.html">IPAddress</a> ip, uint16_t port) =0;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="../../d1/d37/classClient.html#aa859ed2dc24df300b020d5a71af51356">   30</a></span>  <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code hl_function" href="../../d1/d37/classClient.html#aa859ed2dc24df300b020d5a71af51356">connect</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *host, uint16_t port) =0;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="../../d1/d37/classClient.html#afb362c2f297ec232e8750ebe5fda1c8a">   31</a></span>  <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> <a class="code hl_function" href="../../d1/d37/classClient.html#afb362c2f297ec232e8750ebe5fda1c8a">write</a>(uint8_t) =0;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="../../d1/d37/classClient.html#a253996b6d6c563a50e3b2c8265b6e9c6">   32</a></span>  <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> <a class="code hl_function" href="../../d1/d37/classClient.html#a253996b6d6c563a50e3b2c8265b6e9c6">write</a>(<span class="keyword">const</span> uint8_t *buf, <span class="keywordtype">size_t</span> size) =0;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="../../d1/d37/classClient.html#aaab0aa5331d98bdf6d446fbd0cd3648b">   33</a></span>  <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code hl_function" href="../../d1/d37/classClient.html#aaab0aa5331d98bdf6d446fbd0cd3648b">available</a>() = 0;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="../../d1/d37/classClient.html#a79a0b69fcee98478f989c54c25a129b4">   34</a></span>  <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code hl_function" href="../../d1/d37/classClient.html#a79a0b69fcee98478f989c54c25a129b4">read</a>() = 0;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="../../d1/d37/classClient.html#a11a2d1b2145412f6d606817d1f3b09b7">   35</a></span>  <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code hl_function" href="../../d1/d37/classClient.html#a11a2d1b2145412f6d606817d1f3b09b7">read</a>(uint8_t *buf, <span class="keywordtype">size_t</span> size) = 0;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="../../d1/d37/classClient.html#a86998d50e0b5e0f8957dd1025fb49046">   36</a></span>  <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code hl_function" href="../../d1/d37/classClient.html#a86998d50e0b5e0f8957dd1025fb49046">peek</a>() = 0;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="../../d1/d37/classClient.html#a2ddbd7aa6b5d18e1e463c359b22829aa">   37</a></span>  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d1/d37/classClient.html#a2ddbd7aa6b5d18e1e463c359b22829aa">flush</a>() = 0;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="../../d1/d37/classClient.html#a02682acc1f4b55e1e8e3e69d09e85fde">   38</a></span>  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d1/d37/classClient.html#a02682acc1f4b55e1e8e3e69d09e85fde">stop</a>() = 0;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="../../d1/d37/classClient.html#a00710fc15c5e011149350674a99346f2">   39</a></span>  <span class="keyword">virtual</span> uint8_t <a class="code hl_function" href="../../d1/d37/classClient.html#a00710fc15c5e011149350674a99346f2">connected</a>() = 0;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="../../d1/d37/classClient.html#a88150a010c776d23f14790ca66877135">   40</a></span>  <span class="keyword">virtual</span> <span class="keyword">operator</span> bool() = 0;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="../../d1/d37/classClient.html#a639dcd69cb4f88f01e35e086dd8da0ed">   42</a></span>  uint8_t* <a class="code hl_function" href="../../d1/d37/classClient.html#a639dcd69cb4f88f01e35e086dd8da0ed">rawIPAddress</a>(<a class="code hl_class" href="../../d5/d65/classIPAddress.html">IPAddress</a>&amp; addr) { <span class="keywordflow">return</span> addr.<a class="code hl_function" href="../../d5/d65/classIPAddress.html#a4b0132ebd80c4dc8e62f276d2226b703">raw_address</a>(); };</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>};</div>
+</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aIPAddress_8h_html"><div class="ttname"><a href="../../da/d36/IPAddress_8h.html">IPAddress.h</a></div></div>
+<div class="ttc" id="aPrint_8h_html"><div class="ttname"><a href="../../d8/d19/Print_8h.html">Print.h</a></div></div>
+<div class="ttc" id="aStream_8h_html"><div class="ttname"><a href="../../de/dd1/Stream_8h.html">Stream.h</a></div></div>
+<div class="ttc" id="aclassClient_html"><div class="ttname"><a href="../../d1/d37/classClient.html">Client</a></div><div class="ttdef"><b>Definition</b> Client.h:26</div></div>
+<div class="ttc" id="aclassClient_html_a00710fc15c5e011149350674a99346f2"><div class="ttname"><a href="../../d1/d37/classClient.html#a00710fc15c5e011149350674a99346f2">Client::connected</a></div><div class="ttdeci">virtual uint8_t connected()=0</div></div>
+<div class="ttc" id="aclassClient_html_a02682acc1f4b55e1e8e3e69d09e85fde"><div class="ttname"><a href="../../d1/d37/classClient.html#a02682acc1f4b55e1e8e3e69d09e85fde">Client::stop</a></div><div class="ttdeci">virtual void stop()=0</div></div>
+<div class="ttc" id="aclassClient_html_a11a2d1b2145412f6d606817d1f3b09b7"><div class="ttname"><a href="../../d1/d37/classClient.html#a11a2d1b2145412f6d606817d1f3b09b7">Client::read</a></div><div class="ttdeci">virtual int read(uint8_t *buf, size_t size)=0</div></div>
+<div class="ttc" id="aclassClient_html_a253996b6d6c563a50e3b2c8265b6e9c6"><div class="ttname"><a href="../../d1/d37/classClient.html#a253996b6d6c563a50e3b2c8265b6e9c6">Client::write</a></div><div class="ttdeci">virtual size_t write(const uint8_t *buf, size_t size)=0</div></div>
+<div class="ttc" id="aclassClient_html_a2ddbd7aa6b5d18e1e463c359b22829aa"><div class="ttname"><a href="../../d1/d37/classClient.html#a2ddbd7aa6b5d18e1e463c359b22829aa">Client::flush</a></div><div class="ttdeci">virtual void flush()=0</div></div>
+<div class="ttc" id="aclassClient_html_a639dcd69cb4f88f01e35e086dd8da0ed"><div class="ttname"><a href="../../d1/d37/classClient.html#a639dcd69cb4f88f01e35e086dd8da0ed">Client::rawIPAddress</a></div><div class="ttdeci">uint8_t * rawIPAddress(IPAddress &amp;addr)</div><div class="ttdef"><b>Definition</b> Client.h:42</div></div>
+<div class="ttc" id="aclassClient_html_a79a0b69fcee98478f989c54c25a129b4"><div class="ttname"><a href="../../d1/d37/classClient.html#a79a0b69fcee98478f989c54c25a129b4">Client::read</a></div><div class="ttdeci">virtual int read()=0</div></div>
+<div class="ttc" id="aclassClient_html_a86998d50e0b5e0f8957dd1025fb49046"><div class="ttname"><a href="../../d1/d37/classClient.html#a86998d50e0b5e0f8957dd1025fb49046">Client::peek</a></div><div class="ttdeci">virtual int peek()=0</div></div>
+<div class="ttc" id="aclassClient_html_aa859ed2dc24df300b020d5a71af51356"><div class="ttname"><a href="../../d1/d37/classClient.html#aa859ed2dc24df300b020d5a71af51356">Client::connect</a></div><div class="ttdeci">virtual int connect(const char *host, uint16_t port)=0</div></div>
+<div class="ttc" id="aclassClient_html_aaab0aa5331d98bdf6d446fbd0cd3648b"><div class="ttname"><a href="../../d1/d37/classClient.html#aaab0aa5331d98bdf6d446fbd0cd3648b">Client::available</a></div><div class="ttdeci">virtual int available()=0</div></div>
+<div class="ttc" id="aclassClient_html_adc54fb66dfe79bc1ca8a08151ac39ae2"><div class="ttname"><a href="../../d1/d37/classClient.html#adc54fb66dfe79bc1ca8a08151ac39ae2">Client::connect</a></div><div class="ttdeci">virtual int connect(IPAddress ip, uint16_t port)=0</div></div>
+<div class="ttc" id="aclassClient_html_afb362c2f297ec232e8750ebe5fda1c8a"><div class="ttname"><a href="../../d1/d37/classClient.html#afb362c2f297ec232e8750ebe5fda1c8a">Client::write</a></div><div class="ttdeci">virtual size_t write(uint8_t)=0</div></div>
+<div class="ttc" id="aclassIPAddress_html"><div class="ttname"><a href="../../d5/d65/classIPAddress.html">IPAddress</a></div><div class="ttdef"><b>Definition</b> IPAddress.h:29</div></div>
+<div class="ttc" id="aclassIPAddress_html_a4b0132ebd80c4dc8e62f276d2226b703"><div class="ttname"><a href="../../d5/d65/classIPAddress.html#a4b0132ebd80c4dc8e62f276d2226b703">IPAddress::raw_address</a></div><div class="ttdeci">uint8_t * raw_address()</div><div class="ttdef"><b>Definition</b> IPAddress.h:40</div></div>
+<div class="ttc" id="aclassStream_html"><div class="ttname"><a href="../../dc/de8/classStream.html">Stream</a></div><div class="ttdef"><b>Definition</b> Stream.h:50</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_6719ab1f1f7655efc2fa43f7eb574fd1.html">libs</a></li><li class="navelem"><a class="el" href="../../dir_650b651c4fc0af5fb7ffad415ecb503f.html">Arduino_AVR</a></li><li class="navelem"><a class="el" href="../../d4/d20/Client_8h.html">Client.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
+</body>
+</html>

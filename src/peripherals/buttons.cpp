@@ -10,6 +10,12 @@ void initButtonsInterrupt() {
 }
 
 void buttonPressed() {
+    // digitalRead renvoi 1 si le bouton est relaché et 0 si le bouton est appuyé
+    // On fait un OU binaire entre les deux boutons pour avoir un seul switch
+    // 0b10 => Bouton rouge appuyé
+    // 0b01 => Bouton vert appuyé
+    // 0b00 => Boutons relachés
+    // 0b11 => Bouton vert et rouge appuyé
     switch (0 | (digitalRead(GREEN_BUTTON_PIN) << 1) | (digitalRead(RED_BUTTON_PIN) << 0)) {
     case 0b10:
         createTimer(BUTTON_DELAY, &redButtonPressed);

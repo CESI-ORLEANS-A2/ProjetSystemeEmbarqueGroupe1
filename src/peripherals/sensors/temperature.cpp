@@ -8,10 +8,9 @@ void initTemperatureSensor() {
     initBME();
     sensors[TEMPERATURE_SENSOR] = new Sensor(
         TEMPERATURE_SENSOR_NAME,
-        TEMPERATURE_SENSOR_PROTOCOL,
         TEMPERATURE_SENSOR_DEVICE,
         SETTING_TEMPERATURE_ENABLED,
-        TEMPERATURE_SENSOR_ECONOMY,
+        SETTING_TEMPERATURE_ECONOMY_ENABLED,
         NULL,
         &measureTemperature
     );
@@ -20,6 +19,6 @@ void initTemperatureSensor() {
 float measureTemperature() {
     const float temperature = readTemperature();
     if (temperature < getSetting(SETTING_TEMPERATURE_MIN) || temperature > getSetting(SETTING_TEMPERATURE_MAX))
-        return NULL;
+        return ACQUISITION_ERROR_VALUE;
     return temperature;
 }

@@ -54,7 +54,6 @@ void runConfigurationModeStep() {
             configurationInputBuffer[configurationInputLength] = '\0';
             if (configurationInputLength)
                 configurationRunCommand(configurationInputBuffer);
-            Serial.print(F("\n\r> "));
             for (int i = 0; i < configurationInputLength; i++)
                 configurationInputBuffer[i] = '\0';
             configurationInputLength = 0;

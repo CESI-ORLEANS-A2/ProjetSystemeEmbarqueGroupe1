@@ -1,56 +1,26 @@
 #include "sensor.hpp"
 
 Sensor::Sensor(
-    const char* name,
-    const int protocol,
+    const char* name, 
     const int device,
     int enabled,
-    bool economy,
+    int economy,
     void (*init)(),
     float (*measure)()
 ) :
-    name(name),
-    protocol(protocol),
+    name(name), // Initialisation des attributs
     device(device),
     enabled(enabled),
     economy(economy),
     init(init),
     measure(measure) {
     if (this->init != NULL)
-        this->init();
-
-    else switch (this->protocol) {
-    case I2C_PROTOCOL:
-        this->initI2C();
-        break;
-    case ANALOG_PROTOCOL:
-        this->initAnalog();
-        break;
-    }
+        this->init(); // Initialisation du capteur si une fonction d'initialisation est définie
 }
 
 float Sensor::acquisition() {
-    if (!getSetting(this->enabled)) return NULL;
+    if (!getSetting(this->enabled)) return NULL; // Si le capteur n'est pas activé, on retourne NULL
 
     if (this->measure != NULL)
-        return this->measure();
-
-    switch (this->protocol) {
-    case ANALOG_PROTOCOL:
-        return this->measureAnalog();
-        break;
-
-    default:
-        return NULL;
-        break;
-    }
+        return this->measure(); // Mesure du capteur si une fonction de mesure est définie
 }
-
-
-void Sensor::initI2C() {};
-void Sensor::initAnalog() {
-    pinMode(this->device, INPUT);
-};
-long Sensor::measureAnalog() {
-    return analogRead(this->device);
-};

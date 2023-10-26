@@ -6,11 +6,8 @@ unsigned long remains = 0;
 
 /**
  * @brief Fonction exécutée à chaque interruption du timer
- *
- * Références :
- * - createTimer()
- * - stopTimer()
  * 
+ * Références : 
  * @ref createTimer()
  * @ref stopTimer()
  * @ref counter
@@ -20,9 +17,11 @@ unsigned long remains = 0;
 ISR(TIMER1_COMPA_vect) {
     if (counter == 0) {
         if (remains > 0) {
+            // Création d'un nouveau timer avec le délais restant
+            // Ce timer écrase le timer actuel
             createTimer(remains, callback);
         }
-        else {
+        else { // Si le délais est écoulé, on exécute la fonction callback
             if (callback != NULL) {
                 (*callback)();
                 stopTimer();

@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Station_Méteo_Groupe_1:  Fichier source de /mnt/c/Users/godie/Cours/10. CESI A2/Blocs/01 - Systeme embarque/Livrables/Station_Meteo_Groupe_1/libs/Arduino_AVR/IPAddress.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Station_Méteo_Groupe_1<span id="projectnumber">&#160;v0.0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(1); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('da/d36/IPAddress_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">IPAddress.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="../../da/d36/IPAddress_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">  IPAddress.h - Base class that provides IPAddress</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">  Copyright (c) 2011 Adrian McEwen.  All right reserved.</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"></span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">  This library is free software; you can redistribute it and/or</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">  modify it under the terms of the GNU Lesser General Public</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">  License as published by the Free Software Foundation; either</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">  version 2.1 of the License, or (at your option) any later version.</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"></span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">  This library is distributed in the hope that it will be useful,</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">  but WITHOUT ANY WARRANTY; without even the implied warranty of</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">  Lesser General Public License for more details.</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"></span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">  You should have received a copy of the GNU Lesser General Public</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">  License along with this library; if not, write to the Free Software</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">*/</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#ifndef IPAddress_h</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#define IPAddress_h</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;<a class="code" href="../../d2/df2/Printable_8h.html">Printable.h</a>&quot;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;<a class="code" href="../../db/d8b/WString_8h.html">WString.h</a>&quot;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">// A class to make it easier to handle and pass around IP addresses</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="foldopen" id="foldopen00029" data-start="{" data-end="};">
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="../../d5/d65/classIPAddress.html">   29</a></span><span class="keyword">class </span><a class="code hl_class" href="../../d5/d65/classIPAddress.html">IPAddress</a> : <span class="keyword">public</span> <a class="code hl_class" href="../../dd/df1/classPrintable.html">Printable</a> {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keyword">union </span>{</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="../../d5/d65/classIPAddress.html#a3a731bf8c0e7cb974a204c4fcca80127">   32</a></span>    uint8_t <a class="code hl_variable" href="../../d5/d65/classIPAddress.html#a3a731bf8c0e7cb974a204c4fcca80127">bytes</a>[4];  <span class="comment">// IPv4 address</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="../../d5/d65/classIPAddress.html#aaae6d8c02dfbf3241e2586d3cc10197d">   33</a></span>    uint32_t <a class="code hl_variable" href="../../d5/d65/classIPAddress.html#aaae6d8c02dfbf3241e2586d3cc10197d">dword</a>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="../../d5/d65/classIPAddress.html#ab48c5ffe0d460c928f5bbebaf5698cf2">   34</a></span>    } <a class="code hl_variable" href="../../d5/d65/classIPAddress.html#ab48c5ffe0d460c928f5bbebaf5698cf2">_address</a>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="comment">// Access the raw byte array containing the address.  Because this returns a pointer</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="comment">// to the internal structure rather than a copy of the address this function should only</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="comment">// be used when you know that the usage of the returned uint8_t* will be transient and not</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="comment">// stored.</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="../../d5/d65/classIPAddress.html#a4b0132ebd80c4dc8e62f276d2226b703">   40</a></span>    uint8_t* <a class="code hl_function" href="../../d5/d65/classIPAddress.html#a4b0132ebd80c4dc8e62f276d2226b703">raw_address</a>() { <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d5/d65/classIPAddress.html#ab48c5ffe0d460c928f5bbebaf5698cf2">_address</a>.bytes; };</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="comment">// Constructors</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <a class="code hl_function" href="../../d5/d65/classIPAddress.html#a6089825af3b03060f80282d0dcca1582">IPAddress</a>();</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <a class="code hl_function" href="../../d5/d65/classIPAddress.html#a6089825af3b03060f80282d0dcca1582">IPAddress</a>(uint8_t first_octet, uint8_t second_octet, uint8_t third_octet, uint8_t fourth_octet);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <a class="code hl_function" href="../../d5/d65/classIPAddress.html#a6089825af3b03060f80282d0dcca1582">IPAddress</a>(uint32_t address);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <a class="code hl_function" href="../../d5/d65/classIPAddress.html#a6089825af3b03060f80282d0dcca1582">IPAddress</a>(<span class="keyword">const</span> uint8_t *address);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="../../d5/d65/classIPAddress.html#ad74ee82b3ceb7144b6b1af47b0664cce">fromString</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *address);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="../../d5/d65/classIPAddress.html#ac9dce336d67ba114670ce9d29168984b">   50</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="../../d5/d65/classIPAddress.html#ac9dce336d67ba114670ce9d29168984b">fromString</a>(<span class="keyword">const</span> String &amp;address) { <span class="keywordflow">return</span> <a class="code hl_function" href="../../d5/d65/classIPAddress.html#ac9dce336d67ba114670ce9d29168984b">fromString</a>(address.c_str()); }</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="comment">// Overloaded cast operator to allow IPAddress objects to be used where a pointer</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">// to a four-byte uint8_t array is expected</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="../../d5/d65/classIPAddress.html#af0e86276959426f4675e526825e8c03d">   54</a></span>    <span class="keyword">operator</span> uint32_t()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d5/d65/classIPAddress.html#ab48c5ffe0d460c928f5bbebaf5698cf2">_address</a>.dword; };</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="../../d5/d65/classIPAddress.html#a1ba9feba1032a8b93ed473eb19d424c5">   55</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="../../d5/d65/classIPAddress.html#a1ba9feba1032a8b93ed473eb19d424c5">operator==</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../d5/d65/classIPAddress.html">IPAddress</a>&amp; addr)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d5/d65/classIPAddress.html#ab48c5ffe0d460c928f5bbebaf5698cf2">_address</a>.dword == addr.<a class="code hl_variable" href="../../d5/d65/classIPAddress.html#ab48c5ffe0d460c928f5bbebaf5698cf2">_address</a>.<a class="code hl_variable" href="../../d5/d65/classIPAddress.html#aaae6d8c02dfbf3241e2586d3cc10197d">dword</a>; };</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="../../d5/d65/classIPAddress.html#a1ba9feba1032a8b93ed473eb19d424c5">operator==</a>(<span class="keyword">const</span> uint8_t* addr) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="comment">// Overloaded index operator to allow getting and setting individual octets of the address</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="../../d5/d65/classIPAddress.html#a8d5391a43fa8b71f21927574b565eafb">   59</a></span>    uint8_t <a class="code hl_function" href="../../d5/d65/classIPAddress.html#a8d5391a43fa8b71f21927574b565eafb">operator[]</a>(<span class="keywordtype">int</span> index)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d5/d65/classIPAddress.html#ab48c5ffe0d460c928f5bbebaf5698cf2">_address</a>.bytes[index]; };</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="../../d5/d65/classIPAddress.html#a55c8116118face9e5c2ac09bb3f09a77">   60</a></span>    uint8_t&amp; <a class="code hl_function" href="../../d5/d65/classIPAddress.html#a55c8116118face9e5c2ac09bb3f09a77">operator[]</a>(<span class="keywordtype">int</span> index) { <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d5/d65/classIPAddress.html#ab48c5ffe0d460c928f5bbebaf5698cf2">_address</a>.bytes[index]; };</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="comment">// Overloaded copy operators to allow initialisation of IPAddress objects from other types</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <a class="code hl_class" href="../../d5/d65/classIPAddress.html">IPAddress</a>&amp; <a class="code hl_function" href="../../d5/d65/classIPAddress.html#a0dc5d0937fec535ef61daa5d05f30d3a">operator=</a>(<span class="keyword">const</span> uint8_t *address);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <a class="code hl_class" href="../../d5/d65/classIPAddress.html">IPAddress</a>&amp; <a class="code hl_function" href="../../d5/d65/classIPAddress.html#a0dc5d0937fec535ef61daa5d05f30d3a">operator=</a>(uint32_t address);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> <a class="code hl_function" href="../../d5/d65/classIPAddress.html#a80676474bf1cb455a80081f6556c6aa3">printTo</a>(<a class="code hl_class" href="../../d9/df9/classPrint.html">Print</a>&amp; p) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="../../d5/d65/classIPAddress.html#a9a150ffc237e50529b3d0d50cc83a4d7">   68</a></span>    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_friend" href="../../d5/d65/classIPAddress.html#a9a150ffc237e50529b3d0d50cc83a4d7">EthernetClass</a>;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="../../d5/d65/classIPAddress.html#a480cf93423716d22666c9c3f17177736">   69</a></span>    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_class" href="../../dc/d5d/classUDP.html">UDP</a>;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="../../d5/d65/classIPAddress.html#a5db1c99e2c94b26278f3838c85cdb618">   70</a></span>    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_class" href="../../d1/d37/classClient.html">Client</a>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="../../d5/d65/classIPAddress.html#ac2055578ac48afabe5af487878450f68">   71</a></span>    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_class" href="../../db/d00/classServer.html">Server</a>;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="../../d5/d65/classIPAddress.html#afef6ad9b691e32ea60d87db719e23e15">   72</a></span>    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_friend" href="../../d5/d65/classIPAddress.html#afef6ad9b691e32ea60d87db719e23e15">DhcpClass</a>;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="../../d5/d65/classIPAddress.html#a14acdf960f52e4a43740d57e81a27c40">   73</a></span>    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_friend" href="../../d5/d65/classIPAddress.html#a14acdf960f52e4a43740d57e81a27c40">DNSClient</a>;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>};</div>
+</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="../../da/d36/IPAddress_8h.html#a75e039659cccdd22df1366e4f3892809">   76</a></span><span class="keyword">const</span> <a class="code hl_class" href="../../d5/d65/classIPAddress.html">IPAddress</a> <a class="code hl_function" href="../../da/d36/IPAddress_8h.html#a75e039659cccdd22df1366e4f3892809">INADDR_NONE</a>(0,0,0,0);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aIPAddress_8h_html_a75e039659cccdd22df1366e4f3892809"><div class="ttname"><a href="../../da/d36/IPAddress_8h.html#a75e039659cccdd22df1366e4f3892809">INADDR_NONE</a></div><div class="ttdeci">const IPAddress INADDR_NONE(0, 0, 0, 0)</div></div>
+<div class="ttc" id="aPrintable_8h_html"><div class="ttname"><a href="../../d2/df2/Printable_8h.html">Printable.h</a></div></div>
+<div class="ttc" id="aWString_8h_html"><div class="ttname"><a href="../../db/d8b/WString_8h.html">WString.h</a></div></div>
+<div class="ttc" id="aclassClient_html"><div class="ttname"><a href="../../d1/d37/classClient.html">Client</a></div><div class="ttdef"><b>Definition</b> Client.h:26</div></div>
+<div class="ttc" id="aclassIPAddress_html"><div class="ttname"><a href="../../d5/d65/classIPAddress.html">IPAddress</a></div><div class="ttdef"><b>Definition</b> IPAddress.h:29</div></div>
+<div class="ttc" id="aclassIPAddress_html_a0dc5d0937fec535ef61daa5d05f30d3a"><div class="ttname"><a href="../../d5/d65/classIPAddress.html#a0dc5d0937fec535ef61daa5d05f30d3a">IPAddress::operator=</a></div><div class="ttdeci">IPAddress &amp; operator=(const uint8_t *address)</div><div class="ttdef"><b>Definition</b> IPAddress.cpp:86</div></div>
+<div class="ttc" id="aclassIPAddress_html_a14acdf960f52e4a43740d57e81a27c40"><div class="ttname"><a href="../../d5/d65/classIPAddress.html#a14acdf960f52e4a43740d57e81a27c40">IPAddress::DNSClient</a></div><div class="ttdeci">friend class DNSClient</div><div class="ttdef"><b>Definition</b> IPAddress.h:73</div></div>
+<div class="ttc" id="aclassIPAddress_html_a1ba9feba1032a8b93ed473eb19d424c5"><div class="ttname"><a href="../../d5/d65/classIPAddress.html#a1ba9feba1032a8b93ed473eb19d424c5">IPAddress::operator==</a></div><div class="ttdeci">bool operator==(const IPAddress &amp;addr) const</div><div class="ttdef"><b>Definition</b> IPAddress.h:55</div></div>
+<div class="ttc" id="aclassIPAddress_html_a3a731bf8c0e7cb974a204c4fcca80127"><div class="ttname"><a href="../../d5/d65/classIPAddress.html#a3a731bf8c0e7cb974a204c4fcca80127">IPAddress::bytes</a></div><div class="ttdeci">uint8_t bytes[4]</div><div class="ttdef"><b>Definition</b> IPAddress.h:32</div></div>
+<div class="ttc" id="aclassIPAddress_html_a4b0132ebd80c4dc8e62f276d2226b703"><div class="ttname"><a href="../../d5/d65/classIPAddress.html#a4b0132ebd80c4dc8e62f276d2226b703">IPAddress::raw_address</a></div><div class="ttdeci">uint8_t * raw_address()</div><div class="ttdef"><b>Definition</b> IPAddress.h:40</div></div>
+<div class="ttc" id="aclassIPAddress_html_a55c8116118face9e5c2ac09bb3f09a77"><div class="ttname"><a href="../../d5/d65/classIPAddress.html#a55c8116118face9e5c2ac09bb3f09a77">IPAddress::operator[]</a></div><div class="ttdeci">uint8_t &amp; operator[](int index)</div><div class="ttdef"><b>Definition</b> IPAddress.h:60</div></div>
+<div class="ttc" id="aclassIPAddress_html_a6089825af3b03060f80282d0dcca1582"><div class="ttname"><a href="../../d5/d65/classIPAddress.html#a6089825af3b03060f80282d0dcca1582">IPAddress::IPAddress</a></div><div class="ttdeci">IPAddress()</div><div class="ttdef"><b>Definition</b> IPAddress.cpp:23</div></div>
+<div class="ttc" id="aclassIPAddress_html_a80676474bf1cb455a80081f6556c6aa3"><div class="ttname"><a href="../../d5/d65/classIPAddress.html#a80676474bf1cb455a80081f6556c6aa3">IPAddress::printTo</a></div><div class="ttdeci">virtual size_t printTo(Print &amp;p) const</div><div class="ttdef"><b>Definition</b> IPAddress.cpp:103</div></div>
+<div class="ttc" id="aclassIPAddress_html_a8d5391a43fa8b71f21927574b565eafb"><div class="ttname"><a href="../../d5/d65/classIPAddress.html#a8d5391a43fa8b71f21927574b565eafb">IPAddress::operator[]</a></div><div class="ttdeci">uint8_t operator[](int index) const</div><div class="ttdef"><b>Definition</b> IPAddress.h:59</div></div>
+<div class="ttc" id="aclassIPAddress_html_a9a150ffc237e50529b3d0d50cc83a4d7"><div class="ttname"><a href="../../d5/d65/classIPAddress.html#a9a150ffc237e50529b3d0d50cc83a4d7">IPAddress::EthernetClass</a></div><div class="ttdeci">friend class EthernetClass</div><div class="ttdef"><b>Definition</b> IPAddress.h:68</div></div>
+<div class="ttc" id="aclassIPAddress_html_aaae6d8c02dfbf3241e2586d3cc10197d"><div class="ttname"><a href="../../d5/d65/classIPAddress.html#aaae6d8c02dfbf3241e2586d3cc10197d">IPAddress::dword</a></div><div class="ttdeci">uint32_t dword</div><div class="ttdef"><b>Definition</b> IPAddress.h:33</div></div>
+<div class="ttc" id="aclassIPAddress_html_ab48c5ffe0d460c928f5bbebaf5698cf2"><div class="ttname"><a href="../../d5/d65/classIPAddress.html#ab48c5ffe0d460c928f5bbebaf5698cf2">IPAddress::_address</a></div><div class="ttdeci">union IPAddress::@0 _address</div></div>
+<div class="ttc" id="aclassIPAddress_html_ac9dce336d67ba114670ce9d29168984b"><div class="ttname"><a href="../../d5/d65/classIPAddress.html#ac9dce336d67ba114670ce9d29168984b">IPAddress::fromString</a></div><div class="ttdeci">bool fromString(const String &amp;address)</div><div class="ttdef"><b>Definition</b> IPAddress.h:50</div></div>
+<div class="ttc" id="aclassIPAddress_html_ad74ee82b3ceb7144b6b1af47b0664cce"><div class="ttname"><a href="../../d5/d65/classIPAddress.html#ad74ee82b3ceb7144b6b1af47b0664cce">IPAddress::fromString</a></div><div class="ttdeci">bool fromString(const char *address)</div><div class="ttdef"><b>Definition</b> IPAddress.cpp:46</div></div>
+<div class="ttc" id="aclassIPAddress_html_afef6ad9b691e32ea60d87db719e23e15"><div class="ttname"><a href="../../d5/d65/classIPAddress.html#afef6ad9b691e32ea60d87db719e23e15">IPAddress::DhcpClass</a></div><div class="ttdeci">friend class DhcpClass</div><div class="ttdef"><b>Definition</b> IPAddress.h:72</div></div>
+<div class="ttc" id="aclassPrint_html"><div class="ttname"><a href="../../d9/df9/classPrint.html">Print</a></div><div class="ttdef"><b>Definition</b> Print.h:38</div></div>
+<div class="ttc" id="aclassPrintable_html"><div class="ttname"><a href="../../dd/df1/classPrintable.html">Printable</a></div><div class="ttdef"><b>Definition</b> Printable.h:34</div></div>
+<div class="ttc" id="aclassServer_html"><div class="ttname"><a href="../../db/d00/classServer.html">Server</a></div><div class="ttdef"><b>Definition</b> Server.h:25</div></div>
+<div class="ttc" id="aclassUDP_html"><div class="ttname"><a href="../../dc/d5d/classUDP.html">UDP</a></div><div class="ttdef"><b>Definition</b> Udp.h:41</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_6719ab1f1f7655efc2fa43f7eb574fd1.html">libs</a></li><li class="navelem"><a class="el" href="../../dir_650b651c4fc0af5fb7ffad415ecb503f.html">Arduino_AVR</a></li><li class="navelem"><a class="el" href="../../da/d36/IPAddress_8h.html">IPAddress.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
+</body>
+</html>

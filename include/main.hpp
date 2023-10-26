@@ -5,15 +5,15 @@
 
 #include "consts.hpp"
 
+#if INTERPRETER
+#include "interpreter.hpp"
+#endif
 #include "timer.hpp"
 #include "mode.hpp"
 #include "sensor.hpp"
 #include "settings.hpp"
 #include "peripherals/sd.hpp"
 #include "peripherals/buttons.hpp"
-#if INTERPRETER
-#include "interpreter.hpp"
-#endif
 #include "peripherals/led.hpp"
 #include "peripherals/sd.hpp"
 #include "peripherals/clock.hpp"

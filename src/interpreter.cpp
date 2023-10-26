@@ -4,6 +4,8 @@ char inputBuffer[INPUT_BUFFER_SIZE];
 int inputLength = 0;
 
 void initInterpreter() {
+    static const char* spaceChar = (const char*)F(" ");
+
     Serial.print(F("\n\r"
         "Bienvenue dans l'invite de commande de la station météo !\n\r"
         "Pour afficher toutes les commandes disponibles: taper 'help'.\n\r"
@@ -34,7 +36,7 @@ void runInterpreterStep() {
 #endif
             inputBuffer[inputLength] = '\0';
             if (inputLength)
-                runCommand(inputBuffer);
+                runCommand();
             printPrompt();
             for (int i = 0; i < inputLength; i++)
                 inputBuffer[i] = '\0';
@@ -49,11 +51,14 @@ void runInterpreterStep() {
     }
 }
 
-void runCommand(char* commandLine) {
-    char* command = strsep(&commandLine, " ");
+void runCommand() {
+    char* commandLine, * command;
+    commandLine = (char*)malloc(INPUT_BUFFER_SIZE * sizeof(char));
+    command = (char*)malloc(10 * sizeof(char));
+    command = strsep_P(&commandLine, spaceChar);
 
     if (strcmp_P(command, PSTR("help")) == 0) {
-        commandHelp(strsep(&commandLine, " "));
+        commandHelp(strsep_P(&commandLine, spaceChar));
     }
     else if (strcmp_P(command, PSTR("list")) == 0) {
         commandList();
@@ -66,21 +71,21 @@ void runCommand(char* commandLine) {
             commandLive();
     }
     else if (strcmp_P(command, PSTR("mode")) == 0) {
-        commandMode(strsep(&commandLine, " "));
+        commandMode(strsep_P(&commandLine, spaceChar));
     }
     else if (strcmp_P(command, PSTR("enable")) == 0) {
         if (mode != CONFIGURATION_MODE) {
             printCommandUnavailableInThisMode();
         }
         else
-            commandEnable(atoi(strsep(&commandLine, " ")));
+            commandEnable(atoi(strsep_P(&commandLine, spaceChar)));
     }
     else if (strcmp_P(command, PSTR("disable")) == 0) {
         if (mode != CONFIGURATION_MODE) {
             printCommandUnavailableInThisMode();
         }
         else
-            commandDisable(atoi(strsep(&commandLine, " ")));
+            commandDisable(atoi(strsep_P(&commandLine, spaceChar)));
     }
     else if (strcmp_P(command, PSTR("set")) == 0) {
         if (mode != CONFIGURATION_MODE) {
@@ -91,8 +96,8 @@ void runCommand(char* commandLine) {
             name = (char*)malloc(20 * sizeof(char));
             value = (char*)malloc(10 * sizeof(char));
 
-            name = strsep(&commandLine, " ");
-            value = strsep(&commandLine, " ");
+            name = strsep_P(&commandLine, spaceChar);
+            value = strsep_P(&commandLine, spaceChar);
 
             commandSet(name, atoi(value));
 
@@ -105,7 +110,7 @@ void runCommand(char* commandLine) {
             printCommandUnavailableInThisMode();
         }
         else
-            commandGet(strsep(&commandLine, " "));
+            commandGet(strsep_P(&commandLine, spaceChar));
     }
     else if (strcmp_P(command, PSTR("reset")) == 0) {
         if (mode != CONFIGURATION_MODE) {
@@ -127,9 +132,9 @@ void runCommand(char* commandLine) {
             minutes = (char*)malloc(3 * sizeof(char));
             seconds = (char*)malloc(3 * sizeof(char));
 
-            hours = strsep(&commandLine, " ");
-            minutes = strsep(&commandLine, " ");
-            seconds = strsep(&commandLine, " ");
+            hours = strsep_P(&commandLine, spaceChar);
+            minutes = strsep_P(&commandLine, spaceChar);
+            seconds = strsep_P(&commandLine, spaceChar);
 
             commandClock(atoi(hours), atoi(minutes), atoi(seconds));
 
@@ -148,9 +153,9 @@ void runCommand(char* commandLine) {
             month = (char*)malloc(3 * sizeof(char));
             year = (char*)malloc(5 * sizeof(char));
 
-            day = strsep(&commandLine, " ");
-            month = strsep(&commandLine, " ");
-            year = strsep(&commandLine, " ");
+            day = strsep_P(&commandLine, spaceChar);
+            month = strsep_P(&commandLine, spaceChar);
+            year = strsep_P(&commandLine, spaceChar);
 
             commandDate(atoi(day), atoi(month), atoi(year));
 
@@ -164,11 +169,26 @@ void runCommand(char* commandLine) {
             printCommandUnavailableInThisMode();
         }
         else
-            commandDay(strsep(&commandLine, " "));
+            commandDay(strsep_P(&commandLine, spaceChar));
     }
+#if SETTINGS_IN_EEPROM
+    else if (strcmp_P(command, PSTR("eeprom")) == 0) {
+        long value;
+        for (int i = 0; i < EEPROM.length(); i++) {
+            Serial.print(i);
+            Serial.print(" : ");
+            Serial.print(EEPROM.get(i, value));
+            Serial.print("\n");
+        }
+        Serial.println();
+    }
+#endif
     else {
         printUnknownCommand();
     }
+
+    free(commandLine);
+    free(command);
 }
 
 void printPrompt() {
@@ -236,13 +256,16 @@ void commandHelp(char* command) {
 #endif
             " - list : Affiche la liste des capteurs disponibles.\n\r"
             " - live : Affiche les dernières données récoltées en temps réel.\n\r" // NOTE seconde ?
-            // " - last : Affiche une fois les dernières données récoltées.\n\r"
+            " - last : Affiche une fois les dernières données récoltées.\n\r"
             " - enable [id?] : Active un ou plusieurs capteurs.\n\r"
             " - disable [id?] : Désactive un ou plusieurs capteurs.\n\r"
-            // " - set [name] [value] [id?] : Modifie les paramètres d'un ou plusieurs capteurs.\n\r"
+            " - set [name] [value] : Modifie les paramètres.\n\r"
+            " - get [name] : Affiche la valeur d'un paramètre.\n\r"
             " - mode [mode?] : Change le mode de la station météo.\n\r"
-            // " - erase [id?] : Efface les données d'un ou tous les capteurs.\n\r"
-            // " - reset [id?] : Réinitialise les paramètres d'un ou tous les capteurs.\n\r"
+            " - reset : Réinitialise les paramètres.\n\r"
+            " - clock [hours?] [minutes?] [seconds?] : Affiche ou change l'heure.\n\r"
+            " - date [day?] [month?] [year?] : Affiche ou change la date.\n\r"
+            " - day [day?] : Affiche ou change le jour actuel.\n\r"
         ));
     }
 #if DETAILED_HELP_COMMAND
@@ -375,10 +398,7 @@ void commandList() {
     Serial.print(F("| Nom (id)                 | Activé ? | Économie ? |\n\r"
         "|--------------------------|----------|------------|\n\r"));
 
-    char* name;
-    char* enabled;
-    char* economy;
-    char* line;
+    char* name, * enabled, * economy, * line;
     name = (char*)malloc(20 * sizeof(char));
     enabled = (char*)malloc(3 * sizeof(char));
     economy = (char*)malloc(3 * sizeof(char));
@@ -390,16 +410,16 @@ void commandList() {
         strcpy_P(enabled, sensors[i]->enabled ? PSTR("Oui") : PSTR("Non"));
         strcpy_P(economy, sensors[i]->economy ? PSTR("Oui") : PSTR("Non"));
 
-        strcat(line, "| ");
+        strcat_P(line, PSTR("| "));
 
         strcat_P(line, name);
         for (int j = 0; j < (24 - (int)strlen_P(name)); j++)
-            strcat(line, " ");
-        strcat(line, " | ");
+            strcat_P(line, spaceChar);
+        strcat(line, PSTR(" | "));
         strcat(line, enabled);
-        strcat(line, "      | ");
+        strcat(line, PSTR("      | "));
         strcat(line, economy);
-        strcat(line, "        |\n\r");
+        strcat(line, PSTR("        |\n\r"));
         Serial.write(line);
     };
 
@@ -422,25 +442,25 @@ void commandMode(char* modeArg) {
         if (mode == CONFIGURATION_MODE)
             printModeAlreadyEnabled();
         else
-            switchToMode(mode);
+            switchToMode(CONFIGURATION_MODE);
     }
     else if (strcmp_P(modeArg, PSTR("maintenance")) == 0) {
         if (mode == MAINTENANCE_MODE)
             printModeAlreadyEnabled();
         else
-            switchToMode(mode);
+            switchToMode(MAINTENANCE_MODE);
     }
     else if (strcmp_P(modeArg, PSTR("economy")) == 0) {
         if (mode == ECONOMY_MODE)
             printModeAlreadyEnabled();
         else
-            switchToMode(mode);
+            switchToMode(ECONOMY_MODE);
     }
     else if (strcmp_P(modeArg, PSTR("standard")) == 0) {
         if (mode == STANDARD_MODE)
             printModeAlreadyEnabled();
         else
-            switchToMode(mode);
+            switchToMode(STANDARD_MODE);
     }
     else {
         Serial.print(F("Mode inconnu."));
@@ -473,7 +493,7 @@ void commandDisable(int id = NULL) {
             printSensorDisabled(id);
         }
     }
-} // TODO Commande disable
+}
 void commandSet(char* variable, int value) {
     Serial.print(variable);
     Serial.println(value);
@@ -492,13 +512,10 @@ void commandSet(char* variable, int value) {
         free(name);
         return;
     }
-    if (value == NULL) {
-        Serial.print(F("Valeur manquante.\n\r"));
-        return;
-    }
     for (int i = 0; i < NUMBER_OF_SETTINGS; i++) {
         if (strcmp_P(variable, settings[i].name) == 0) {
             setSetting(i, value);
+            Serial.print(F("Paramètre modifié.\n\r"));
             return;
         }
     }
@@ -515,6 +532,7 @@ void commandGet(char* variable) {
 }
 void commandReset() {
     resetSettings();
+    Serial.println(F("Paramètres réinitialisés."));
 }
 void commandLast() {
     printData();

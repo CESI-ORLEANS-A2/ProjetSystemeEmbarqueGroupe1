@@ -3,4 +3,4 @@
 
 void initPressureSensor();
 
-long measurePressure();
+float measurePressure();

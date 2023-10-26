@@ -21,6 +21,7 @@ void switchToErrorMode(int error) {
         switchLEDToRedWhite();
         break;
     case ERROR_SD_ACCESS:
+        Serial.println(F("Erreur lors de l'ouverture du fichier"));
         switchLEDToRed2White();
         break;
     }

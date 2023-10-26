@@ -27,6 +27,12 @@
  */
 #define DETAILED_HELP_COMMAND true 
 /**
+ * @brief Si les paramètres de la station doivent être sauvegardés dans l'EEPROM.
+ * 
+ * Actuellement non fonctionnel.
+*/
+#define SETTINGS_IN_EEPROM false
+/**
  * @brief Format de sortie utilisé en mode live (OUTPUT_JSON ou OUTPUT_CSV)
  *
  * Si cette variable est à OUTPUT_JSON, les données seront affichées en JSON.
@@ -88,6 +94,18 @@
  * Par défaut, ce délai est de 30 minutes.
  */
 #define CONFIGURATION_MODE_TIMEOUT 18e5
+/**
+ * @brief Valeur utilisée pour représenter une erreur d'acquisition
+ * 
+ * La valeur NULL initialement utilisée pour représenter une erreur est équivalente à 0
+ * donc elle ne peut pas être utilisée pour représenter une erreur car elle peut être
+ * renvoyée normalement par un capteur.
+*/
+#define ACQUISITION_ERROR_VALUE -999
+/**
+ * @brief Taille maximale d'une ligne de données à enregistrer sur la carte SD ou à afficher dans le port série
+*/
+#define MAX_LINE_SIZE 200
 
 // MODES
 /** @brief Mode standard */
@@ -116,18 +134,8 @@
 #define ERROR_SD_ACCESS 5
 /** @brief Le délai d'acquisition a été dépassé pour un des capteurs */
 #define ERROR_ACQUISITION_TIMEOUT 6
-
-// PROTOCOLES
-/** @brief Récupération des données grâce au protocole I2C */
-#define I2C_PROTOCOL 0
-/** @brief Récupération des données par les ports analogiques */
-#define ANALOG_PROTOCOL 1
-/** @brief Récupération des données grâce au protocole UART (Serial) */
-#define UART_PROTOCOL 2
-/** @brief Récupération des données par les ports digitaux */
-#define TWOWIRE_PROTOCOL 3
-/** @brief Récupération des données grâce au protocole SPI */
-#define SPI_PROTOCOL 4
+/** @brief Erreur inconnue */
+#define UNKNOWN_ERROR 7
 
 // FORMATS DE SORTIE
 /** @brief Le format de sortie dans le port série est du JSON */
@@ -148,6 +156,8 @@
 #define LED_ID 0
 /** @brief Nombre de LED dans la chaine de LED (ChainableLED) */
 #define NUMBER_OF_LEDS 1
+/** @brief Pin de la carte SD */
+#define SD_PIN 4
 
 // CAPTEURS
 /** @brief Nombre de capteurs disponibles */
@@ -164,8 +174,6 @@
 // CAPTEUR DE TEMPERATURE
 /** @brief Nom du capteur de température (chaine de caractère sauvegardée dans la mémoire Flash) */
 #define TEMPERATURE_SENSOR_NAME (const char*) F("Temperature")
-/** @brief Protocole utilisé par le capteur de température */
-#define TEMPERATURE_SENSOR_PROTOCOL I2C_PROTOCOL
 /** @brief Pin utilisé ou adresse du capteur de température */
 #define TEMPERATURE_SENSOR_DEVICE PIN5
 /** @brief Si le capteur de température est activé */
@@ -176,8 +184,6 @@
 // CAPTEUR D'HUMIDITE
 /** @brief Nom du capteur d'humidité (chaine de caractère sauvegardée dans la mémoire Flash) */
 #define HUMIDITY_SENSOR_NAME (const char*) F("Humidity")
-/** @brief Protocole utilisé par le capteur d'humidité */
-#define HUMIDITY_SENSOR_PROTOCOL I2C_PROTOCOL
 /** @brief Pin utilisé ou adresse du capteur d'humidité */
 #define HUMIDITY_SENSOR_DEVICE PIN6
 /** @brief Si le capteur d'humidité est activé */
@@ -188,8 +194,6 @@
 // CAPTEUR DE PRESSION
 /** @brief Nom du capteur de pression (chaine de caractère sauvegardée dans la mémoire Flash) */
 #define PRESSURE_SENSOR_NAME (const char*) F("Pressure")
-/** @brief Protocole utilisé par le capteur de pression */
-#define PRESSURE_SENSOR_PROTOCOL I2C_PROTOCOL
 /** @brief Pin utilisé ou adresse du capteur de pression */
 #define PRESSURE_SENSOR_DEVICE PIN7
 /** @brief Si le capteur de pression est activé */
@@ -200,8 +204,6 @@
 // CAPTEUR DE LUMINOSITE
 /** @brief Nom du capteur de luminosité (chaine de caractère sauvegardée dans la mémoire Flash) */
 #define BRIGHTNESS_SENSOR_NAME (const char*) F("Brightness")
-/** @brief Protocole utilisé par le capteur de luminosité. */
-#define BRIGHTNESS_SENSOR_PROTOCOL ANALOG_PROTOCOL
 /** @brief Pin utilisé ou adresse du capteur de luminosité. */
 #define BRIGHTNESS_SENSOR_DEVICE A0 
 /** @brief Si le capteur de luminosité est activé. */
@@ -213,7 +215,7 @@
 // SETTINGS
 
 /** @brief Nombre de paramètres modifiables disponibles */
-#define NUMBER_OF_SETTINGS 15
+#define NUMBER_OF_SETTINGS 19
 /**
  * @brief Délai entre chaque acquisition en millisecondes (par défaut 1min)
  *
@@ -260,6 +262,12 @@
 #define SETTING_NAME_BRIGHTNESS_HIGH (char *) F("LUMIN_HIGH")
 #define SETTING_DEFAULT_BRIGHTNESS_HIGH  768
 /**
+ * @brief Si l'acquisition du capteur de luminosité est activé en mode économique.
+*/
+#define SETTING_BRIGHTNESS_ECONOMY_ENABLED 15
+#define SETTING_NAME_BRIGHTNESS_ECONOMY_ENABLED (char *) F("LUMIN_ECO")
+#define SETTING_DEFAULT_BRIGHTNESS_ECONOMY_ENABLED  true
+/**
  * @brief Si l'acquisition du capteur de température est activé.
  */
 #define SETTING_TEMPERATURE_ENABLED 6
@@ -283,6 +291,12 @@
 #define SETTING_TEMPERATURE_MAX 8
 #define SETTING_NAME_TEMPERATURE_MAX (char *) F("TMAX_TEMP_AIR")
 #define SETTING_DEFAULT_TEMPERATURE_MAX  60
+/**
+ * @brief Si l'acquisition du capteur de température est activé en mode économique.
+*/
+#define SETTING_TEMPERATURE_ECONOMY_ENABLED 16
+#define SETTING_NAME_TEMPERATURE_ECONOMY_ENABLED (char *) F("TEMP_AIR_ECO")
+#define SETTING_DEFAULT_TEMPERATURE_ECONOMY_ENABLED  true
 /**
  * @brief Si l'acquisition du capteur d'humidité est activé.
  */
@@ -308,6 +322,12 @@
 #define SETTING_NAME_HUMIDITY_MAX (char *) F("HYGR_MAXT")
 #define SETTING_DEFAULT_HUMIDITY_MAX  50
 /**
+ * @brief Si l'acquisition du capteur d'humidité est activé en mode économique.
+*/
+#define SETTING_HUMIDITY_ECONOMY_ENABLED 17
+#define SETTING_NAME_HUMIDITY_ECONOMY_ENABLED (char *) F("HYGR_ECO")
+#define SETTING_DEFAULT_HUMIDITY_ECONOMY_ENABLED  true
+/**
  * @brief Si l'acquisition du capteur de pression est activé.
  */
 #define SETTING_PRESSURE_ENABLED 12
@@ -331,6 +351,12 @@
 #define SETTING_PRESSURE_MAX 14
 #define SETTING_NAME_PRESSURE_MAX (char *) F("PRESSURE_MAX")
 #define SETTING_DEFAULT_PRESSURE_MAX  1080
+/**
+ * @brief Si l'acquisition du capteur de pression est activé en mode économique.
+*/
+#define SETTING_PRESSURE_ECONOMY_ENABLED 18
+#define SETTING_NAME_PRESSURE_ECONOMY_ENABLED (char *) F("PRESSURE_ECO")
+#define SETTING_DEFAULT_PRESSURE_ECONOMY_ENABLED  true
 
 
 #endif

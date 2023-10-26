@@ -94,26 +94,24 @@ $(document).ready(function(){initNavTree('db/dad/md__2mnt_2c_2Users_2godie_2Cour
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a href="https://github.com/marketplace/actions/arduino_ci"><img src="https://github.com/RobTillaart/DHTNew/workflows/Arduino%20CI/badge.svg" alt="Arduino CI" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/RobTillaart/DHTNew/actions/workflows/arduino-lint.yml"><img src="https://github.com/RobTillaart/DHTNew/actions/workflows/arduino-lint.yml/badge.svg" alt="Arduino-lint" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/RobTillaart/DHTNew/actions/workflows/jsoncheck.yml"><img src="https://github.com/RobTillaart/DHTNew/actions/workflows/jsoncheck.yml/badge.svg" alt="JSON check" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/RobTillaart/DHTNew/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License: MIT" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/RobTillaart/DHTNew/releases"><img src="https://img.shields.io/github/release/RobTillaart/DHTNew.svg?maxAge=3600" alt="GitHub release" style="pointer-events: none;" class="inline"/></a></p>
-<h1><a class="anchor" id="autotoc_md2"></a>
-DHTNew</h1>
 <p>Arduino library for DHT11 and DHT22 (and compatible) with automatic sensor type recognition.</p>
-<h2><a class="anchor" id="autotoc_md3"></a>
-Description</h2>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Description</h1>
 <p><a class="el" href="../../d4/da9/classDHTNEW.html">DHTNEW</a> is stable for both ARM and AVR. It is based upon the well tested DHTlib code. This is the main development library of all my DHT libraries.</p>
 <p>Supports DHT11, DHT22, DHT33, DHT44, AM2301, AM2302, AM2303 as these all have the same protocol. Note there are differences e.g. DHT11 has no negative temperature, no decimals, and a longer wakeup time.</p>
-<h4><a class="anchor" id="autotoc_md4"></a>
-Sonoff Si7021</h4>
+<h3><a class="anchor" id="autotoc_md3"></a>
+Sonoff Si7021</h3>
 <p>Since 0.4.14 there is <b>experimental</b> support for the Sonoff Si7021. No hardware yet to test this myself, but it is confirmed to work. See <a href="https://github.com/RobTillaart/DHTNew/issues/79">https://github.com/RobTillaart/DHTNew/issues/79</a>. Seems the Sonoff Si7021 sensor is very sensitive in the wakeup timing. This behaviour needs to be investigated in the future.</p>
 <p>To use the library one should call <b>setType(70)</b>.</p>
 <p>Feedback (both positive and negative) about the Sonoff Si7021 sensors is welcome.</p>
-<h4><a class="anchor" id="autotoc_md5"></a>
-AM2320, AM2321 and AM2322</h4>
+<h3><a class="anchor" id="autotoc_md4"></a>
+AM2320, AM2321 and AM2322</h3>
 <p>Since 0.4.18 there is <b>experimental</b> support for the AM2320, AM2321 and AM2322. Not tested myself, but AM2320 is confirmed to work, see <a href="https://github.com/RobTillaart/AM232X/issues/26">https://github.com/RobTillaart/AM232X/issues/26</a> As the AM2321 and AM2322 are quite identical according to the datasheet, those are expected to work too.</p>
 <p>To use the library one should call <b>setType(22)</b> as the protocol is identical to the DHT22. If there are differences in operation type (23) will be implemented. The value 23 is now mapped upon 22 code.</p>
 <p>Feedback (both positive and negative) about the AM232X sensors is welcome.</p>
 <p><b>Note: check the datasheet how to connect!</b></p>
-<h2><a class="anchor" id="autotoc_md6"></a>
-DHT PIN layout from left to right</h2>
+<h1><a class="anchor" id="autotoc_md5"></a>
+DHT PIN layout from left to right</h1>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadLeft">Front   </th><th class="markdownTableHeadCenter"></th><th class="markdownTableHeadLeft">Description    </th></tr>
@@ -127,13 +125,13 @@ DHT PIN layout from left to right</h2>
 <td class="markdownTableBodyLeft">pin 4   </td><td class="markdownTableBodyCenter"></td><td class="markdownTableBodyLeft">GND   </td></tr>
 </table>
 <p><b>Note: check the datasheet how to connect!</b></p>
-<h2><a class="anchor" id="autotoc_md7"></a>
-Specification DHT22</h2>
+<h1><a class="anchor" id="autotoc_md6"></a>
+Specification DHT22</h1>
 <p>| Model | DHT22 | Notes | |:-----------------------&mdash;|:--------------------&mdash;|:---&mdash;| | Power supply | 3.3 - 6 V DC | | Output signal | digital signal via single-bus | | Sensing element | Polymer capacitor | | Operating range | humidity 0-100% RH | temperature -40° - 80° Celsius | Accuracy humidity | ±2% RH(Max ±5% RH) | temperature &lt; ±0.5° Celsius | Resolution or sensitivity | humidity 0.1% RH | temperature 0.1° Celsius | Repeatability humidity | ±1% RH | temperature ±0.2° Celsius | Humidity hysteresis | ±0.3% RH | | Long-term Stability | ±0.5% RH/year | | Sensing period | Average: 2s | | Interchangeability | fully interchangeable | | Dimensions | small 14 x 18 x 5.5 mm | big 22 x 28 x 5 mm |</p>
+<h1><a class="anchor" id="autotoc_md7"></a>
+Interface</h1>
 <h2><a class="anchor" id="autotoc_md8"></a>
-Interface</h2>
-<h3><a class="anchor" id="autotoc_md9"></a>
-Constructor</h3>
+Constructor</h2>
 <ul>
 <li><b><a class="el" href="../../d4/da9/classDHTNEW.html">DHTNEW(uint8_t pin)</a></b> defines the dataPin of the sensor.</li>
 <li><b>void reset()</b> might help to reset a sensor behaving badly. It does reset the library settings to default, however it does not reset the sensor in a hardware way.</li>
@@ -152,16 +150,16 @@ Constructor</h3>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyCenter">70   </td><td class="markdownTableBodyCenter">Sonoff Si7021   </td><td class="markdownTableBodyLeft">experimental   </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md10"></a>
-Base interface</h3>
+<h2><a class="anchor" id="autotoc_md9"></a>
+Base interface</h2>
 <ul>
 <li><b>int read()</b> reads a new temperature and humidity from the sensor</li>
 <li><b>uint32_t lastRead()</b> returns milliseconds since last <b>read()</b></li>
 <li><b>float getHumidity()</b> returns last read value (float) or -999 in case of error. Note this error value can be suppressed by <b>setSuppressError(bool)</b>.</li>
 <li><b>float getTemperature()</b> returns last read value (float) or -999 in case of error. Note this error value can be suppressed by <b>setSuppressError(bool)</b>.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md11"></a>
-Offset</h3>
+<h2><a class="anchor" id="autotoc_md10"></a>
+Offset</h2>
 <p>Adding offsets works well in normal range however they might introduce under- or overflow at the ends of the sensor range. humidity is constrained to 0..100% in the code. For temperature such constrain would be type dependant, so not done.</p>
 <ul>
 <li><b>void setHumOffset(float offset)</b> typical &lt; ±5% RH.</li>
@@ -169,8 +167,8 @@ Offset</h3>
 <li><b>float getHumOffset()</b> idem.</li>
 <li><b>float getTempOffset()</b> idem.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md12"></a>
-Control</h3>
+<h2><a class="anchor" id="autotoc_md11"></a>
+Control</h2>
 <p>Functions to adjust the communication with the sensor.</p>
 <ul>
 <li><b>void setDisableIRQ(bool b )</b> allows or suppresses interrupts during core read function to keep timing as correct as possible. <b>Note AVR + MKR1010</b></li>
@@ -185,23 +183,23 @@ Control</h3>
  This is used to keep spikes out of your graphs / logs.</li>
 <li><b>bool getSuppressError()</b> returns the above setting.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md13"></a>
-Operation</h2>
+<h1><a class="anchor" id="autotoc_md12"></a>
+Operation</h1>
 <p>See examples</p>
-<h4><a class="anchor" id="autotoc_md14"></a>
-TIME_OUT</h4>
+<h3><a class="anchor" id="autotoc_md13"></a>
+TIME_OUT</h3>
 <p>If consistent TIMOUT_C or TIMEOUT_D occur during reading a sensor, one could try if allowing interrupts solves the issue <b>DHT.setDisableIRQ(false)</b>.</p>
 <p>This solved this problem at least on</p><ul>
 <li>AVR boards - is build into the constructor</li>
 <li>MKR1010 Wifi - see <a href="https://github.com/RobTillaart/DHTNew/issues/67">https://github.com/RobTillaart/DHTNew/issues/67</a> (added as comment in the examples)</li>
 </ul>
 <p>In version 0.4.10 the TIMEOUT_C is extended from 70-90 us to even suppress the TIMEOUT_C even more. See discussion and tests in <a href="https://github.com/RobTillaart/DHTNew/issues/67">https://github.com/RobTillaart/DHTNew/issues/67</a>.</p>
-<h4><a class="anchor" id="autotoc_md15"></a>
-Serial</h4>
+<h3><a class="anchor" id="autotoc_md14"></a>
+Serial</h3>
 <p>The MKR1010Wifi board need to wait for Serial at startup if you want to monitor it from the IDE. Adding the line <code>while(!Serial):</code> fixes this. (added to the examples).</p>
 <p>There might be more boards that need this line to work properly.</p>
-<h4><a class="anchor" id="autotoc_md16"></a>
-DHT22 and ESP8266</h4>
+<h3><a class="anchor" id="autotoc_md15"></a>
+DHT22 and ESP8266</h3>
 <ul>
 <li>The DHT22 sensor has some problems in combination with specific pins of the ESP8266. See more details<ul>
 <li><a href="https://github.com/RobTillaart/DHTNew/issues/31">https://github.com/RobTillaart/DHTNew/issues/31</a> (message Jan 3, 2021)</li>
@@ -209,12 +207,12 @@ DHT22 and ESP8266</h4>
 </ul>
 </li>
 </ul>
-<h4><a class="anchor" id="autotoc_md17"></a>
-Voltage AM2301 and ESP8266</h4>
+<h3><a class="anchor" id="autotoc_md16"></a>
+Voltage AM2301 and ESP8266</h3>
 <p>In a test an AM2301 had problems giving no humidity (99.9% overflow) when the DHTStable library was used with an ESP8266. (Reported by mail, no GH issue). As this DHTStable library is strongly related to the DHTNew it is mentioned here too.</p>
 <p>After days of testing and thinking and more testing the cause was found. The AM2301 was powered by a 5V3 power supply which was apparently too high while having the data handshakes at 3V3. When the VCC voltage was lowered to 5V1 it appeared to work as it should. (Kudos to Viktor for finding the cause)</p>
-<h2><a class="anchor" id="autotoc_md18"></a>
-History</h2>
+<h1><a class="anchor" id="autotoc_md17"></a>
+History</h1>
 <p><a class="el" href="../../d4/da9/classDHTNEW.html">DHTNEW</a> has some new features compared to the DHTlib code.</p>
 <ol type="1">
 <li>The constructor has a pin number, so the one sensor - one object paradigm is chosen. So you can now make a <a class="el" href="../../d4/da9/classDHTNEW.html">DHTNEW</a> object bathroom(4), kitchen(3), etc.</li>
@@ -232,8 +230,8 @@ History</h2>
  Note: The lib does not (yet) control the power pin of the sensor. Discussion see <a href="https://github.com/RobTillaart/DHTNew/issues/13">https://github.com/RobTillaart/DHTNew/issues/13</a></li>
 <li>(0.3.2) Added <b>setSuppressError()</b> and <b>getSuppressError()</b> so the library will not output -999 but the last known valid value for temperature and humidity. This flag is useful to suppress 'negative spikes' in graphs or logs. Default the error values are not suppressed to be backwards compatible. <br  />
  Added **#ifndef** around <b>DHTLIB_INVALID_VALUE</b> so the default -999 can be overruled compile time to set another error value e.g. -127 or -1 whatever suits the project.</li>
-<li>(0.3.3) Refactored the low level <b>readSensor()</b> as the <b>BIT SHIFT ERROR</b> issue #29 and issue #11 popped up again. It was reproduced "efficiently" with an ESP32 and by using long wires. Fixed with an explicit digitalWrite(dataPin, HIGH) + delayMicroseconds() to have enough time between pulling the line HIGH and polling for the line LOW.</li>
-<li>(0.3.4) Added <b>waitFor(state, timeout)</b> to more precisely follow the datasheet in terms of timing. Reintroduced the <b>interrupt enable/disable flag</b> as forced noInterrupts() could break the timing of the DHT protocol / micros() - seen on AVR.</li>
+<li>(0.3.3) Refactored the low level <b>readSensor()</b> as the <b>BIT SHIFT ERROR</b> issue #29 and issue #11 popped up again. It was reproduced "efficiently" with an ESP32 and by using long wires. Fixed with an explicit digitalWrite(dataPin, HIGH) + <a class="el" href="../../de/df0/Arduino_8h.html#a62e0a53bc261f9de8700cc5a92307e85">delayMicroseconds()</a> to have enough time between pulling the line HIGH and polling for the line LOW.</li>
+<li>(0.3.4) Added <b>waitFor(state, timeout)</b> to more precisely follow the datasheet in terms of timing. Reintroduced the <b>interrupt enable/disable flag</b> as forced <a class="el" href="../../de/df0/Arduino_8h.html#a8dfd0b70aa3eb3c592d6de11711fce91">noInterrupts()</a> could break the timing of the DHT protocol / <a class="el" href="../../de/df0/Arduino_8h.html#a705e7f8e2a34e0e2447e933ebf56b4d4">micros()</a> - seen on AVR.</li>
 <li>(0.4.0) Added <b>DHTLIB_WAITING_FOR_READ</b> as return value of read =&gt; minor break of interface</li>
 <li>(0.4.1) Added Arduino-CI support + <b>gettype()</b> now tries to determine type if not known.</li>
 <li>(0.4.2) Fix negative temperatures. Tested with DHTNew_debug.ino and hex dump in .cpp and a freezer. <br  />
@@ -247,7 +245,7 @@ History</h2>
 <li>(0.4.9) add optional flag DHTLIB_VALUE_OUT_OF_RANGE.</li>
 <li>(0.4.10) updated build-CI to do compile test - UNO, due, zero, Leonardo, m4, esp32, esp8266, mega2560. updated readme.md - added badges and remarks after testing with MKR1010 Wifi. updated TIMEOUT_C from 70 -&gt; 90 us to minimize its occurrence - See <a href="https://github.com/RobTillaart/DHTNew/issues/67">https://github.com/RobTillaart/DHTNew/issues/67</a>. added <code>while(!Serial);</code> in examples to they work for MKR1010 Wifi.</li>
 <li>(0.4.11) update library.json, license, minor edits (cleanup), unit tests</li>
-<li>(0.4.12) Fix #72, delayMicroseconds() for wakeUp</li>
+<li>(0.4.12) Fix #72, <a class="el" href="../../de/df0/Arduino_8h.html#a62e0a53bc261f9de8700cc5a92307e85">delayMicroseconds()</a> for wakeUp</li>
 <li>(0.4.13) Fix #76, disable interrupts for ESP32.</li>
 <li>(0.4.14) added experimental support for Si7021.</li>
 <li>(0.4.15) Fix #81, recognize DHT22 as type 70. Add minimal wakeup delay.</li>
@@ -255,24 +253,24 @@ History</h2>
 <li>(0.4.17) fix #86, define constants explicit as float.</li>
 <li>(0.4.18) Update readme.md and library.* about support for AM2320/21/22.</li>
 </ol>
-<h2><a class="anchor" id="autotoc_md19"></a>
-Future</h2>
-<h4><a class="anchor" id="autotoc_md20"></a>
-must</h4>
+<h1><a class="anchor" id="autotoc_md18"></a>
+Future</h1>
+<h3><a class="anchor" id="autotoc_md19"></a>
+must</h3>
 <ul>
 <li>update documentation</li>
 </ul>
-<h4><a class="anchor" id="autotoc_md21"></a>
-should</h4>
+<h3><a class="anchor" id="autotoc_md20"></a>
+should</h3>
 <ul>
 <li>test on more boards</li>
-<li>#if defined(MKR1010) // TODO find out real define <a href="https://github.com/RobTillaart/DHTNew/issues/67">https://github.com/RobTillaart/DHTNew/issues/67</a> <div class="fragment"><div class="line"><span class="preprocessor">#ifdef ARDUINO_SAMD_MKRWIFI1010</span></div>
+<li><a class="el" href="../../d5/df3/wiring_8c.html#a4b3aa3ca41aae80581b58e3db57c7eac">if</a> defined(MKR1010) // TODO find out real define <a href="https://github.com/RobTillaart/DHTNew/issues/67">https://github.com/RobTillaart/DHTNew/issues/67</a> <div class="fragment"><div class="line"><span class="preprocessor">#ifdef ARDUINO_SAMD_MKRWIFI1010</span></div>
 <div class="line"><span class="preprocessor">#error found</span></div>
 <div class="line"><span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></li>
 </ul>
-<h4><a class="anchor" id="autotoc_md22"></a>
-could</h4>
+<h3><a class="anchor" id="autotoc_md21"></a>
+could</h3>
 <ul>
 <li>improve unit test</li>
 <li>investigate temperature constraining (type dependant)</li>

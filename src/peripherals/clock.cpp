@@ -1,7 +1,9 @@
 #include "peripherals/clock.hpp"
 
+DS1307 clock;
+
 void initClock() {
-    // TODO Initialisation de l'horloge
+    // clock.begin();
 }
 int readClock() {
     // TODO Lecture de l'horloge

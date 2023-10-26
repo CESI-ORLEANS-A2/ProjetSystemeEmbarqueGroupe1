@@ -1,0 +1,467 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Station_Méteo_Groupe_1: Référence du fichier /mnt/c/Users/godie/Cours/10. CESI A2/Blocs/01 - Systeme embarque/Livrables/Station_Meteo_Groupe_1/libs/Arduino_AVR/Tone.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Station_Méteo_Groupe_1<span id="projectnumber">&#160;v0.0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('dd/d0c/Tone_8cpp.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier Tone.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;avr/interrupt.h&gt;</code><br />
+<code>#include &lt;avr/pgmspace.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../de/df0/Arduino_8h_source.html">Arduino.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d1/dce/pins__arduino_8h_source.html">pins_arduino.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ac1557def0ecf88cd9bb498726398ec50" id="r_ac1557def0ecf88cd9bb498726398ec50"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac1557def0ecf88cd9bb498726398ec50">AVAILABLE_TONE_PINS</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:ac1557def0ecf88cd9bb498726398ec50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1967715419c17f2777f7b3778cf21173" id="r_a1967715419c17f2777f7b3778cf21173"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1967715419c17f2777f7b3778cf21173">USE_TIMER2</a></td></tr>
+<tr class="separator:a1967715419c17f2777f7b3778cf21173"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a8229424adcfd2993d11354d367af060f" id="r_a8229424adcfd2993d11354d367af060f"><td class="memItemLeft" align="right" valign="top">static int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8229424adcfd2993d11354d367af060f">toneBegin</a> (uint8_t _pin)</td></tr>
+<tr class="separator:a8229424adcfd2993d11354d367af060f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62bcbbe6c995dd7de4b43b525d529cdb" id="r_a62bcbbe6c995dd7de4b43b525d529cdb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a62bcbbe6c995dd7de4b43b525d529cdb">tone</a> (uint8_t _pin, unsigned int frequency, unsigned long duration)</td></tr>
+<tr class="separator:a62bcbbe6c995dd7de4b43b525d529cdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3768cb4f8fbed3025c554248a60ce202" id="r_a3768cb4f8fbed3025c554248a60ce202"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3768cb4f8fbed3025c554248a60ce202">disableTimer</a> (uint8_t _timer)</td></tr>
+<tr class="separator:a3768cb4f8fbed3025c554248a60ce202"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb6515d3e5c6a2079e5bccb03fc6c4f7" id="r_aeb6515d3e5c6a2079e5bccb03fc6c4f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb6515d3e5c6a2079e5bccb03fc6c4f7">noTone</a> (uint8_t _pin)</td></tr>
+<tr class="separator:aeb6515d3e5c6a2079e5bccb03fc6c4f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5686c229bdef50123688ab6cb1404230" id="r_a5686c229bdef50123688ab6cb1404230"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5686c229bdef50123688ab6cb1404230">ISR</a> (TIMER2_COMPA_vect)</td></tr>
+<tr class="separator:a5686c229bdef50123688ab6cb1404230"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ad4760817d931e3de7c38da228df9a331" id="r_ad4760817d931e3de7c38da228df9a331"><td class="memItemLeft" align="right" valign="top">volatile long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4760817d931e3de7c38da228df9a331">timer0_toggle_count</a></td></tr>
+<tr class="separator:ad4760817d931e3de7c38da228df9a331"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a205ba6b597ec59632d6af3b091068fdb" id="r_a205ba6b597ec59632d6af3b091068fdb"><td class="memItemLeft" align="right" valign="top">volatile uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a205ba6b597ec59632d6af3b091068fdb">timer0_pin_port</a></td></tr>
+<tr class="separator:a205ba6b597ec59632d6af3b091068fdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a906748e28f661986a7c162ca7163f13d" id="r_a906748e28f661986a7c162ca7163f13d"><td class="memItemLeft" align="right" valign="top">volatile uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a906748e28f661986a7c162ca7163f13d">timer0_pin_mask</a></td></tr>
+<tr class="separator:a906748e28f661986a7c162ca7163f13d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfb10b583902f7d75ac083182ec88b40" id="r_abfb10b583902f7d75ac083182ec88b40"><td class="memItemLeft" align="right" valign="top">volatile long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abfb10b583902f7d75ac083182ec88b40">timer1_toggle_count</a></td></tr>
+<tr class="separator:abfb10b583902f7d75ac083182ec88b40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a239b66a07cfc177dbc9bde599425a062" id="r_a239b66a07cfc177dbc9bde599425a062"><td class="memItemLeft" align="right" valign="top">volatile uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a239b66a07cfc177dbc9bde599425a062">timer1_pin_port</a></td></tr>
+<tr class="separator:a239b66a07cfc177dbc9bde599425a062"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75d650df9407f99701fb1a96bb80d78b" id="r_a75d650df9407f99701fb1a96bb80d78b"><td class="memItemLeft" align="right" valign="top">volatile uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75d650df9407f99701fb1a96bb80d78b">timer1_pin_mask</a></td></tr>
+<tr class="separator:a75d650df9407f99701fb1a96bb80d78b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d4aba279e8106632322ed02c8d0f5f1" id="r_a4d4aba279e8106632322ed02c8d0f5f1"><td class="memItemLeft" align="right" valign="top">volatile long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d4aba279e8106632322ed02c8d0f5f1">timer2_toggle_count</a></td></tr>
+<tr class="separator:a4d4aba279e8106632322ed02c8d0f5f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb53f0106b3a4295cb5162440b37f6a8" id="r_adb53f0106b3a4295cb5162440b37f6a8"><td class="memItemLeft" align="right" valign="top">volatile uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb53f0106b3a4295cb5162440b37f6a8">timer2_pin_port</a></td></tr>
+<tr class="separator:adb53f0106b3a4295cb5162440b37f6a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc830a5e7410e14d1a283a8f1a31eb98" id="r_adc830a5e7410e14d1a283a8f1a31eb98"><td class="memItemLeft" align="right" valign="top">volatile uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc830a5e7410e14d1a283a8f1a31eb98">timer2_pin_mask</a></td></tr>
+<tr class="separator:adc830a5e7410e14d1a283a8f1a31eb98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a184e7105c73b5285498782cdc96ba2bd" id="r_a184e7105c73b5285498782cdc96ba2bd"><td class="memItemLeft" align="right" valign="top">const uint8_t PROGMEM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a184e7105c73b5285498782cdc96ba2bd">tone_pin_to_timer_PGM</a> [] = { 2 }</td></tr>
+<tr class="separator:a184e7105c73b5285498782cdc96ba2bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55d6fbfc72c54336374e780ea4f63e61" id="r_a55d6fbfc72c54336374e780ea4f63e61"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a55d6fbfc72c54336374e780ea4f63e61">tone_pins</a> [<a class="el" href="#ac1557def0ecf88cd9bb498726398ec50">AVAILABLE_TONE_PINS</a>] = { 255 }</td></tr>
+<tr class="separator:a55d6fbfc72c54336374e780ea4f63e61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentation des macros</h2>
+<a id="ac1557def0ecf88cd9bb498726398ec50" name="ac1557def0ecf88cd9bb498726398ec50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1557def0ecf88cd9bb498726398ec50">&#9670;&#160;</a></span>AVAILABLE_TONE_PINS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AVAILABLE_TONE_PINS&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1967715419c17f2777f7b3778cf21173" name="a1967715419c17f2777f7b3778cf21173"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1967715419c17f2777f7b3778cf21173">&#9670;&#160;</a></span>USE_TIMER2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USE_TIMER2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a3768cb4f8fbed3025c554248a60ce202" name="a3768cb4f8fbed3025c554248a60ce202"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3768cb4f8fbed3025c554248a60ce202">&#9670;&#160;</a></span>disableTimer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void disableTimer </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>_timer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5686c229bdef50123688ab6cb1404230" name="a5686c229bdef50123688ab6cb1404230"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5686c229bdef50123688ab6cb1404230">&#9670;&#160;</a></span>ISR()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ISR </td>
+          <td>(</td>
+          <td class="paramtype">TIMER2_COMPA_vect&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeb6515d3e5c6a2079e5bccb03fc6c4f7" name="aeb6515d3e5c6a2079e5bccb03fc6c4f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb6515d3e5c6a2079e5bccb03fc6c4f7">&#9670;&#160;</a></span>noTone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void noTone </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>_pin</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a62bcbbe6c995dd7de4b43b525d529cdb" name="a62bcbbe6c995dd7de4b43b525d529cdb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62bcbbe6c995dd7de4b43b525d529cdb">&#9670;&#160;</a></span>tone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tone </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>_pin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>frequency</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned long&#160;</td>
+          <td class="paramname"><em>duration</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8229424adcfd2993d11354d367af060f" name="a8229424adcfd2993d11354d367af060f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8229424adcfd2993d11354d367af060f">&#9670;&#160;</a></span>toneBegin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int8_t toneBegin </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>_pin</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des variables</h2>
+<a id="a906748e28f661986a7c162ca7163f13d" name="a906748e28f661986a7c162ca7163f13d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a906748e28f661986a7c162ca7163f13d">&#9670;&#160;</a></span>timer0_pin_mask</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t timer0_pin_mask</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a205ba6b597ec59632d6af3b091068fdb" name="a205ba6b597ec59632d6af3b091068fdb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a205ba6b597ec59632d6af3b091068fdb">&#9670;&#160;</a></span>timer0_pin_port</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t* timer0_pin_port</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad4760817d931e3de7c38da228df9a331" name="ad4760817d931e3de7c38da228df9a331"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4760817d931e3de7c38da228df9a331">&#9670;&#160;</a></span>timer0_toggle_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile long timer0_toggle_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a75d650df9407f99701fb1a96bb80d78b" name="a75d650df9407f99701fb1a96bb80d78b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75d650df9407f99701fb1a96bb80d78b">&#9670;&#160;</a></span>timer1_pin_mask</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t timer1_pin_mask</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a239b66a07cfc177dbc9bde599425a062" name="a239b66a07cfc177dbc9bde599425a062"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a239b66a07cfc177dbc9bde599425a062">&#9670;&#160;</a></span>timer1_pin_port</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t* timer1_pin_port</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abfb10b583902f7d75ac083182ec88b40" name="abfb10b583902f7d75ac083182ec88b40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfb10b583902f7d75ac083182ec88b40">&#9670;&#160;</a></span>timer1_toggle_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile long timer1_toggle_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adc830a5e7410e14d1a283a8f1a31eb98" name="adc830a5e7410e14d1a283a8f1a31eb98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc830a5e7410e14d1a283a8f1a31eb98">&#9670;&#160;</a></span>timer2_pin_mask</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t timer2_pin_mask</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adb53f0106b3a4295cb5162440b37f6a8" name="adb53f0106b3a4295cb5162440b37f6a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb53f0106b3a4295cb5162440b37f6a8">&#9670;&#160;</a></span>timer2_pin_port</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t* timer2_pin_port</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4d4aba279e8106632322ed02c8d0f5f1" name="a4d4aba279e8106632322ed02c8d0f5f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d4aba279e8106632322ed02c8d0f5f1">&#9670;&#160;</a></span>timer2_toggle_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile long timer2_toggle_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a184e7105c73b5285498782cdc96ba2bd" name="a184e7105c73b5285498782cdc96ba2bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a184e7105c73b5285498782cdc96ba2bd">&#9670;&#160;</a></span>tone_pin_to_timer_PGM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t PROGMEM tone_pin_to_timer_PGM[] = { 2 }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a55d6fbfc72c54336374e780ea4f63e61" name="a55d6fbfc72c54336374e780ea4f63e61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55d6fbfc72c54336374e780ea4f63e61">&#9670;&#160;</a></span>tone_pins</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t tone_pins[<a class="el" href="#ac1557def0ecf88cd9bb498726398ec50">AVAILABLE_TONE_PINS</a>] = { 255 }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_6719ab1f1f7655efc2fa43f7eb574fd1.html">libs</a></li><li class="navelem"><a class="el" href="../../dir_650b651c4fc0af5fb7ffad415ecb503f.html">Arduino_AVR</a></li><li class="navelem"><a class="el" href="../../dd/d0c/Tone_8cpp.html">Tone.cpp</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
+</body>
+</html>

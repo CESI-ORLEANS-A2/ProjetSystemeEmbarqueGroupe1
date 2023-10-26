@@ -79,25 +79,33 @@ void initSettings() {
         SETTING_DEFAULT_PRESSURE_MAX
     };
 }
+    #if SETTINGS_IN_EEPROM
 void updateSettingsFromEEPROM() {
     int value;
     for (int i = 0; i < NUMBER_OF_SETTINGS; i++) {
-        value = EEPROM[i];
-        if (!value) settings[i].value = settings[i].defaultValue;
+        EEPROM.get(i, value);
+        if (!value) {
+            EEPROM.put(i, settings[i].defaultValue);
+            settings[i].value = settings[i].defaultValue;
+        }
         else settings[i].value = value;
     }
 }
+#endif
 void resetSettings() {
-    int value;
     for (int i = 0; i < NUMBER_OF_SETTINGS; i++) {
-        value = settings[i].defaultValue;
-        EEPROM[i] = value;
-        settings[i].value = value;
+#if SETTINGS_IN_EEPROM
+        EEPROM.put(i, settings[i].defaultValue);
+#endif
+        settings[i].value = settings[i].defaultValue;
     }
 }
 long getSetting(int id) {
     return settings[id].value;
 }
 void setSetting(int id, long value) {
-    EEPROM[id] = value;
+#if SETTINGS_IN_EEPROM
+    EEPROM.put(id, value);
+#endif
+    settings[id].value = value;
 }
