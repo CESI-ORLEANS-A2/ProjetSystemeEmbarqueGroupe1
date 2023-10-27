@@ -4,6 +4,14 @@ unsigned long previousAcquisition = NULL;
 bool errors[NUMBER_OF_SENSORS];
 bool underAcquisition = false;
 int numberOfErrors = NUMBER_OF_SENSORS;
+#if GPS_ENABLED
+bool GPSError = true;
+#endif
+bool clockError = true;
+
+#if GPS_ENABLED
+int GPSCounter;
+#endif
 
 void acquisition(void (*callback)()) {
     if (!underAcquisition) {
@@ -40,30 +48,36 @@ void acquisition(void (*callback)()) {
         }
     }
 
-    // Appel du callback car toutes les données ont été acquise sans erreur
-    if (mode == STANDARD_MODE) { // TODO retirer
-        Serial.print("Nombre d'erreurs : ");
-        Serial.print(numberOfErrors);
-        Serial.print(" | underAcquisition : ");
-        Serial.print(underAcquisition);
-        Serial.print(" | lastMeasurements[0] : ");
-        Serial.print(lastMeasurements[0]);
-        Serial.print(" | lastMeasurements[1] : ");
-        Serial.println(lastMeasurements[1]);
-
-        Serial.print("Max temp : ");
-        Serial.print(getSetting(SETTING_TEMPERATURE_MAX));
-        Serial.print(" | Min temp : ");
-        Serial.print(getSetting(SETTING_TEMPERATURE_MIN));
-        Serial.print(" | Max hum : ");
-        Serial.print(getSetting(SETTING_HUMIDITY_MAX));
-        Serial.print(" | Min hum : ");
-        Serial.println(getSetting(SETTING_HUMIDITY_MIN));
+#if GPS_ENABLED
+    //Acquisition du GPS
+    if (mode == ECONOMY_MODE ? GPSCounter == 0 : true) {
+        if (readGPS()) {
+            GPSError = false;
+            GPSCounter = 1;
+        }
     }
+    else
+        GPSCounter--;
+#endif
+
+    if (readClock()) {
+        clockError = false;
+    }
+
     // Si il n'y a plus d'erreur, on arrête l'acquisition et on appelle le callback
-    if (numberOfErrors == 0) {
+    if (numberOfErrors == 0 &&
+#if GPS_ENABLED
+        !GPSError &&
+#endif
+        !clockError
+        ) {
         underAcquisition = false;
         numberOfErrors = NUMBER_OF_SENSORS;
+#if GPS_ENABLED
+        GPSError = true;
+#endif
+        clockError = true;
+        // Appel du callback car toutes les données ont été acquise sans erreur
         if (callback != NULL)
             (*callback)();
     }

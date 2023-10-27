@@ -69,7 +69,9 @@ void setup() {
     // initBrightnessSensor(); // TODO Capteur de luminosité
 
     initClock(); // Initialisation de l'horloge
+#if GPS_ENABLED
     initGPS(); // Initialisation du GPS
+#endif
 
     if (digitalRead(RED_BUTTON_PIN) == LOW) // Si le bouton rouge est appuyé au démarrage, on passe en mode configuration
         switchToConfigurationMode();

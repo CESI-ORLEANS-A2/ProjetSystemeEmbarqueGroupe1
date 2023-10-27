@@ -17,7 +17,9 @@
 #include "peripherals/led.hpp"
 #include "peripherals/sd.hpp"
 #include "peripherals/clock.hpp"
+#if GPS_ENABLED
 #include "peripherals/gps.hpp"
+#endif
 
 #include "modes/standard.hpp"
 #include "modes/economy.hpp"

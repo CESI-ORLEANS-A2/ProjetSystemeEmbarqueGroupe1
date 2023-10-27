@@ -19,6 +19,16 @@ extern unsigned long previousAcquisition;
  * Lorsque le nombre d'erreur atteint 0, l'acquisition est terminée. 
 */
 extern int numberOfErrors;
+#if GPS_ENABLED
+/**
+ * @brief Indique si le GPS est en erreur.
+*/
+extern bool GPSError;
+#endif
+/**
+ * @brief Indique si l'horloge est en erreur.
+*/
+extern bool clockError;
 /**
  * @brief Tableau de booléens indiquant si un capteur a réussi à acquérir une donnée.
  * 
@@ -41,6 +51,13 @@ extern bool errors[NUMBER_OF_SENSORS];
  * une acquisition finie.
 */
 extern bool underAcquisition;
+
+#if GPS_ENABLED
+/**
+ * @brief Compteur pour le GPS. Permet de ne pas acquérir le GPS à chaque cycle en mode économique.
+*/
+extern int GPSCounter;
+#endif
 
 /**
  * @brief Fonction d'acquisition des données.

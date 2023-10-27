@@ -25,13 +25,18 @@
  * Les détails d'une commande sont sa description, sa syntax et ses arguments.
  * Cependant, afficher les détails prend beaucoup de place en mémoire Flash.
  */
-#define DETAILED_HELP_COMMAND true 
+#define DETAILED_HELP_COMMAND false 
 /**
  * @brief Si les paramètres de la station doivent être sauvegardés dans l'EEPROM.
  * 
  * Actuellement non fonctionnel.
 */
 #define SETTINGS_IN_EEPROM false
+/**
+ * @brief Si le GPS doit être activé
+*/
+#define GPS_ENABLED false
+
 /**
  * @brief Format de sortie utilisé en mode live (OUTPUT_JSON ou OUTPUT_CSV)
  *
@@ -44,7 +49,7 @@
  * plus de place en mémoire Flash.
  * Le format CSV est plus difficile à traiter pour un ordinateur, mais prend moins de place.
  */
-#define LIVE_MODE_SERIAL_OUTPUT OUTPUT_JSON 
+#define LIVE_MODE_SERIAL_OUTPUT OUTPUT_JSON
 #define MAX_NAME_LENGTH 20
 
 // PARAMETRES
@@ -63,7 +68,7 @@
  * car les commandes entrées seront tronquées.
  * Une taille trop grande peut prendre trop de place en mémoire.
  */
-#define INPUT_BUFFER_SIZE 100
+#define INPUT_BUFFER_SIZE 30
 /**
  * @brief Si l'interpréteur doit renvoyer la commande entrée
  *
@@ -105,7 +110,7 @@
 /**
  * @brief Taille maximale d'une ligne de données à enregistrer sur la carte SD ou à afficher dans le port série
 */
-#define MAX_LINE_SIZE 200
+#define MAX_LINE_SIZE 100
 
 // MODES
 /** @brief Mode standard */
@@ -158,6 +163,10 @@
 #define NUMBER_OF_LEDS 1
 /** @brief Pin de la carte SD */
 #define SD_PIN 4
+/** @brief Pin de communication série du GPS */
+#define GPS_RX_PIN 8
+/** @brief Pin de communication série du GPS */
+#define GPS_TX_PIN 9
 
 // CAPTEURS
 /** @brief Nombre de capteurs disponibles */

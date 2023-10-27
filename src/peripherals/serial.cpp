@@ -3,11 +3,11 @@
 void initSerial() {
     Serial.begin(SERIAL_BAUD_RATE);
 
-    if (Serial) Serial.println(F("Station Météo v3"));
+    if (Serial) Serial.println(F("Station Météo"));
 }
 void printData() {
-    char* line;
-    line = (char*)malloc(MAX_LINE_SIZE * sizeof(char));
+    char* line = (char*)malloc(MAX_LINE_SIZE * sizeof(char));
     formatLine(line);
     Serial.println(line);
+    free(line);
 }

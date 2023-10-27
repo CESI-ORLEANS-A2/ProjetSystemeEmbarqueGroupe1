@@ -22,7 +22,8 @@ void runMaintenanceModeStep() {
             }
         }
         acquisition(&printData);
-    } else acquisition(NULL);
+    }
+    else acquisition(NULL);
 #else
     acquisition(&printData);
 #endif
@@ -32,4 +33,8 @@ void printSwitchToMaintenance() {
 }
 void printLiveMode() {
     Serial.println(F("Mode live activé"));
+
+#if LIVE_MODE_SERIAL_OUTPUT==OUTPUT_CSV
+    printCSVHeader();
+#endif
 }

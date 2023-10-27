@@ -4,7 +4,6 @@ char inputBuffer[INPUT_BUFFER_SIZE];
 int inputLength = 0;
 
 void initInterpreter() {
-    static const char* spaceChar = (const char*)F(" ");
 
     Serial.print(F("\n\r"
         "Bienvenue dans l'invite de commande de la station météo !\n\r"
@@ -52,13 +51,13 @@ void runInterpreterStep() {
 }
 
 void runCommand() {
-    char* commandLine, * command;
-    commandLine = (char*)malloc(INPUT_BUFFER_SIZE * sizeof(char));
-    command = (char*)malloc(10 * sizeof(char));
-    command = strsep_P(&commandLine, spaceChar);
+    char* commandLine = (char*)malloc(INPUT_BUFFER_SIZE * sizeof(char));
+    char * command = (char*)malloc(10 * sizeof(char));
+    commandLine = inputBuffer;
+    command = strsep_P(&commandLine, PSTR(" "));
 
     if (strcmp_P(command, PSTR("help")) == 0) {
-        commandHelp(strsep_P(&commandLine, spaceChar));
+        commandHelp(strsep_P(&commandLine, PSTR(" ")));
     }
     else if (strcmp_P(command, PSTR("list")) == 0) {
         commandList();
@@ -71,21 +70,21 @@ void runCommand() {
             commandLive();
     }
     else if (strcmp_P(command, PSTR("mode")) == 0) {
-        commandMode(strsep_P(&commandLine, spaceChar));
+        commandMode(strsep_P(&commandLine, PSTR(" ")));
     }
     else if (strcmp_P(command, PSTR("enable")) == 0) {
         if (mode != CONFIGURATION_MODE) {
             printCommandUnavailableInThisMode();
         }
         else
-            commandEnable(atoi(strsep_P(&commandLine, spaceChar)));
+            commandEnable(atoi(strsep_P(&commandLine, PSTR(" "))));
     }
     else if (strcmp_P(command, PSTR("disable")) == 0) {
         if (mode != CONFIGURATION_MODE) {
             printCommandUnavailableInThisMode();
         }
         else
-            commandDisable(atoi(strsep_P(&commandLine, spaceChar)));
+            commandDisable(atoi(strsep_P(&commandLine, PSTR(" "))));
     }
     else if (strcmp_P(command, PSTR("set")) == 0) {
         if (mode != CONFIGURATION_MODE) {
@@ -96,8 +95,8 @@ void runCommand() {
             name = (char*)malloc(20 * sizeof(char));
             value = (char*)malloc(10 * sizeof(char));
 
-            name = strsep_P(&commandLine, spaceChar);
-            value = strsep_P(&commandLine, spaceChar);
+            name = strsep_P(&commandLine, PSTR(" "));
+            value = strsep_P(&commandLine, PSTR(" "));
 
             commandSet(name, atoi(value));
 
@@ -110,7 +109,7 @@ void runCommand() {
             printCommandUnavailableInThisMode();
         }
         else
-            commandGet(strsep_P(&commandLine, spaceChar));
+            commandGet(strsep_P(&commandLine, PSTR(" ")));
     }
     else if (strcmp_P(command, PSTR("reset")) == 0) {
         if (mode != CONFIGURATION_MODE) {
@@ -132,9 +131,9 @@ void runCommand() {
             minutes = (char*)malloc(3 * sizeof(char));
             seconds = (char*)malloc(3 * sizeof(char));
 
-            hours = strsep_P(&commandLine, spaceChar);
-            minutes = strsep_P(&commandLine, spaceChar);
-            seconds = strsep_P(&commandLine, spaceChar);
+            hours = strsep_P(&commandLine, PSTR(" "));
+            minutes = strsep_P(&commandLine, PSTR(" "));
+            seconds = strsep_P(&commandLine, PSTR(" "));
 
             commandClock(atoi(hours), atoi(minutes), atoi(seconds));
 
@@ -153,9 +152,9 @@ void runCommand() {
             month = (char*)malloc(3 * sizeof(char));
             year = (char*)malloc(5 * sizeof(char));
 
-            day = strsep_P(&commandLine, spaceChar);
-            month = strsep_P(&commandLine, spaceChar);
-            year = strsep_P(&commandLine, spaceChar);
+            day = strsep_P(&commandLine, PSTR(" "));
+            month = strsep_P(&commandLine, PSTR(" "));
+            year = strsep_P(&commandLine, PSTR(" "));
 
             commandDate(atoi(day), atoi(month), atoi(year));
 
@@ -169,7 +168,7 @@ void runCommand() {
             printCommandUnavailableInThisMode();
         }
         else
-            commandDay(strsep_P(&commandLine, spaceChar));
+            commandDay(strsep_P(&commandLine, PSTR(" ")));
     }
 #if SETTINGS_IN_EEPROM
     else if (strcmp_P(command, PSTR("eeprom")) == 0) {
@@ -414,7 +413,7 @@ void commandList() {
 
         strcat_P(line, name);
         for (int j = 0; j < (24 - (int)strlen_P(name)); j++)
-            strcat_P(line, spaceChar);
+            strcat_P(line, PSTR(" "));
         strcat(line, PSTR(" | "));
         strcat(line, enabled);
         strcat(line, PSTR("      | "));
