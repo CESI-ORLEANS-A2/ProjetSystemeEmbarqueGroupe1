@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Station_Méteo_Groupe_1:  Fichier source de /mnt/c/Users/godie/Cours/10. CESI A2/Blocs/01 - Systeme embarque/Livrables/Station_Meteo_Groupe_1/include/interpreter.hpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Station_Méteo_Groupe_1<span id="projectnumber">&#160;v0.0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(1); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('db/d42/interpreter_8hpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">interpreter.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="../../db/d42/interpreter_8hpp.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef Interpreter_h</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define Interpreter_h</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="../../df/dd7/consts_8hpp.html">consts.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="../../d0/d00/main_8hpp.html">main.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="../../d5/d0f/settings_8hpp.html">settings.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">extern</span> <span class="keywordtype">char</span> <a class="code hl_variable" href="../../db/d42/interpreter_8hpp.html#a69a9e2a8001f9ed97e4c348fdbd406b0">inputBuffer</a>[<a class="code hl_define" href="../../df/dd7/consts_8hpp.html#aa9b8dcc02cea15aab8e3d0b7860327a7">INPUT_BUFFER_SIZE</a>];</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="../../db/d42/interpreter_8hpp.html#a32baa47b2d04b28b6a2f1060463290fc">inputLength</a>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="../../db/d42/interpreter_8hpp.html#acffd8eac68177c245e16f6cf4f7951de">   19</a></span><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code hl_variable" href="../../db/d42/interpreter_8hpp.html#acffd8eac68177c245e16f6cf4f7951de">spaceChar</a>;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d42/interpreter_8hpp.html#a799af479cee198871c59ddc96e357429">initInterpreter</a>();</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d42/interpreter_8hpp.html#a195759b44546a0cc754b0701e38dceb0">runInterpreterStep</a>();</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d42/interpreter_8hpp.html#af2ad04921a585dd627999e819d0d6293">runCommand</a>();</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d42/interpreter_8hpp.html#a70749195adc0ab8c373020426dcf2800">printPrompt</a>();</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d42/interpreter_8hpp.html#a1bb437fc0db3d4ec094570308c3f2634">printHelpCommand</a>();</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d42/interpreter_8hpp.html#ac1004052440c211015986a4d28126b32">printHelpNeededMode</a>();</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d42/interpreter_8hpp.html#a5523192e9cd94ef44c51940ac036e0d4">printHelpDesciption</a>();</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d42/interpreter_8hpp.html#aeaa463f4923606eced2f7e8022ac054c">printHelpSyntax</a>();</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d42/interpreter_8hpp.html#ae011d37f44de46066864cf0703448dc4">printHelpArguments</a>();</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d42/interpreter_8hpp.html#a21d79800fb2e3d2344bfd49fed0be374">printHelpListDash</a>();</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d42/interpreter_8hpp.html#aa4ae8a0b29dd151dd9615fe4624faeb3">printUnknownCommand</a>();</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d42/interpreter_8hpp.html#a026e5a64abbb88b701744e0d024c01c4">printBuffer</a>();</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d42/interpreter_8hpp.html#a1087b7cd48d3aa2b14760ee09ff6b440">printModeAlreadyEnabled</a>();</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d42/interpreter_8hpp.html#a5d723129973c7313ad65043948856d75">printSpaces</a>(<span class="keywordtype">int</span> n);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d42/interpreter_8hpp.html#aaedc5b95bfba65d44e923155f955b8f6">printSensorEnabled</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d42/interpreter_8hpp.html#a31312100ef25f9165049c0f846e0b29c">printSensorDisabled</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d42/interpreter_8hpp.html#ab70fe860ba4a27b56de41c78c5e959d0">printCommandUnavailableInThisMode</a>();</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d42/interpreter_8hpp.html#a7378494349f70317d88e1e307ac316c4">commandHelp</a>(<span class="keywordtype">char</span>* command);</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d42/interpreter_8hpp.html#ad1db0af5afe3f0cadbe2dfd723847dc6">commandList</a>();</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d42/interpreter_8hpp.html#a8821344e018730babb885f0007de9c3c">commandLive</a>();</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d42/interpreter_8hpp.html#a8dfd31d8eae69fbe49593d3381f0419a">commandMode</a>(<span class="keywordtype">char</span>* <a class="code hl_variable" href="../../de/dfb/src_2main_8cpp.html#a1ea5d0cb93f22f7d0fdf804bd68c3326">mode</a>);</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d42/interpreter_8hpp.html#ac18787f446013b099d44e6e511e6a23d">commandEnable</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span> = NULL);</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d42/interpreter_8hpp.html#a3f9fcb147dc02f20641d045a7921d042">commandDisable</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span> = NULL);</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d42/interpreter_8hpp.html#a9647627f8d152d2861ca19480521a525">commandSet</a>(<span class="keywordtype">char</span>* variable, <span class="keywordtype">int</span> value);</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="comment"> * @brief Affiche la valeur d&#39;un paramètre.</span></div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span><span class="comment"></span> </div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span><span class="comment"> * @ref settings</span></div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span><span class="comment"> * @ref getSetting()</span></div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span><span class="comment"> * @ref NUMBER_OF_SETTINGS</span></div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span><span class="comment">*/</span></div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d42/interpreter_8hpp.html#a8d92112d639d2d638c1871a099573aa4">commandGet</a>(<span class="keywordtype">char</span>* variable);</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d42/interpreter_8hpp.html#aaf453c643899912c61595a2a605fbff1">commandReset</a>();</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d42/interpreter_8hpp.html#a687981deec62674fc1cb84fc1fbc16e1">commandLast</a>();</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d42/interpreter_8hpp.html#ac751ffaa108480a06a370897cbb02f7b">commandClock</a>(<span class="keywordtype">int</span> hours, <span class="keywordtype">int</span> minutes, <span class="keywordtype">int</span> seconds);</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d42/interpreter_8hpp.html#ae39fadef59ce35e8e113924820e336d9">commandDate</a>(<span class="keywordtype">int</span> day, <span class="keywordtype">int</span> month, <span class="keywordtype">int</span> year);</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d42/interpreter_8hpp.html#a8a8b28e6f852d367aa9eba253f470fb3">commandDay</a>(<span class="keywordtype">char</span>* day);</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span> </div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aconsts_8hpp_html"><div class="ttname"><a href="../../df/dd7/consts_8hpp.html">consts.hpp</a></div></div>
+<div class="ttc" id="aconsts_8hpp_html_aa9b8dcc02cea15aab8e3d0b7860327a7"><div class="ttname"><a href="../../df/dd7/consts_8hpp.html#aa9b8dcc02cea15aab8e3d0b7860327a7">INPUT_BUFFER_SIZE</a></div><div class="ttdeci">#define INPUT_BUFFER_SIZE</div><div class="ttdoc">Taille du buffer d'entrée de l'interpréteur.</div><div class="ttdef"><b>Definition</b> consts.hpp:66</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_a026e5a64abbb88b701744e0d024c01c4"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#a026e5a64abbb88b701744e0d024c01c4">printBuffer</a></div><div class="ttdeci">void printBuffer()</div><div class="ttdoc">Affiche la commande que l'utilisateur est en train d'entrer.</div><div class="ttdef"><b>Definition</b> interpreter.cpp:221</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_a1087b7cd48d3aa2b14760ee09ff6b440"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#a1087b7cd48d3aa2b14760ee09ff6b440">printModeAlreadyEnabled</a></div><div class="ttdeci">void printModeAlreadyEnabled()</div><div class="ttdoc">Affiche &quot;Ce mode est déja activé.\n\r&quot;.</div><div class="ttdef"><b>Definition</b> interpreter.cpp:224</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_a195759b44546a0cc754b0701e38dceb0"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#a195759b44546a0cc754b0701e38dceb0">runInterpreterStep</a></div><div class="ttdeci">void runInterpreterStep()</div><div class="ttdoc">Exécute une étape de l'interpréteur de commandes.</div><div class="ttdef"><b>Definition</b> interpreter.cpp:18</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_a1bb437fc0db3d4ec094570308c3f2634"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#a1bb437fc0db3d4ec094570308c3f2634">printHelpCommand</a></div><div class="ttdeci">void printHelpCommand()</div><div class="ttdoc">Affiche &quot;Commande : &quot;.</div><div class="ttdef"><b>Definition</b> interpreter.cpp:198</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_a21d79800fb2e3d2344bfd49fed0be374"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#a21d79800fb2e3d2344bfd49fed0be374">printHelpListDash</a></div><div class="ttdeci">void printHelpListDash()</div><div class="ttdoc">Affiche &quot;   - &quot;.</div><div class="ttdef"><b>Definition</b> interpreter.cpp:213</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_a31312100ef25f9165049c0f846e0b29c"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#a31312100ef25f9165049c0f846e0b29c">printSensorDisabled</a></div><div class="ttdeci">void printSensorDisabled(int id)</div><div class="ttdoc">Affiche &quot;Le capteur {{capteur}} a été désactivé.&quot;.</div><div class="ttdef"><b>Definition</b> interpreter.cpp:238</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_a32baa47b2d04b28b6a2f1060463290fc"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#a32baa47b2d04b28b6a2f1060463290fc">inputLength</a></div><div class="ttdeci">int inputLength</div><div class="ttdoc">Taille le ligne de commandé entrée par l'utilisateur.</div><div class="ttdef"><b>Definition</b> interpreter.cpp:4</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_a3f9fcb147dc02f20641d045a7921d042"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#a3f9fcb147dc02f20641d045a7921d042">commandDisable</a></div><div class="ttdeci">void commandDisable(int id=NULL)</div><div class="ttdoc">Désactive un capteur ou tous.</div><div class="ttdef"><b>Definition</b> interpreter.cpp:483</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_a5523192e9cd94ef44c51940ac036e0d4"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#a5523192e9cd94ef44c51940ac036e0d4">printHelpDesciption</a></div><div class="ttdeci">void printHelpDesciption()</div><div class="ttdoc">Affiche &quot;Description : &quot;.</div><div class="ttdef"><b>Definition</b> interpreter.cpp:204</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_a5d723129973c7313ad65043948856d75"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#a5d723129973c7313ad65043948856d75">printSpaces</a></div><div class="ttdeci">void printSpaces(int n)</div><div class="ttdoc">Affiche &quot; &quot; n fois.</div><div class="ttdef"><b>Definition</b> interpreter.cpp:227</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_a687981deec62674fc1cb84fc1fbc16e1"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#a687981deec62674fc1cb84fc1fbc16e1">commandLast</a></div><div class="ttdeci">void commandLast()</div><div class="ttdoc">Affiche les dernières données enregistrées.</div><div class="ttdef"><b>Definition</b> interpreter.cpp:537</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_a69a9e2a8001f9ed97e4c348fdbd406b0"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#a69a9e2a8001f9ed97e4c348fdbd406b0">inputBuffer</a></div><div class="ttdeci">char inputBuffer[INPUT_BUFFER_SIZE]</div><div class="ttdoc">Variable accueillant la commande entrée par l'utilisateur.</div><div class="ttdef"><b>Definition</b> interpreter.cpp:3</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_a70749195adc0ab8c373020426dcf2800"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#a70749195adc0ab8c373020426dcf2800">printPrompt</a></div><div class="ttdeci">void printPrompt()</div><div class="ttdoc">Affiche le prompt de l'interpréteur de commandes.</div><div class="ttdef"><b>Definition</b> interpreter.cpp:194</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_a7378494349f70317d88e1e307ac316c4"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#a7378494349f70317d88e1e307ac316c4">commandHelp</a></div><div class="ttdeci">void commandHelp(char *command)</div><div class="ttdoc">Affiche la liste des commandes disponibles.</div><div class="ttdef"><b>Definition</b> interpreter.cpp:249</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_a799af479cee198871c59ddc96e357429"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#a799af479cee198871c59ddc96e357429">initInterpreter</a></div><div class="ttdeci">void initInterpreter()</div><div class="ttdoc">Initialise l'interpréteur de commandes.</div><div class="ttdef"><b>Definition</b> interpreter.cpp:6</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_a8821344e018730babb885f0007de9c3c"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#a8821344e018730babb885f0007de9c3c">commandLive</a></div><div class="ttdeci">void commandLive()</div><div class="ttdoc">Active ou désactive le mode live.</div><div class="ttdef"><b>Definition</b> interpreter.cpp:432</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_a8a8b28e6f852d367aa9eba253f470fb3"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#a8a8b28e6f852d367aa9eba253f470fb3">commandDay</a></div><div class="ttdeci">void commandDay(char *day)</div><div class="ttdef"><b>Definition</b> interpreter.cpp:542</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_a8d92112d639d2d638c1871a099573aa4"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#a8d92112d639d2d638c1871a099573aa4">commandGet</a></div><div class="ttdeci">void commandGet(char *variable)</div><div class="ttdef"><b>Definition</b> interpreter.cpp:524</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_a8dfd31d8eae69fbe49593d3381f0419a"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#a8dfd31d8eae69fbe49593d3381f0419a">commandMode</a></div><div class="ttdeci">void commandMode(char *mode)</div><div class="ttdoc">Change le mode en cours d'exécution.</div><div class="ttdef"><b>Definition</b> interpreter.cpp:436</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_a9647627f8d152d2861ca19480521a525"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#a9647627f8d152d2861ca19480521a525">commandSet</a></div><div class="ttdeci">void commandSet(char *variable, int value)</div><div class="ttdoc">Change la valeur d'un paramètre.</div><div class="ttdef"><b>Definition</b> interpreter.cpp:497</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_aa4ae8a0b29dd151dd9615fe4624faeb3"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#aa4ae8a0b29dd151dd9615fe4624faeb3">printUnknownCommand</a></div><div class="ttdeci">void printUnknownCommand()</div><div class="ttdoc">Affiche &quot;Commandes inconnues.\n\r&quot;.</div><div class="ttdef"><b>Definition</b> interpreter.cpp:218</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_aaedc5b95bfba65d44e923155f955b8f6"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#aaedc5b95bfba65d44e923155f955b8f6">printSensorEnabled</a></div><div class="ttdeci">void printSensorEnabled(int id)</div><div class="ttdoc">Affiche &quot;Le capteur {{capteur}} a été activé.&quot;.</div><div class="ttdef"><b>Definition</b> interpreter.cpp:231</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_aaf453c643899912c61595a2a605fbff1"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#aaf453c643899912c61595a2a605fbff1">commandReset</a></div><div class="ttdeci">void commandReset()</div><div class="ttdoc">Réinitialise les paramètres de la station météo.</div><div class="ttdef"><b>Definition</b> interpreter.cpp:533</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_ab70fe860ba4a27b56de41c78c5e959d0"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#ab70fe860ba4a27b56de41c78c5e959d0">printCommandUnavailableInThisMode</a></div><div class="ttdeci">void printCommandUnavailableInThisMode()</div><div class="ttdoc">Affiche &quot;Cette commande n'est pas disponible dans ce mode.\n\r&quot;.</div><div class="ttdef"><b>Definition</b> interpreter.cpp:245</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_ac1004052440c211015986a4d28126b32"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#ac1004052440c211015986a4d28126b32">printHelpNeededMode</a></div><div class="ttdeci">void printHelpNeededMode()</div><div class="ttdoc">Affiche &quot;Mode nécessaire : &quot;.</div><div class="ttdef"><b>Definition</b> interpreter.cpp:201</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_ac18787f446013b099d44e6e511e6a23d"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#ac18787f446013b099d44e6e511e6a23d">commandEnable</a></div><div class="ttdeci">void commandEnable(int id=NULL)</div><div class="ttdoc">Active un capteur ou tous.</div><div class="ttdef"><b>Definition</b> interpreter.cpp:469</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_ac751ffaa108480a06a370897cbb02f7b"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#ac751ffaa108480a06a370897cbb02f7b">commandClock</a></div><div class="ttdeci">void commandClock(int hours, int minutes, int seconds)</div><div class="ttdef"><b>Definition</b> interpreter.cpp:540</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_acffd8eac68177c245e16f6cf4f7951de"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#acffd8eac68177c245e16f6cf4f7951de">spaceChar</a></div><div class="ttdeci">static const char * spaceChar</div><div class="ttdoc">Un charactère espace en mémoire Flash.</div><div class="ttdef"><b>Definition</b> interpreter.hpp:19</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_ad1db0af5afe3f0cadbe2dfd723847dc6"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#ad1db0af5afe3f0cadbe2dfd723847dc6">commandList</a></div><div class="ttdeci">void commandList()</div><div class="ttdoc">Affiche la liste des capteurs disponibles.</div><div class="ttdef"><b>Definition</b> interpreter.cpp:392</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_ae011d37f44de46066864cf0703448dc4"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#ae011d37f44de46066864cf0703448dc4">printHelpArguments</a></div><div class="ttdeci">void printHelpArguments()</div><div class="ttdoc">Affiche &quot;Arguments : &quot;.</div><div class="ttdef"><b>Definition</b> interpreter.cpp:210</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_ae39fadef59ce35e8e113924820e336d9"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#ae39fadef59ce35e8e113924820e336d9">commandDate</a></div><div class="ttdeci">void commandDate(int day, int month, int year)</div><div class="ttdef"><b>Definition</b> interpreter.cpp:541</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_aeaa463f4923606eced2f7e8022ac054c"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#aeaa463f4923606eced2f7e8022ac054c">printHelpSyntax</a></div><div class="ttdeci">void printHelpSyntax()</div><div class="ttdoc">Affiche &quot;Syntaxe : &quot;.</div><div class="ttdef"><b>Definition</b> interpreter.cpp:207</div></div>
+<div class="ttc" id="ainterpreter_8hpp_html_af2ad04921a585dd627999e819d0d6293"><div class="ttname"><a href="../../db/d42/interpreter_8hpp.html#af2ad04921a585dd627999e819d0d6293">runCommand</a></div><div class="ttdeci">void runCommand()</div><div class="ttdoc">Exécute une commande.</div><div class="ttdef"><b>Definition</b> interpreter.cpp:54</div></div>
+<div class="ttc" id="amain_8hpp_html"><div class="ttname"><a href="../../d0/d00/main_8hpp.html">main.hpp</a></div></div>
+<div class="ttc" id="asettings_8hpp_html"><div class="ttname"><a href="../../d5/d0f/settings_8hpp.html">settings.hpp</a></div></div>
+<div class="ttc" id="asrc_2main_8cpp_html_a1ea5d0cb93f22f7d0fdf804bd68c3326"><div class="ttname"><a href="../../de/dfb/src_2main_8cpp.html#a1ea5d0cb93f22f7d0fdf804bd68c3326">mode</a></div><div class="ttdeci">int mode</div><div class="ttdoc">Mode en cours.</div><div class="ttdef"><b>Definition</b> main.cpp:47</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="../../db/d42/interpreter_8hpp.html">interpreter.hpp</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
+</body>
+</html>

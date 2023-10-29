@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['r1_5fidle_5fstate_0',['R1_IDLE_STATE',['../d8/d6f/SdInfo_8h.html#a180d34bf6496bc49f34e750d3878c528',1,'SdInfo.h']]],
+  ['r1_5fillegal_5fcommand_1',['R1_ILLEGAL_COMMAND',['../d8/d6f/SdInfo_8h.html#a0299085ef0457c2d8714c838beaead80',1,'SdInfo.h']]],
+  ['r1_5fready_5fstate_2',['R1_READY_STATE',['../d8/d6f/SdInfo_8h.html#abd9bae6aca26cbe7e75dac573bb98ed9',1,'SdInfo.h']]],
+  ['r2w_5ffactor_3',['r2w_factor',['../d4/d63/structCSDV2.html#a58bd5e31a21564370b5321ce744c53cf',1,'CSDV2::r2w_factor'],['../da/d7a/structCSDV1.html#a477e3d269e084c6ee559237aefcee729',1,'CSDV1::r2w_factor']]],
+  ['read_5fbl_5flen_4',['read_bl_len',['../da/d7a/structCSDV1.html#ac814673bd138c6e3cffc9cd1f1d89d7c',1,'CSDV1::read_bl_len'],['../d4/d63/structCSDV2.html#a79cb233cef532dc1682e0ef11f7745dc',1,'CSDV2::read_bl_len']]],
+  ['read_5fbl_5fpartial_5',['read_bl_partial',['../d4/d63/structCSDV2.html#acb3ef2206ca2c6c5266c67b695509036',1,'CSDV2::read_bl_partial'],['../da/d7a/structCSDV1.html#ab0943077d01c440bb15aff025a700197',1,'CSDV1::read_bl_partial']]],
+  ['read_5fblk_5fmisalign_6',['read_blk_misalign',['../da/d7a/structCSDV1.html#aa5f31d46dc26c164663fb16acf1dea34',1,'CSDV1::read_blk_misalign'],['../d4/d63/structCSDV2.html#aa4b5351683ccc4331a446dccfa22ba97',1,'CSDV2::read_blk_misalign']]],
+  ['remains_7',['remains',['../dc/de5/timer_8cpp.html#a5f2eb3a2a20c6383f5eebed251cb0f39',1,'remains:&#160;timer.cpp'],['../df/d05/timer_8hpp.html#a5f2eb3a2a20c6383f5eebed251cb0f39',1,'remains:&#160;timer.cpp']]],
+  ['reserved_8',['reserved',['../d5/da8/structCID.html#a458794d915efa88aef06f5b0612895ac',1,'CID']]],
+  ['reserved1_9',['reserved1',['../d9/dda/structfat32BootSector.html#a0a59c59a3f18c1117ffc6a0c25295b9c',1,'fat32BootSector::reserved1'],['../da/d7a/structCSDV1.html#a8fc5b7146910eb474d3ea3af5fbc504b',1,'CSDV1::reserved1'],['../d4/d63/structCSDV2.html#a7778a9786d45cd4efa7bf06d7bded52a',1,'CSDV2::reserved1'],['../d0/db1/FatStructs_8h.html#a2a2556147677ece60b8aadf4a0d608ed',1,'reserved1:&#160;FatStructs.h']]],
+  ['reserved2_10',['reserved2',['../da/d7a/structCSDV1.html#a3b2832468c7e96a55dbe16a7aadcafd3',1,'CSDV1::reserved2'],['../d4/d63/structCSDV2.html#a5151e2d94077d2a1ac8361174e4cd55a',1,'CSDV2::reserved2']]],
+  ['reserved3_11',['reserved3',['../d4/d63/structCSDV2.html#a75924bf9bb5d5789e504a7b2d0dafb52',1,'CSDV2::reserved3'],['../da/d7a/structCSDV1.html#a427423bc33b20c59941db0b25d60aee9',1,'CSDV1::reserved3']]],
+  ['reserved4_12',['reserved4',['../d4/d63/structCSDV2.html#a4f474cd2339283c9a2224eb1259c8e53',1,'CSDV2::reserved4'],['../da/d7a/structCSDV1.html#a8c0aa397613ce7723033f0f8edccf458',1,'CSDV1::reserved4']]],
+  ['reserved5_13',['reserved5',['../da/d7a/structCSDV1.html#ab19ce641d4e1ed12241f3519836c30dc',1,'CSDV1::reserved5'],['../d4/d63/structCSDV2.html#a6beffc3766b7f6cd658e3dad5b7e12f7',1,'CSDV2::reserved5']]],
+  ['reserved6_14',['reserved6',['../d4/d63/structCSDV2.html#ac401478963e75077602ad0ca9f93c98a',1,'CSDV2']]],
+  ['reserved7_15',['reserved7',['../d4/d63/structCSDV2.html#a10ae8595e043b636b4aeaedcefaa4f97',1,'CSDV2']]],
+  ['reservednt_16',['reservednt',['../d7/d3a/structdirectoryEntry.html#afe7d00be85f3b78549b21610050da52b',1,'directoryEntry::reservedNT'],['../d0/db1/FatStructs_8h.html#a937b2d2e4b78ddf9e42b19c754e4f31a',1,'reservedNT:&#160;FatStructs.h']]],
+  ['reservedsectorcount_17',['reservedsectorcount',['../d6/d08/structbiosParmBlock.html#adb4830c345b27293c7d7b97b77f52e01',1,'biosParmBlock::reservedSectorCount'],['../d0/db1/FatStructs_8h.html#a16c854faf567331bbbfb383e6c8df6f5',1,'reservedSectorCount:&#160;FatStructs.h']]],
+  ['root_18',['root',['../d3/d12/classSDLib_1_1SDClass.html#aebbb108b807cb47125209c5ad6aadc47',1,'SDLib::SDClass']]],
+  ['rootdirentrycount_19',['rootdirentrycount',['../d6/d08/structbiosParmBlock.html#a9a1b24bb2dbb3a123c4ffc703954d71d',1,'biosParmBlock::rootDirEntryCount'],['../d0/db1/FatStructs_8h.html#aabe25e54b9c06a9a7393fc6c475d9fa1',1,'rootDirEntryCount:&#160;FatStructs.h']]],
+  ['rootdirentrycount_5f_20',['rootDirEntryCount_',['../d4/d82/classSdVolume.html#a8ace409388fb8ec83f1991f0bb833839',1,'SdVolume']]],
+  ['rootdirstart_5f_21',['rootDirStart_',['../d4/d82/classSdVolume.html#a4f6064483cc59d26bee8c7e7bd0e0587',1,'SdVolume']]]
+];

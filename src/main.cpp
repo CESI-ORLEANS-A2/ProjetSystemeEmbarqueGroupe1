@@ -1,46 +1,97 @@
+/**
+ * @file main.cpp
+ *
+ * @mainpage Station Météo
+ *
+ * @section intro Introduction
+ *
+ * Ce projet est le programme pour une station météo réalisée dans
+ * le cadre d'un bloc d'apprentissage au CESI.
+ *
+ * @section author Auteurs
+ *
+ * Réalisé par :
+ * - Alban ([@0xybo](https://github.com/0xybo))
+ * - Hugo ([@HuHel](https://github.com/HuHel))
+ * - Adam ([@aaben40](https://github.com/aaben40))
+ * - Romain ([@RomainHemart](https://github.com/RomainHemart))
+ * - Matthieu ([@Aureste-o](https://github.com/Aureste-o))
+ *
+ * @section license License
+ *
+ * MIT License
+ *
+ * Copyright (c) 2023 Alban G. (@0xybo), Hugo H. (@HuHel), Adam B. (@aaben40), Romain H. (@RomainHemart), Matthieu M. (@Aureste-o)
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+*/
+
 #include "main.hpp"
 
-int mode = STANDARD_MODE;
-int previousMode = STANDARD_MODE;
+Mode mode = STANDARD_MODE;
+Mode previousMode = STANDARD_MODE;
+#if INTERPRETER
 bool liveMode = false;
+#endif
+float lastMeasurements[NUMBER_OF_SENSORS];
 
-// Contient une représentation (structure) de chaque capteur
 Sensor* sensors[NUMBER_OF_SENSORS];
 
 void setup() {
-    initLED();
-    switchLEDToGreen();
-    initTimer(); // Initialisation des compteurs
+    initSettings();
+#if SETTINGS_IN_EEPROM
+    updateSettingsFromEEPROM();
+#endif
+    initLED(); // Initialisation de la LED
+    initTimer(); // Initialisation du compteur
 
-    Serial.begin(SERIAL_BAUD_RATE); // Initialisation du port série (communication avec l'ordinateur)
-    // TODO Initialisation carte SD
-    // TODO Initialisation GPS => SoftwareSerial
-
-    // TODO mettre dans un fichier boutons.cpp, fonction initButtons
-    pinMode(RED_BUTTON_PIN, INPUT_PULLUP); 
-    pinMode(GREEN_BUTTON_PIN, INPUT_PULLUP);
-
-    // TODO bouttons.cpp, fonction initButtonsInterrupts
-    attachButtonInterrupt(RED_BUTTON_PIN, BUTTON_DELAY, redButtonPressed); // Initialisation des interruptions sur le bouton rouge ainsi que son timer pour le délai
-    attachButtonInterrupt(GREEN_BUTTON_PIN, BUTTON_DELAY, greenButtonPressed); // Initialisation des interruptions sur le bouton vert ainsi que son timer pour le délai
+    initSerial(); // Initialisation du port série
+    initButtons(); // Initialisation des boutons (sans les interruptions)
 
     // Initialisation des capteurs
     initTemperatureSensor();
     initHumiditySensor();
-    // initPressureSensor();
-    // initBrightnessSensor();
-    
-    if (Serial) Serial.println(F("Station Météo v3"));
+    // initPressureSensor(); // TODO Capteur de pression
+    // initBrightnessSensor(); // TODO Capteur de luminosité
+
+    initClock(); // Initialisation de l'horloge
+#if GPS_ENABLED
+    initGPS(); // Initialisation du GPS
+#endif
+
+    if (digitalRead(RED_BUTTON_PIN) == LOW) // Si le bouton rouge est appuyé au démarrage, on passe en mode configuration
+        switchToConfigurationMode();
+    else { // Sinon, on monte la carte SD et on passe la LED en vert
+        mount();
+        switchLEDToGreen();
+    }
 
 #if INTERPRETER // Initialisation de l'interpréteur si activé
     initInterpreter();
 #endif
 
-    if (digitalRead(RED_BUTTON_PIN) == LOW) // Si le bouton rouge est appuyé au démarrage, on passe en mode configuration
-        switchToConfigurationMode();
+    initButtonsInterrupt(); // Initialisation des interruptions des boutons
 }
 
 void loop() {
+
+
 #if INTERPRETER
     runInterpreterStep(); // On exécute une étape de l'interpréteur
 #endif

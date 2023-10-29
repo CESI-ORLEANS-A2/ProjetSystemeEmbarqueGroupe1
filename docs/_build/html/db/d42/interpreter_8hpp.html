@@ -1,0 +1,926 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Station_Méteo_Groupe_1: Référence du fichier /mnt/c/Users/godie/Cours/10. CESI A2/Blocs/01 - Systeme embarque/Livrables/Station_Meteo_Groupe_1/include/interpreter.hpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Station_Méteo_Groupe_1<span id="projectnumber">&#160;v0.0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('db/d42/interpreter_8hpp.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier interpreter.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="../../df/dd7/consts_8hpp_source.html">consts.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d0/d00/main_8hpp_source.html">main.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d5/d0f/settings_8hpp_source.html">settings.hpp</a>&quot;</code><br />
+</div>
+<p><a href="../../db/d42/interpreter_8hpp_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a799af479cee198871c59ddc96e357429" id="r_a799af479cee198871c59ddc96e357429"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a799af479cee198871c59ddc96e357429">initInterpreter</a> ()</td></tr>
+<tr class="memdesc:a799af479cee198871c59ddc96e357429"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise l'interpréteur de commandes.  <br /></td></tr>
+<tr class="separator:a799af479cee198871c59ddc96e357429"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a195759b44546a0cc754b0701e38dceb0" id="r_a195759b44546a0cc754b0701e38dceb0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a195759b44546a0cc754b0701e38dceb0">runInterpreterStep</a> ()</td></tr>
+<tr class="memdesc:a195759b44546a0cc754b0701e38dceb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exécute une étape de l'interpréteur de commandes.  <br /></td></tr>
+<tr class="separator:a195759b44546a0cc754b0701e38dceb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2ad04921a585dd627999e819d0d6293" id="r_af2ad04921a585dd627999e819d0d6293"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2ad04921a585dd627999e819d0d6293">runCommand</a> ()</td></tr>
+<tr class="memdesc:af2ad04921a585dd627999e819d0d6293"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exécute une commande.  <br /></td></tr>
+<tr class="separator:af2ad04921a585dd627999e819d0d6293"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70749195adc0ab8c373020426dcf2800" id="r_a70749195adc0ab8c373020426dcf2800"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a70749195adc0ab8c373020426dcf2800">printPrompt</a> ()</td></tr>
+<tr class="memdesc:a70749195adc0ab8c373020426dcf2800"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche le prompt de l'interpréteur de commandes.  <br /></td></tr>
+<tr class="separator:a70749195adc0ab8c373020426dcf2800"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bb437fc0db3d4ec094570308c3f2634" id="r_a1bb437fc0db3d4ec094570308c3f2634"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1bb437fc0db3d4ec094570308c3f2634">printHelpCommand</a> ()</td></tr>
+<tr class="memdesc:a1bb437fc0db3d4ec094570308c3f2634"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche "Commande : ".  <br /></td></tr>
+<tr class="separator:a1bb437fc0db3d4ec094570308c3f2634"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1004052440c211015986a4d28126b32" id="r_ac1004052440c211015986a4d28126b32"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac1004052440c211015986a4d28126b32">printHelpNeededMode</a> ()</td></tr>
+<tr class="memdesc:ac1004052440c211015986a4d28126b32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche "Mode nécessaire : ".  <br /></td></tr>
+<tr class="separator:ac1004052440c211015986a4d28126b32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5523192e9cd94ef44c51940ac036e0d4" id="r_a5523192e9cd94ef44c51940ac036e0d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5523192e9cd94ef44c51940ac036e0d4">printHelpDesciption</a> ()</td></tr>
+<tr class="memdesc:a5523192e9cd94ef44c51940ac036e0d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche "Description : ".  <br /></td></tr>
+<tr class="separator:a5523192e9cd94ef44c51940ac036e0d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaa463f4923606eced2f7e8022ac054c" id="r_aeaa463f4923606eced2f7e8022ac054c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeaa463f4923606eced2f7e8022ac054c">printHelpSyntax</a> ()</td></tr>
+<tr class="memdesc:aeaa463f4923606eced2f7e8022ac054c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche "Syntaxe : ".  <br /></td></tr>
+<tr class="separator:aeaa463f4923606eced2f7e8022ac054c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae011d37f44de46066864cf0703448dc4" id="r_ae011d37f44de46066864cf0703448dc4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae011d37f44de46066864cf0703448dc4">printHelpArguments</a> ()</td></tr>
+<tr class="memdesc:ae011d37f44de46066864cf0703448dc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche "Arguments : ".  <br /></td></tr>
+<tr class="separator:ae011d37f44de46066864cf0703448dc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21d79800fb2e3d2344bfd49fed0be374" id="r_a21d79800fb2e3d2344bfd49fed0be374"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21d79800fb2e3d2344bfd49fed0be374">printHelpListDash</a> ()</td></tr>
+<tr class="memdesc:a21d79800fb2e3d2344bfd49fed0be374"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche "   - ".  <br /></td></tr>
+<tr class="separator:a21d79800fb2e3d2344bfd49fed0be374"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4ae8a0b29dd151dd9615fe4624faeb3" id="r_aa4ae8a0b29dd151dd9615fe4624faeb3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4ae8a0b29dd151dd9615fe4624faeb3">printUnknownCommand</a> ()</td></tr>
+<tr class="memdesc:aa4ae8a0b29dd151dd9615fe4624faeb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche "Commandes inconnues.\n\r".  <br /></td></tr>
+<tr class="separator:aa4ae8a0b29dd151dd9615fe4624faeb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a026e5a64abbb88b701744e0d024c01c4" id="r_a026e5a64abbb88b701744e0d024c01c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a026e5a64abbb88b701744e0d024c01c4">printBuffer</a> ()</td></tr>
+<tr class="memdesc:a026e5a64abbb88b701744e0d024c01c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche la commande que l'utilisateur est en train d'entrer.  <br /></td></tr>
+<tr class="separator:a026e5a64abbb88b701744e0d024c01c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1087b7cd48d3aa2b14760ee09ff6b440" id="r_a1087b7cd48d3aa2b14760ee09ff6b440"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1087b7cd48d3aa2b14760ee09ff6b440">printModeAlreadyEnabled</a> ()</td></tr>
+<tr class="memdesc:a1087b7cd48d3aa2b14760ee09ff6b440"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche "Ce mode est déja activé.\n\r".  <br /></td></tr>
+<tr class="separator:a1087b7cd48d3aa2b14760ee09ff6b440"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d723129973c7313ad65043948856d75" id="r_a5d723129973c7313ad65043948856d75"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d723129973c7313ad65043948856d75">printSpaces</a> (int n)</td></tr>
+<tr class="memdesc:a5d723129973c7313ad65043948856d75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche " " n fois.  <br /></td></tr>
+<tr class="separator:a5d723129973c7313ad65043948856d75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaedc5b95bfba65d44e923155f955b8f6" id="r_aaedc5b95bfba65d44e923155f955b8f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaedc5b95bfba65d44e923155f955b8f6">printSensorEnabled</a> (int id)</td></tr>
+<tr class="memdesc:aaedc5b95bfba65d44e923155f955b8f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche "Le capteur {{capteur}} a été activé.".  <br /></td></tr>
+<tr class="separator:aaedc5b95bfba65d44e923155f955b8f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31312100ef25f9165049c0f846e0b29c" id="r_a31312100ef25f9165049c0f846e0b29c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a31312100ef25f9165049c0f846e0b29c">printSensorDisabled</a> (int id)</td></tr>
+<tr class="memdesc:a31312100ef25f9165049c0f846e0b29c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche "Le capteur {{capteur}} a été désactivé.".  <br /></td></tr>
+<tr class="separator:a31312100ef25f9165049c0f846e0b29c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab70fe860ba4a27b56de41c78c5e959d0" id="r_ab70fe860ba4a27b56de41c78c5e959d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab70fe860ba4a27b56de41c78c5e959d0">printCommandUnavailableInThisMode</a> ()</td></tr>
+<tr class="memdesc:ab70fe860ba4a27b56de41c78c5e959d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche "Cette commande n'est pas disponible dans ce mode.\n\r".  <br /></td></tr>
+<tr class="separator:ab70fe860ba4a27b56de41c78c5e959d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7378494349f70317d88e1e307ac316c4" id="r_a7378494349f70317d88e1e307ac316c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7378494349f70317d88e1e307ac316c4">commandHelp</a> (char *command)</td></tr>
+<tr class="memdesc:a7378494349f70317d88e1e307ac316c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche la liste des commandes disponibles.  <br /></td></tr>
+<tr class="separator:a7378494349f70317d88e1e307ac316c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1db0af5afe3f0cadbe2dfd723847dc6" id="r_ad1db0af5afe3f0cadbe2dfd723847dc6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1db0af5afe3f0cadbe2dfd723847dc6">commandList</a> ()</td></tr>
+<tr class="memdesc:ad1db0af5afe3f0cadbe2dfd723847dc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche la liste des capteurs disponibles.  <br /></td></tr>
+<tr class="separator:ad1db0af5afe3f0cadbe2dfd723847dc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8821344e018730babb885f0007de9c3c" id="r_a8821344e018730babb885f0007de9c3c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8821344e018730babb885f0007de9c3c">commandLive</a> ()</td></tr>
+<tr class="memdesc:a8821344e018730babb885f0007de9c3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Active ou désactive le mode live.  <br /></td></tr>
+<tr class="separator:a8821344e018730babb885f0007de9c3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8dfd31d8eae69fbe49593d3381f0419a" id="r_a8dfd31d8eae69fbe49593d3381f0419a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8dfd31d8eae69fbe49593d3381f0419a">commandMode</a> (char *<a class="el" href="../../de/dfb/src_2main_8cpp.html#a1ea5d0cb93f22f7d0fdf804bd68c3326">mode</a>)</td></tr>
+<tr class="memdesc:a8dfd31d8eae69fbe49593d3381f0419a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change le mode en cours d'exécution.  <br /></td></tr>
+<tr class="separator:a8dfd31d8eae69fbe49593d3381f0419a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac18787f446013b099d44e6e511e6a23d" id="r_ac18787f446013b099d44e6e511e6a23d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac18787f446013b099d44e6e511e6a23d">commandEnable</a> (int id=NULL)</td></tr>
+<tr class="memdesc:ac18787f446013b099d44e6e511e6a23d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Active un capteur ou tous.  <br /></td></tr>
+<tr class="separator:ac18787f446013b099d44e6e511e6a23d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f9fcb147dc02f20641d045a7921d042" id="r_a3f9fcb147dc02f20641d045a7921d042"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f9fcb147dc02f20641d045a7921d042">commandDisable</a> (int id=NULL)</td></tr>
+<tr class="memdesc:a3f9fcb147dc02f20641d045a7921d042"><td class="mdescLeft">&#160;</td><td class="mdescRight">Désactive un capteur ou tous.  <br /></td></tr>
+<tr class="separator:a3f9fcb147dc02f20641d045a7921d042"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9647627f8d152d2861ca19480521a525" id="r_a9647627f8d152d2861ca19480521a525"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9647627f8d152d2861ca19480521a525">commandSet</a> (char *variable, int value)</td></tr>
+<tr class="memdesc:a9647627f8d152d2861ca19480521a525"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change la valeur d'un paramètre.  <br /></td></tr>
+<tr class="separator:a9647627f8d152d2861ca19480521a525"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d92112d639d2d638c1871a099573aa4" id="r_a8d92112d639d2d638c1871a099573aa4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d92112d639d2d638c1871a099573aa4">commandGet</a> (char *variable)</td></tr>
+<tr class="separator:a8d92112d639d2d638c1871a099573aa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf453c643899912c61595a2a605fbff1" id="r_aaf453c643899912c61595a2a605fbff1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf453c643899912c61595a2a605fbff1">commandReset</a> ()</td></tr>
+<tr class="memdesc:aaf453c643899912c61595a2a605fbff1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Réinitialise les paramètres de la station météo.  <br /></td></tr>
+<tr class="separator:aaf453c643899912c61595a2a605fbff1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a687981deec62674fc1cb84fc1fbc16e1" id="r_a687981deec62674fc1cb84fc1fbc16e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a687981deec62674fc1cb84fc1fbc16e1">commandLast</a> ()</td></tr>
+<tr class="memdesc:a687981deec62674fc1cb84fc1fbc16e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche les dernières données enregistrées.  <br /></td></tr>
+<tr class="separator:a687981deec62674fc1cb84fc1fbc16e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac751ffaa108480a06a370897cbb02f7b" id="r_ac751ffaa108480a06a370897cbb02f7b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac751ffaa108480a06a370897cbb02f7b">commandClock</a> (int hours, int minutes, int seconds)</td></tr>
+<tr class="separator:ac751ffaa108480a06a370897cbb02f7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae39fadef59ce35e8e113924820e336d9" id="r_ae39fadef59ce35e8e113924820e336d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae39fadef59ce35e8e113924820e336d9">commandDate</a> (int day, int month, int year)</td></tr>
+<tr class="separator:ae39fadef59ce35e8e113924820e336d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a8b28e6f852d367aa9eba253f470fb3" id="r_a8a8b28e6f852d367aa9eba253f470fb3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a8b28e6f852d367aa9eba253f470fb3">commandDay</a> (char *day)</td></tr>
+<tr class="separator:a8a8b28e6f852d367aa9eba253f470fb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a69a9e2a8001f9ed97e4c348fdbd406b0" id="r_a69a9e2a8001f9ed97e4c348fdbd406b0"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a69a9e2a8001f9ed97e4c348fdbd406b0">inputBuffer</a> [<a class="el" href="../../df/dd7/consts_8hpp.html#aa9b8dcc02cea15aab8e3d0b7860327a7">INPUT_BUFFER_SIZE</a>]</td></tr>
+<tr class="memdesc:a69a9e2a8001f9ed97e4c348fdbd406b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variable accueillant la commande entrée par l'utilisateur.  <br /></td></tr>
+<tr class="separator:a69a9e2a8001f9ed97e4c348fdbd406b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32baa47b2d04b28b6a2f1060463290fc" id="r_a32baa47b2d04b28b6a2f1060463290fc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a32baa47b2d04b28b6a2f1060463290fc">inputLength</a></td></tr>
+<tr class="memdesc:a32baa47b2d04b28b6a2f1060463290fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Taille le ligne de commandé entrée par l'utilisateur.  <br /></td></tr>
+<tr class="separator:a32baa47b2d04b28b6a2f1060463290fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acffd8eac68177c245e16f6cf4f7951de" id="r_acffd8eac68177c245e16f6cf4f7951de"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acffd8eac68177c245e16f6cf4f7951de">spaceChar</a></td></tr>
+<tr class="memdesc:acffd8eac68177c245e16f6cf4f7951de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Un charactère espace en mémoire Flash.  <br /></td></tr>
+<tr class="separator:acffd8eac68177c245e16f6cf4f7951de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a id="ac751ffaa108480a06a370897cbb02f7b" name="ac751ffaa108480a06a370897cbb02f7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac751ffaa108480a06a370897cbb02f7b">&#9670;&#160;</a></span>commandClock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void commandClock </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>hours</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>minutes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>seconds</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae39fadef59ce35e8e113924820e336d9" name="ae39fadef59ce35e8e113924820e336d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae39fadef59ce35e8e113924820e336d9">&#9670;&#160;</a></span>commandDate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void commandDate </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>day</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>month</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>year</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8a8b28e6f852d367aa9eba253f470fb3" name="a8a8b28e6f852d367aa9eba253f470fb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a8b28e6f852d367aa9eba253f470fb3">&#9670;&#160;</a></span>commandDay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void commandDay </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>day</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3f9fcb147dc02f20641d045a7921d042" name="a3f9fcb147dc02f20641d045a7921d042"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f9fcb147dc02f20641d045a7921d042">&#9670;&#160;</a></span>commandDisable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void commandDisable </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em> = <code>NULL</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Désactive un capteur ou tous. </p>
+<p><a class="el" href="../../de/dfb/src_2main_8cpp.html#a00c21672060721a7d83531d8ea44dede">sensors</a> <a class="el" href="../../de/d32/settings_8cpp.html#a05d845e90afb51e493aa22ca56ae8204">setSetting()</a> <a class="el" href="../../de/d32/settings_8cpp.html#ab4bca7488c7c2b3f4abfed641a260468">getSetting()</a> <a class="el" href="../../df/dd7/consts_8hpp.html#aa8f8564a6944121058f4c4278894ead1">NUMBER_OF_SENSORS</a> </p>
+
+</div>
+</div>
+<a id="ac18787f446013b099d44e6e511e6a23d" name="ac18787f446013b099d44e6e511e6a23d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac18787f446013b099d44e6e511e6a23d">&#9670;&#160;</a></span>commandEnable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void commandEnable </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em> = <code>NULL</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Active un capteur ou tous. </p>
+<p><a class="el" href="../../de/dfb/src_2main_8cpp.html#a00c21672060721a7d83531d8ea44dede">sensors</a> <a class="el" href="../../de/d32/settings_8cpp.html#a05d845e90afb51e493aa22ca56ae8204">setSetting()</a> <a class="el" href="../../de/d32/settings_8cpp.html#ab4bca7488c7c2b3f4abfed641a260468">getSetting()</a> <a class="el" href="../../df/dd7/consts_8hpp.html#aa8f8564a6944121058f4c4278894ead1">NUMBER_OF_SENSORS</a> </p>
+
+</div>
+</div>
+<a id="a8d92112d639d2d638c1871a099573aa4" name="a8d92112d639d2d638c1871a099573aa4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d92112d639d2d638c1871a099573aa4">&#9670;&#160;</a></span>commandGet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void commandGet </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>variable</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7378494349f70317d88e1e307ac316c4" name="a7378494349f70317d88e1e307ac316c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7378494349f70317d88e1e307ac316c4">&#9670;&#160;</a></span>commandHelp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void commandHelp </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>command</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche la liste des commandes disponibles. </p>
+<p>Si le détail des commandes est activé, affiche également les descriptions et les syntaxes des commandes sur demande.</p>
+<p><a class="el" href="../../d2/de2/interpreter_8cpp.html#a1bb437fc0db3d4ec094570308c3f2634">printHelpCommand()</a> <a class="el" href="../../d2/de2/interpreter_8cpp.html#ac1004052440c211015986a4d28126b32">printHelpNeededMode()</a> <a class="el" href="../../d2/de2/interpreter_8cpp.html#a5523192e9cd94ef44c51940ac036e0d4">printHelpDesciption()</a> <a class="el" href="../../d2/de2/interpreter_8cpp.html#aeaa463f4923606eced2f7e8022ac054c">printHelpSyntax()</a> <a class="el" href="../../d2/de2/interpreter_8cpp.html#ae011d37f44de46066864cf0703448dc4">printHelpArguments()</a> <a class="el" href="../../d2/de2/interpreter_8cpp.html#a21d79800fb2e3d2344bfd49fed0be374">printHelpListDash()</a> <a class="el" href="../../d2/de2/interpreter_8cpp.html#a5d723129973c7313ad65043948856d75">printSpaces()</a> <a class="el" href="../../d2/de2/interpreter_8cpp.html#aa4ae8a0b29dd151dd9615fe4624faeb3">printUnknownCommand()</a> </p>
+
+</div>
+</div>
+<a id="a687981deec62674fc1cb84fc1fbc16e1" name="a687981deec62674fc1cb84fc1fbc16e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a687981deec62674fc1cb84fc1fbc16e1">&#9670;&#160;</a></span>commandLast()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void commandLast </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche les dernières données enregistrées. </p>
+<p><a class="el" href="../../de/d25/serial_8cpp.html#a8990c590daf1e654be6a544107bed3a1">printData()</a> </p>
+
+</div>
+</div>
+<a id="ad1db0af5afe3f0cadbe2dfd723847dc6" name="ad1db0af5afe3f0cadbe2dfd723847dc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1db0af5afe3f0cadbe2dfd723847dc6">&#9670;&#160;</a></span>commandList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void commandList </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche la liste des capteurs disponibles. </p>
+<p>Affiche également l'état de chaque capteur.</p>
+<p><a class="el" href="../../de/dfb/src_2main_8cpp.html#a00c21672060721a7d83531d8ea44dede">sensors</a> <a class="el" href="../../df/dd7/consts_8hpp.html#aa8f8564a6944121058f4c4278894ead1">NUMBER_OF_SENSORS</a> </p>
+
+</div>
+</div>
+<a id="a8821344e018730babb885f0007de9c3c" name="a8821344e018730babb885f0007de9c3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8821344e018730babb885f0007de9c3c">&#9670;&#160;</a></span>commandLive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void commandLive </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Active ou désactive le mode live. </p>
+<p><a class="el" href="../../de/dfb/src_2main_8cpp.html#a18c06ec497b8497e569b6d3e32895ab6">liveMode</a> </p>
+
+</div>
+</div>
+<a id="a8dfd31d8eae69fbe49593d3381f0419a" name="a8dfd31d8eae69fbe49593d3381f0419a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8dfd31d8eae69fbe49593d3381f0419a">&#9670;&#160;</a></span>commandMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void commandMode </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>mode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Change le mode en cours d'exécution. </p>
+<p><a class="el" href="../../de/dfb/src_2main_8cpp.html#a1ea5d0cb93f22f7d0fdf804bd68c3326">mode</a> <a class="el" href="../../d9/d88/mode_8cpp.html#ab1950f22ee48516f1137e20ca962a4ff">printMode()</a> <a class="el" href="../../d2/de2/interpreter_8cpp.html#a1087b7cd48d3aa2b14760ee09ff6b440">printModeAlreadyEnabled()</a> <a class="el" href="../../d9/d88/mode_8cpp.html#a5117cd9a1dd27db325ab6540d8d2c983">switchToMode()</a> <a class="el" href="../../df/dd7/consts_8hpp.html#ab48d5e82e21fff4e3ea2eb9c7c30c824">CONFIGURATION_MODE</a> <a class="el" href="../../df/dd7/consts_8hpp.html#af4871982cb2e48da89fdc294a0607cfd">MAINTENANCE_MODE</a> <a class="el" href="../../df/dd7/consts_8hpp.html#a23b69654944d1c87648c834b701467fa">STANDARD_MODE</a> <a class="el" href="../../df/dd7/consts_8hpp.html#a29b55f2b459f523cd008e060c8062887">ECONOMY_MODE</a> </p>
+
+</div>
+</div>
+<a id="aaf453c643899912c61595a2a605fbff1" name="aaf453c643899912c61595a2a605fbff1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf453c643899912c61595a2a605fbff1">&#9670;&#160;</a></span>commandReset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void commandReset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Réinitialise les paramètres de la station météo. </p>
+<p><a class="el" href="../../de/d32/settings_8cpp.html#ac633daaf23d0cb452aaddd6c2a1c60d4">resetSettings()</a> </p>
+
+</div>
+</div>
+<a id="a9647627f8d152d2861ca19480521a525" name="a9647627f8d152d2861ca19480521a525"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9647627f8d152d2861ca19480521a525">&#9670;&#160;</a></span>commandSet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void commandSet </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>variable</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Change la valeur d'un paramètre. </p>
+<p><a class="el" href="../../de/d32/settings_8cpp.html#a0e9c3db9b01c9a667cbe93f8913b933a">settings</a> <a class="el" href="../../de/d32/settings_8cpp.html#a05d845e90afb51e493aa22ca56ae8204">setSetting()</a> <a class="el" href="../../df/dd7/consts_8hpp.html#a4b22ce614859e622108ad3476ca1cf43">NUMBER_OF_SETTINGS</a> </p>
+
+</div>
+</div>
+<a id="a799af479cee198871c59ddc96e357429" name="a799af479cee198871c59ddc96e357429"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a799af479cee198871c59ddc96e357429">&#9670;&#160;</a></span>initInterpreter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initInterpreter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise l'interpréteur de commandes. </p>
+<p><a class="el" href="../../d9/d88/mode_8cpp.html#ab1950f22ee48516f1137e20ca962a4ff">printMode()</a> <a class="el" href="../../d2/de2/interpreter_8cpp.html#a70749195adc0ab8c373020426dcf2800">printPrompt()</a> </p>
+
+</div>
+</div>
+<a id="a026e5a64abbb88b701744e0d024c01c4" name="a026e5a64abbb88b701744e0d024c01c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a026e5a64abbb88b701744e0d024c01c4">&#9670;&#160;</a></span>printBuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printBuffer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche la commande que l'utilisateur est en train d'entrer. </p>
+<p>Cela permet d'afficher à nouveau la commande entrée par l'utilisateur si un message vient à être affiché.</p>
+<p><a class="el" href="../../d2/de2/interpreter_8cpp.html#a69a9e2a8001f9ed97e4c348fdbd406b0">inputBuffer()</a> </p>
+
+</div>
+</div>
+<a id="ab70fe860ba4a27b56de41c78c5e959d0" name="ab70fe860ba4a27b56de41c78c5e959d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab70fe860ba4a27b56de41c78c5e959d0">&#9670;&#160;</a></span>printCommandUnavailableInThisMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printCommandUnavailableInThisMode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche "Cette commande n'est pas disponible dans ce mode.\n\r". </p>
+
+</div>
+</div>
+<a id="ae011d37f44de46066864cf0703448dc4" name="ae011d37f44de46066864cf0703448dc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae011d37f44de46066864cf0703448dc4">&#9670;&#160;</a></span>printHelpArguments()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printHelpArguments </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche "Arguments : ". </p>
+
+</div>
+</div>
+<a id="a1bb437fc0db3d4ec094570308c3f2634" name="a1bb437fc0db3d4ec094570308c3f2634"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bb437fc0db3d4ec094570308c3f2634">&#9670;&#160;</a></span>printHelpCommand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printHelpCommand </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche "Commande : ". </p>
+
+</div>
+</div>
+<a id="a5523192e9cd94ef44c51940ac036e0d4" name="a5523192e9cd94ef44c51940ac036e0d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5523192e9cd94ef44c51940ac036e0d4">&#9670;&#160;</a></span>printHelpDesciption()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printHelpDesciption </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche "Description : ". </p>
+
+</div>
+</div>
+<a id="a21d79800fb2e3d2344bfd49fed0be374" name="a21d79800fb2e3d2344bfd49fed0be374"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21d79800fb2e3d2344bfd49fed0be374">&#9670;&#160;</a></span>printHelpListDash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printHelpListDash </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche "   - ". </p>
+<p><a class="el" href="../../d2/de2/interpreter_8cpp.html#a5d723129973c7313ad65043948856d75">printSpaces()</a> </p>
+
+</div>
+</div>
+<a id="ac1004052440c211015986a4d28126b32" name="ac1004052440c211015986a4d28126b32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1004052440c211015986a4d28126b32">&#9670;&#160;</a></span>printHelpNeededMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printHelpNeededMode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche "Mode nécessaire : ". </p>
+
+</div>
+</div>
+<a id="aeaa463f4923606eced2f7e8022ac054c" name="aeaa463f4923606eced2f7e8022ac054c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeaa463f4923606eced2f7e8022ac054c">&#9670;&#160;</a></span>printHelpSyntax()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printHelpSyntax </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche "Syntaxe : ". </p>
+
+</div>
+</div>
+<a id="a1087b7cd48d3aa2b14760ee09ff6b440" name="a1087b7cd48d3aa2b14760ee09ff6b440"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1087b7cd48d3aa2b14760ee09ff6b440">&#9670;&#160;</a></span>printModeAlreadyEnabled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printModeAlreadyEnabled </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche "Ce mode est déja activé.\n\r". </p>
+
+</div>
+</div>
+<a id="a70749195adc0ab8c373020426dcf2800" name="a70749195adc0ab8c373020426dcf2800"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70749195adc0ab8c373020426dcf2800">&#9670;&#160;</a></span>printPrompt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printPrompt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche le prompt de l'interpréteur de commandes. </p>
+<p><a class="el" href="../../de/dfb/src_2main_8cpp.html#a18c06ec497b8497e569b6d3e32895ab6">liveMode</a> </p>
+
+</div>
+</div>
+<a id="a31312100ef25f9165049c0f846e0b29c" name="a31312100ef25f9165049c0f846e0b29c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31312100ef25f9165049c0f846e0b29c">&#9670;&#160;</a></span>printSensorDisabled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printSensorDisabled </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche "Le capteur {{capteur}} a été désactivé.". </p>
+
+</div>
+</div>
+<a id="aaedc5b95bfba65d44e923155f955b8f6" name="aaedc5b95bfba65d44e923155f955b8f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaedc5b95bfba65d44e923155f955b8f6">&#9670;&#160;</a></span>printSensorEnabled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printSensorEnabled </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche "Le capteur {{capteur}} a été activé.". </p>
+
+</div>
+</div>
+<a id="a5d723129973c7313ad65043948856d75" name="a5d723129973c7313ad65043948856d75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d723129973c7313ad65043948856d75">&#9670;&#160;</a></span>printSpaces()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printSpaces </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche " " n fois. </p>
+
+</div>
+</div>
+<a id="aa4ae8a0b29dd151dd9615fe4624faeb3" name="aa4ae8a0b29dd151dd9615fe4624faeb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4ae8a0b29dd151dd9615fe4624faeb3">&#9670;&#160;</a></span>printUnknownCommand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printUnknownCommand </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche "Commandes inconnues.\n\r". </p>
+
+</div>
+</div>
+<a id="af2ad04921a585dd627999e819d0d6293" name="af2ad04921a585dd627999e819d0d6293"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2ad04921a585dd627999e819d0d6293">&#9670;&#160;</a></span>runCommand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void runCommand </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Exécute une commande. </p>
+<p>Cette fonction est appelée par <a class="el" href="#a195759b44546a0cc754b0701e38dceb0" title="Exécute une étape de l&#39;interpréteur de commandes.">runInterpreterStep()</a> lorsqu'une commande est entrée par l'utilisateur.</p>
+<p><a class="el" href="../../de/dfb/src_2main_8cpp.html#a1ea5d0cb93f22f7d0fdf804bd68c3326">mode</a> <a class="el" href="../../d2/de2/interpreter_8cpp.html#a7378494349f70317d88e1e307ac316c4">commandHelp()</a> <a class="el" href="../../d2/de2/interpreter_8cpp.html#ad1db0af5afe3f0cadbe2dfd723847dc6">commandList()</a> <a class="el" href="../../d2/de2/interpreter_8cpp.html#a8821344e018730babb885f0007de9c3c">commandLive()</a> <a class="el" href="../../d2/de2/interpreter_8cpp.html#a75364f7cd04b20c37e5f5909eedab292">commandMode()</a> <a class="el" href="../../d2/de2/interpreter_8cpp.html#ac18787f446013b099d44e6e511e6a23d">commandEnable()</a> <a class="el" href="../../d2/de2/interpreter_8cpp.html#a3f9fcb147dc02f20641d045a7921d042">commandDisable()</a> <a class="el" href="../../d2/de2/interpreter_8cpp.html#a9647627f8d152d2861ca19480521a525">commandSet()</a> <a class="el" href="../../d2/de2/interpreter_8cpp.html#a8d92112d639d2d638c1871a099573aa4">commandGet()</a> <a class="el" href="../../d2/de2/interpreter_8cpp.html#aaf453c643899912c61595a2a605fbff1">commandReset()</a> <a class="el" href="../../d2/de2/interpreter_8cpp.html#a687981deec62674fc1cb84fc1fbc16e1">commandLast()</a> <a class="el" href="../../d2/de2/interpreter_8cpp.html#ac751ffaa108480a06a370897cbb02f7b">commandClock()</a> <a class="el" href="../../d2/de2/interpreter_8cpp.html#ae39fadef59ce35e8e113924820e336d9">commandDate()</a> <a class="el" href="../../d2/de2/interpreter_8cpp.html#a8a8b28e6f852d367aa9eba253f470fb3">commandDay()</a> <a class="el" href="../../d2/de2/interpreter_8cpp.html#aa4ae8a0b29dd151dd9615fe4624faeb3">printUnknownCommand()</a> <a class="el" href="../../df/dd7/consts_8hpp.html#af4871982cb2e48da89fdc294a0607cfd">MAINTENANCE_MODE</a> </p>
+
+</div>
+</div>
+<a id="a195759b44546a0cc754b0701e38dceb0" name="a195759b44546a0cc754b0701e38dceb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a195759b44546a0cc754b0701e38dceb0">&#9670;&#160;</a></span>runInterpreterStep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void runInterpreterStep </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Exécute une étape de l'interpréteur de commandes. </p>
+<p>Cette fonction est appelée à chaque itération de la boucle principale. Elle permet de lire les commandes entrées par l'utilisateur et d'exécuter les commandes en conséquence.</p>
+<p><a class="el" href="../../de/dfb/src_2main_8cpp.html#a18c06ec497b8497e569b6d3e32895ab6">liveMode</a> <a class="el" href="../../d2/de2/interpreter_8cpp.html#a69a9e2a8001f9ed97e4c348fdbd406b0">inputBuffer</a> <a class="el" href="../../d2/de2/interpreter_8cpp.html#a32baa47b2d04b28b6a2f1060463290fc">inputLength</a> <a class="el" href="../../d2/de2/interpreter_8cpp.html#a70749195adc0ab8c373020426dcf2800">printPrompt()</a> <a class="el" href="../../d2/de2/interpreter_8cpp.html#af2ad04921a585dd627999e819d0d6293">runCommand()</a> <a class="el" href="../../df/dd7/consts_8hpp.html#aa9b8dcc02cea15aab8e3d0b7860327a7">INPUT_BUFFER_SIZE</a> </p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des variables</h2>
+<a id="a69a9e2a8001f9ed97e4c348fdbd406b0" name="a69a9e2a8001f9ed97e4c348fdbd406b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69a9e2a8001f9ed97e4c348fdbd406b0">&#9670;&#160;</a></span>inputBuffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char inputBuffer[<a class="el" href="../../df/dd7/consts_8hpp.html#aa9b8dcc02cea15aab8e3d0b7860327a7">INPUT_BUFFER_SIZE</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Variable accueillant la commande entrée par l'utilisateur. </p>
+
+</div>
+</div>
+<a id="a32baa47b2d04b28b6a2f1060463290fc" name="a32baa47b2d04b28b6a2f1060463290fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32baa47b2d04b28b6a2f1060463290fc">&#9670;&#160;</a></span>inputLength</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int inputLength</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Taille le ligne de commandé entrée par l'utilisateur. </p>
+
+</div>
+</div>
+<a id="acffd8eac68177c245e16f6cf4f7951de" name="acffd8eac68177c245e16f6cf4f7951de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acffd8eac68177c245e16f6cf4f7951de">&#9670;&#160;</a></span>spaceChar</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* spaceChar</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Un charactère espace en mémoire Flash. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="../../db/d42/interpreter_8hpp.html">interpreter.hpp</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
+</body>
+</html>
