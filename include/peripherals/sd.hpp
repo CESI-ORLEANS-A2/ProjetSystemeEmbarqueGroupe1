@@ -33,6 +33,13 @@ void formatLine(char* line);
 
 #if LIVE_MODE_SERIAL_OUTPUT==OUTPUT_CSV
 /**
+ * @brief Formatage d'une ligne d'en-tête pour le format CSV
+ * 
+ * @param line Ligne d'en-tête
+*/
+void formatHeaderLine(char* line);
+
+/**
  * @brief Ajout de l'en-tête CSV à une ligne de données
 */
 void printCSVHeader();

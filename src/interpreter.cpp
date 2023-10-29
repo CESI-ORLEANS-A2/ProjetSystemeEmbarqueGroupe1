@@ -52,7 +52,7 @@ void runInterpreterStep() {
 
 void runCommand() {
     char* commandLine = (char*)malloc(INPUT_BUFFER_SIZE * sizeof(char));
-    char * command = (char*)malloc(10 * sizeof(char));
+    char* command = (char*)malloc(10 * sizeof(char));
     commandLine = inputBuffer;
     command = strsep_P(&commandLine, PSTR(" "));
 
@@ -242,7 +242,52 @@ void printSensorDisabled(int id) {
     Serial.println(F("a été désactivé."));
 }
 void printCommandUnavailableInThisMode() {
-    Serial.print(F("Cette commande n'est pas disponible dans ce mode.\n\r"));
+    Serial.println(F("Cette commande n'est pas disponible dans ce mode.\n\r"));
+}
+void printClock() {
+    Serial.print(F("Heure actuelle : "));
+    Serial.print(getHour());
+    Serial.print(F(":"));
+    Serial.print(getMinute());
+    Serial.print(F(":"));
+    Serial.println(getSecond());
+}
+void printDate() {
+    Serial.print(F("Date actuelle : "));
+    Serial.print(getDay());
+    Serial.print(F("/"));
+    Serial.print(getMonth());
+    Serial.print(F("/"));
+    Serial.println(getYearFull());
+}
+void printDayOfWeek() {
+    Serial.print(F("Jour actuel : "));
+    switch (getDayOfWeek()) {
+    case 1:
+        Serial.println(F("Lundi"));
+        break;
+    case 2:
+        Serial.println(F("Mardi"));
+        break;
+    case 3:
+        Serial.println(F("Mercredi"));
+        break;
+    case 4:
+        Serial.println(F("Jeudi"));
+        break;
+    case 5:
+        Serial.println(F("Vendredi"));
+        break;
+    case 6:
+        Serial.println(F("Samedi"));
+        break;
+    case 7:
+        Serial.println(F("Dimanche"));
+        break;
+    }
+}
+void printDayModified() {
+    Serial.println(F("Jour modifié."));
 }
 
 void commandHelp(char* command) {
@@ -536,6 +581,79 @@ void commandReset() {
 void commandLast() {
     printData();
 }
-void commandClock(int hours, int minutes, int seconds) {} // TODO Commande clock
-void commandDate(int day, int month, int year) {} // TODO Commande date
-void commandDay(char* day) {} // TODO Commande day
+void commandClock(int hours, int minutes, int seconds) {
+    if (!hours || !minutes || !seconds) {
+        readClock();
+        printClock();
+    }
+    else {
+        if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59 || seconds < 0 || seconds > 59) {
+            Serial.print(F("Heure invalide.\n\r"));
+            return;
+        }
+        setHour(hours);
+        setMinute(minutes);
+        setSecond(seconds);
+        Serial.print(F("Heure modifiée.\n\r"));
+    }
+}
+void commandDate(int day, int month, int year) {
+    if (!day || !month || !year) {
+        readClock();
+        printDate();
+    }
+    else {
+        if (day < 1 || day > 31 || month < 1 || month > 12 || year < 0) {
+            Serial.print(F("Date invalide.\n\r"));
+            return;
+        }
+        setDay(day);
+        setMonth(month);
+        setYearFull(year);
+        Serial.println(F("Date modifiée.\n\r"));
+    }
+}
+void commandDay(char* day) {
+    if (!day) {
+        readClock();
+        printDayOfWeek();
+    }
+    else {
+        int sum = 0;
+        for (int i = 0; i < strlen(day); i++)
+            sum += day[i];
+        switch (sum) {
+            case 540:
+                setDayOfWeek(MONDAY);
+                printDayModified();
+                break;
+            case 525:
+                setDayOfWeek(TUESDAY);
+                printDayModified();
+                break;
+            case 843:
+                setDayOfWeek(WEDNESDAY);
+                printDayModified();
+                break;
+            case 529:
+                setDayOfWeek(THURSDAY);
+                printDayModified();
+                break;
+            case 849:
+                setDayOfWeek(FRIDAY);
+                printDayModified();
+                break;
+            case 627:
+                setDayOfWeek(SATURDAY);
+                printDayModified();
+                break;
+            case 825:
+                setDayOfWeek(SUNDAY);
+                printDayModified();
+                break;
+            default:
+                Serial.println(F("Jour invalide.\n\r"));
+                return;
+        }
+    }
+}

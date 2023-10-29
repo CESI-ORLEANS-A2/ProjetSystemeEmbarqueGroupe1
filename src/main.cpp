@@ -44,9 +44,11 @@
 
 #include "main.hpp"
 
-int mode = STANDARD_MODE;
-int previousMode = STANDARD_MODE;
+Mode mode = STANDARD_MODE;
+Mode previousMode = STANDARD_MODE;
+#if INTERPRETER
 bool liveMode = false;
+#endif
 float lastMeasurements[NUMBER_OF_SENSORS];
 
 Sensor* sensors[NUMBER_OF_SENSORS];
@@ -88,6 +90,8 @@ void setup() {
 }
 
 void loop() {
+
+
 #if INTERPRETER
     runInterpreterStep(); // On exécute une étape de l'interpréteur
 #endif

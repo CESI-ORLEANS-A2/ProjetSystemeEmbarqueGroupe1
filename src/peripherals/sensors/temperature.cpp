@@ -1,9 +1,5 @@
 #include "peripherals/sensors/temperature.hpp"
 
-extern int mode;
-extern int previousMode;
-extern Sensor* sensors[NUMBER_OF_SENSORS];
-
 void initTemperatureSensor() {
     initBME();
     sensors[TEMPERATURE_SENSOR] = new Sensor(

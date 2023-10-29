@@ -5,8 +5,10 @@
 void redButtonPressed() {
     switch (mode) {
     case STANDARD_MODE:
+#if INTERPRETER
         // On active le mode live puisqu'on utilise les boutons pour changer de mode
         liveMode = true;
+#endif
 
         Serial.println();
         switchToMode(MAINTENANCE_MODE);
@@ -17,8 +19,10 @@ void redButtonPressed() {
 #endif
         break;
     case ECONOMY_MODE:
+#if INTERPRETER
         // On active le mode live puisqu'on utilise les boutons pour changer de mode
         liveMode = true;
+#endif
 
         Serial.println();
         switchToMode(MAINTENANCE_MODE);
@@ -31,7 +35,9 @@ void redButtonPressed() {
     case MAINTENANCE_MODE:
         switch (previousMode) {
         case ECONOMY_MODE:
+#if INTERPRETER
             stopLiveMode(); // Met fin au mode live
+#endif
 
             Serial.println();
             switchToMode(ECONOMY_MODE);
@@ -41,7 +47,9 @@ void redButtonPressed() {
 #endif
             break;
         case STANDARD_MODE:
+#if INTERPRETER
             stopLiveMode(); // Met fin au mode live
+#endif
 
             Serial.println();
             switchToMode(STANDARD_MODE);
@@ -82,14 +90,19 @@ void greenButtonPressed() {
     }
 }
 
+#if INTERPRETER
 void stopLiveMode() {
     if (!liveMode) return;
     liveMode = false;
     Serial.println(F("Fin du mode live"));
 }
+#endif
 
 void switchToMode(int newMode) {
+#if INTERPRETER
     if (previousMode == MAINTENANCE_MODE) stopLiveMode();
+#endif
+
     switch (newMode) {
     case STANDARD_MODE:
         switchToStandardMode();

@@ -4,6 +4,7 @@
 #include <Arduino.h>
 
 #include "consts.hpp"
+#include "debugTools.hpp"
 
 #if INTERPRETER
 #include "interpreter.hpp"
@@ -31,7 +32,13 @@
 #include "peripherals/sensors/pressure.hpp"
 #include "peripherals/sensors/brightness.hpp"
 
-void restart();
+enum Mode {
+    STANDARD_MODE,
+    ECONOMY_MODE,
+    CONFIGURATION_MODE,
+    MAINTENANCE_MODE,
+    ERROR_MODE
+};
 
 /**
  * @brief Mode en cours 
@@ -43,7 +50,7 @@ void restart();
  * - CONFIGURATION_MODE
  * - MAINTENANCE_MODE
  */
-extern int mode;
+extern Mode mode;
 /**
  * @brief Dernier mode; pour revenir au mode précédent
  *
@@ -54,7 +61,7 @@ extern int mode;
  * - CONFIGURATION_MODE
  * - MAINTENANCE_MODE
  */
-extern int previousMode;
+extern Mode previousMode;
 /**
  * @brief Contient une représentation (class) de chaque capteur
  */
@@ -67,5 +74,7 @@ extern bool liveMode;
  * @brief 
  */
 extern float lastMeasurements[NUMBER_OF_SENSORS];
+
+int freeRam();
 
 #endif

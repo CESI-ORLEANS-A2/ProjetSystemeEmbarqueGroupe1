@@ -1,9 +1,5 @@
 #include "peripherals/sensors/pressure.hpp"
 
-extern int mode;
-extern int previousMode;
-extern Sensor* sensors[NUMBER_OF_SENSORS];
-
 void initPressureSensor() {
     initBME();
     sensors[PRESSURE_SENSOR] = new Sensor(

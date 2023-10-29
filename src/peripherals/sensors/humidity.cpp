@@ -1,9 +1,5 @@
 #include "peripherals/sensors/humidity.hpp"
 
-extern int mode;
-extern int previousMode;
-extern Sensor* sensors[NUMBER_OF_SENSORS];
-
 void initHumiditySensor() {
     initBME();
     sensors[HUMIDITY_SENSOR] = new Sensor(

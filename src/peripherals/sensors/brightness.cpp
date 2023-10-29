@@ -1,9 +1,5 @@
 #include "peripherals/sensors/brightness.hpp"
 
-extern int mode;
-extern int previousMode;
-extern Sensor* sensors[NUMBER_OF_SENSORS];
-
 void initBrightnessSensor() {
     sensors[BRIGHTNESS_SENSOR] = new Sensor(
         BRIGHTNESS_SENSOR_NAME,

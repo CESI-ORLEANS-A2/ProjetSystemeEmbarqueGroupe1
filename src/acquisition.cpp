@@ -59,11 +59,16 @@ void acquisition(void (*callback)()) {
     else
         GPSCounter--;
 #endif
-
+    
     if (readClock()) {
         clockError = false;
     }
-
+    // Serial.print("E : ");
+    // Serial.print(numberOfErrors);
+    // Serial.print(" C : ");
+    // Serial.print(clockError);
+    // Serial.print(" U : ");
+    // Serial.println(underAcquisition);
     // Si il n'y a plus d'erreur, on arrête l'acquisition et on appelle le callback
     if (numberOfErrors == 0 &&
 #if GPS_ENABLED

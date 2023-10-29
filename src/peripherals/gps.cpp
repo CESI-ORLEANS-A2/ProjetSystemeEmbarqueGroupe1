@@ -30,5 +30,6 @@ bool readGPS() {
         free(line);
         return true;
     }
+    free(line);
     return false;
 }

@@ -37,6 +37,11 @@
 */
 #define GPS_ENABLED false
 
+// FORMATS DE SORTIE
+/** @brief Le format de sortie dans le port série est du JSON */
+#define OUTPUT_JSON 0
+/** @brief Le format de sortie dans le port série est du CSV */
+#define OUTPUT_CSV 1 
 /**
  * @brief Format de sortie utilisé en mode live (OUTPUT_JSON ou OUTPUT_CSV)
  *
@@ -49,7 +54,7 @@
  * plus de place en mémoire Flash.
  * Le format CSV est plus difficile à traiter pour un ordinateur, mais prend moins de place.
  */
-#define LIVE_MODE_SERIAL_OUTPUT OUTPUT_JSON
+#define LIVE_MODE_SERIAL_OUTPUT OUTPUT_CSV
 #define MAX_NAME_LENGTH 20
 
 // PARAMETRES
@@ -110,19 +115,11 @@
 /**
  * @brief Taille maximale d'une ligne de données à enregistrer sur la carte SD ou à afficher dans le port série
 */
+#if LIVE_MODE_SERIAL_OUTPUT==OUTPUT_JSON
+#define MAX_LINE_SIZE 200
+#else 
 #define MAX_LINE_SIZE 100
-
-// MODES
-/** @brief Mode standard */
-#define STANDARD_MODE 0
-/** @brief Mode économique */
-#define ECONOMY_MODE 1
-/** @brief Mode configuration */
-#define CONFIGURATION_MODE 2
-/** @brief Mode maintenance */
-#define MAINTENANCE_MODE 3
-/** @brief Mode erreur */
-#define ERROR_MODE 4
+#endif
 
 // ERRORS
 /** @brief Erreur de communication avec l'horloge RTC */
@@ -141,12 +138,6 @@
 #define ERROR_ACQUISITION_TIMEOUT 6
 /** @brief Erreur inconnue */
 #define UNKNOWN_ERROR 7
-
-// FORMATS DE SORTIE
-/** @brief Le format de sortie dans le port série est du JSON */
-#define OUTPUT_JSON 0
-/** @brief Le format de sortie dans le port série est du CSV */
-#define OUTPUT_CSV 1 
 
 // PINS
 /** @brief Pin du bouton rouge, doit être une pin d'interruption */

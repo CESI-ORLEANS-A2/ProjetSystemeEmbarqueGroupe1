@@ -5,6 +5,17 @@
 #include "main.hpp"
 #include "settings.hpp"
 
+enum DayOfWeek {
+    NOT_A_DAY,
+    MONDAY,
+    TUESDAY,
+    WEDNESDAY,
+    THURSDAY,
+    FRIDAY,
+    SATURDAY,
+    SUNDAY
+};
+
 /**
  * @brief Variable accueillant la commande entrée par l'utilisateur.
 */
@@ -132,6 +143,66 @@ void printSensorDisabled(int id);
  * @brief Affiche "Cette commande n'est pas disponible dans ce mode.\n\r"
 */
 void printCommandUnavailableInThisMode();
+#if INTERPRETER
+/**
+ * @brief Affiche l'heure enregistrée sous le format "hh:mm:ss".
+ *
+ * Cette heure peut être modifiée grâce à la commande "clock hh mm ss".
+*/
+void printClock();
+#else 
+/**
+ * @brief Affiche l'heure enregistrée sous le format "hh:mm:ss".
+ *
+ * Cette heure peut être modifiée grâce à la commande "CLOCK=hh:mm:ss".
+*/
+void printClock();
+#endif
+#if INTERPRETER
+/**
+ * @brief Affiche la date enregistrée sous le format "jj/mm/aaaa".
+ *
+ * Cette date peut être modifiée grâce à la commande "date jj mm aaaa".
+*/
+void printDate();
+#else
+/**
+ * @brief Affiche la date enregistrée sous le format "jj/mm/aaaa".
+ *
+ * Cette date peut être modifiée grâce à la commande "DATE=jj/mm/aaaa".
+*/
+void printDate();
+#endif
+#if INTERPRETER
+/**
+ * @brief Affiche le jour de la semaine enregistré.
+ *
+ * Ce jour peut être modifié grâce à la commande "day [lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche]".
+*/
+void printDayOfWeek();
+#else
+/**
+ * @brief Affiche le jour de la semaine enregistré.
+ *
+ * Ce jour peut être modifié grâce à la commande "DAY=[MON|TUE|WED|THU|FRI|SAT|SUN]".
+*/
+void printDayOfWeek();
+#endif
+#if INTERPRETER
+/**
+ * @brief Affiche "Jour modifié.".
+ *
+ * Ce jour peut être modifié grâce à la commande "day [lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche]".
+*/
+void printDayModified();
+#else
+/**
+ * @brief Affiche "Jour modifié.".
+ *
+ * Ce jour peut être modifié grâce à la commande "DAY=[MON|TUE|WED|THU|FRI|SAT|SUN]".
+*/
+void printDayModified();
+#endif
 
 /**
  * @brief Affiche la liste des commandes disponibles.
