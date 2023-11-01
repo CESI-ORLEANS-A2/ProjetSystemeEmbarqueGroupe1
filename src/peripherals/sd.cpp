@@ -23,13 +23,21 @@ void getFileName(char* fileName) {
 }
 
 void saveData() {
-    char line[MAX_LINE_SIZE] = "";
-    char fileName[20] = "";
+    if (SD.bytesPerCluster() * SD.freeClusterCount() < MIN_SD_FREE_BYTES) {
+        switchToErrorMode(ERROR_SD_FULL);
+        return;
+    }
+
+    char line[MAX_LINE_SIZE];
+    char fileName[20];
     formatLine(line);
     getFileName(fileName);
 
     File32 dataFile = SD.open(fileName, FILE_WRITE);
-    while (dataFile && dataFile.size() + strlen(line) + 1 > getSetting(SETTING_FILE_MAX_SIZE)) {
+    while (dataFile && dataFile.size() > getSetting(SETTING_FILE_MAX_SIZE)) { //  + strlen(line) + 1
+        Serial.print(F("Révision ")); Serial.println(revisionNumber);
+        Serial.print(F("Taille du fichier ")); Serial.println(dataFile.size());
+        Serial.print(F("Taille max ")); Serial.println(getSetting(SETTING_FILE_MAX_SIZE));
         dataFile.close();
 
         revisionNumber++;
@@ -40,7 +48,7 @@ void saveData() {
     if (dataFile) {
 #if LIVE_MODE_SERIAL_OUTPUT==OUTPUT_CSV
         if (dataFile.size() == 0) {
-            char headerLine[MAX_LINE_SIZE] = "";
+            char headerLine[MAX_LINE_SIZE];
             formatHeaderLine(headerLine);
             dataFile.println(headerLine);
         }
@@ -126,7 +134,7 @@ void formatHeaderLine(char* line) {
     strcat_P(line, PSTR("north;west;"));
 #endif
     for (int i = 0; i < NUMBER_OF_SENSORS; i++) {
-        strcat_P(line, sensors[i]->name);
+        strcat_P(line, sensors[i].name);
         if (i < NUMBER_OF_SENSORS - 1) strcat_P(line, PSTR(";"));
     }
 }

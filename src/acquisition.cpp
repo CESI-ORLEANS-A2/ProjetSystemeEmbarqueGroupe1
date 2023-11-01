@@ -3,13 +3,9 @@
 unsigned long previousAcquisition = NULL;
 bool errors[NUMBER_OF_SENSORS];
 bool underAcquisition = false;
-int numberOfErrors = NUMBER_OF_SENSORS;
+int numberOfErrors;
 #if GPS_ENABLED
 bool GPSError = true;
-#endif
-bool clockError = true;
-
-#if GPS_ENABLED
 int GPSCounter;
 #endif
 
@@ -27,21 +23,25 @@ void acquisition(void (*callback)()) {
             // Démarrage d'une nouvelle acquisition
             underAcquisition = true;
             previousAcquisition = millis();
+            numberOfErrors = 0;
             // Réinitialisation du tableau erreurs
             for (int i = 0; i < NUMBER_OF_SENSORS; i++) {
                 errors[i] = true;
+                if (getSetting(sensors[i].enabled)) numberOfErrors++; // Si le capteur n'est pas activé, on passe au suivant
             }
         }
     }
 
     // Acquisition des données
     for (int i = 0; i < NUMBER_OF_SENSORS; i++) {
-        if (!getSetting(sensors[i]->enabled)) continue; // Si le capteur n'est pas activé, on passe au suivant
-        if (mode == ECONOMY_MODE && !getSetting(sensors[i]->economy)) continue; // Si le capteur n'est pas activé en mode économique, on passe au suivant
+        if (!getSetting(sensors[i].enabled)) continue; // Si le capteur n'est pas activé, on passe au suivant
+#if INTERPRETER
+        if (mode == ECONOMY_MODE && !getSetting(sensors[i].economy)) continue; // Si le capteur n'est pas activé en mode économique, on passe au suivant
+#endif
         if (!errors[i]) continue; // Si le capteur n'est pas en erreur, on passe au suivant
 
         // Acquisition d'un capteur
-        lastMeasurements[i] = sensors[i]->acquisition();
+        lastMeasurements[i] = sensors[i].measure();
         if (lastMeasurements[i] != ACQUISITION_ERROR_VALUE) {
             errors[i] = false;
             numberOfErrors--;
@@ -59,29 +59,21 @@ void acquisition(void (*callback)()) {
     else
         GPSCounter--;
 #endif
-    
-    if (readClock()) {
-        clockError = false;
-    }
-    // Serial.print("E : ");
-    // Serial.print(numberOfErrors);
-    // Serial.print(" C : ");
-    // Serial.print(clockError);
-    // Serial.print(" U : ");
-    // Serial.println(underAcquisition);
+
+    readClock();
+
+    Serial.print(F("Acquisition : "));Serial.print(millis() - previousAcquisition);Serial.println(F("ms"));
+    Serial.print(F("Erreurs : "));Serial.println(numberOfErrors);
     // Si il n'y a plus d'erreur, on arrête l'acquisition et on appelle le callback
-    if (numberOfErrors == 0 &&
+    if (numberOfErrors == 0
 #if GPS_ENABLED
-        !GPSError &&
+        && !GPSError
 #endif
-        !clockError
         ) {
         underAcquisition = false;
-        numberOfErrors = NUMBER_OF_SENSORS;
 #if GPS_ENABLED
         GPSError = true;
 #endif
-        clockError = true;
         // Appel du callback car toutes les données ont été acquise sans erreur
         if (callback != NULL)
             (*callback)();

@@ -5,17 +5,18 @@
 
 extern DS1307 clock;
 
-void initClock();
-bool readClock();
+#define initClock() clock.begin()
+#define readClock() clock.getTime()
 
-int getHour();
-int getMinute();
-int getSecond();
-int getDay();
-int getMonth();
-int getYear();
-int getYearFull();
-int getDayOfWeek();
+#define getHour() clock.hour
+#define getMinute() clock.minute
+#define getSecond() clock.second
+#define getDay() clock.dayOfMonth
+#define getMonth() clock.month
+#define getYear() clock.year
+#define getYearFull() clock.year + 2000
+#define getDayOfWeek() clock.dayOfWeek
+
 void setHour(int hour);
 void setMinute(int minute);
 void setSecond(int second);

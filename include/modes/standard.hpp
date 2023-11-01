@@ -5,5 +5,3 @@
 void switchToStandardMode();
 void quitStandardMode();
 void runStandardModeStep();
-
-void printSwitchToStandard();

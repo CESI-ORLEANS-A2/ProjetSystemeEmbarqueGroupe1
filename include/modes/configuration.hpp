@@ -16,8 +16,8 @@ void switchToConfigurationMode();
 void quitConfigurationMode();
 void runConfigurationModeStep();
 
-void printSwitchToConfiguration();
-
 void updateLastActivity();
+
+void printInvalidValue();
 
 #endif

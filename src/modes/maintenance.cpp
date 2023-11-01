@@ -6,6 +6,10 @@ void switchToMaintenanceMode() {
     switchLEDToYellow();
 
     unmount();
+
+#if !INTERPRETER
+    printCSVHeader();
+#endif
 }
 void quitMaintenanceMode() {
     mount();
@@ -28,9 +32,8 @@ void runMaintenanceModeStep() {
     acquisition(&printData);
 #endif
 };
-void printSwitchToMaintenance() {
-    Serial.println(F("Passage en mode maintenance"));
-}
+
+#if INTERPRETER
 void printLiveMode() {
     Serial.println(F("Mode live activé"));
 
@@ -38,3 +41,4 @@ void printLiveMode() {
     printCSVHeader();
 #endif
 }
+#endif

@@ -1,14 +1,15 @@
 #include "interpreter.hpp"
 
+#if INTERPRETER
 char inputBuffer[INPUT_BUFFER_SIZE];
 int inputLength = 0;
 
 void initInterpreter() {
-
-    Serial.print(F("\n\r"
-        "Bienvenue dans l'invite de commande de la station météo !\n\r"
-        "Pour afficher toutes les commandes disponibles: taper 'help'.\n\r"
-        "Mode actuel : "));
+    Serial.println(F("Bienvenue dans l'invite de commande de la station météo !"));
+#if COMMAND_HELP
+    Serial.println(F("Commandes disponibles: taper 'help'"));
+#endif
+    Serial.print(F("Mode actuel : "));
     printMode();
 
     printPrompt();
@@ -53,43 +54,48 @@ void runInterpreterStep() {
 void runCommand() {
     char* commandLine = (char*)malloc(INPUT_BUFFER_SIZE * sizeof(char));
     char* command = (char*)malloc(10 * sizeof(char));
-    commandLine = inputBuffer;
-    command = strsep_P(&commandLine, PSTR(" "));
+    strcpy(commandLine, inputBuffer);
+    strcpy(command, strsep_P(&commandLine, PSTR(" ")));
 
-    if (strcmp_P(command, PSTR("help")) == 0) {
+    int sum = 0; // Calcul de la somme des caractères de la commande pour un switch plus rapide
+    for (int i = 0; i < (int)strlen(command); i++)
+        sum += command[i];
+
+    switch (sum) {
+#if COMMAND_HELP
+    case 425: // help
         commandHelp(strsep_P(&commandLine, PSTR(" ")));
-    }
-    else if (strcmp_P(command, PSTR("list")) == 0) {
+        break;
+#endif
+    case 444: // list
         commandList();
-    }
-    else if (strcmp_P(command, PSTR("live")) == 0) {
-        if (mode != MAINTENANCE_MODE) {
+        break;
+    case 432: // live
+        if (mode != MAINTENANCE_MODE)
             printCommandUnavailableInThisMode();
-        }
         else
             commandLive();
-    }
-    else if (strcmp_P(command, PSTR("mode")) == 0) {
+        break;
+    case 421: // mode
         commandMode(strsep_P(&commandLine, PSTR(" ")));
-    }
-    else if (strcmp_P(command, PSTR("enable")) == 0) {
-        if (mode != CONFIGURATION_MODE) {
+        break;
+#if COMMAND_ENABLE
+    case 615: // enable
+        if (mode != CONFIGURATION_MODE)
             printCommandUnavailableInThisMode();
-        }
         else
             commandEnable(atoi(strsep_P(&commandLine, PSTR(" "))));
-    }
-    else if (strcmp_P(command, PSTR("disable")) == 0) {
-        if (mode != CONFIGURATION_MODE) {
+        break;
+    case 724: // disable
+        if (mode != CONFIGURATION_MODE)
             printCommandUnavailableInThisMode();
-        }
         else
             commandDisable(atoi(strsep_P(&commandLine, PSTR(" "))));
-    }
-    else if (strcmp_P(command, PSTR("set")) == 0) {
-        if (mode != CONFIGURATION_MODE) {
+        break;
+#endif
+    case 332: // set
+        if (mode != CONFIGURATION_MODE)
             printCommandUnavailableInThisMode();
-        }
         else {
             char* name, * value;
             name = (char*)malloc(20 * sizeof(char));
@@ -103,28 +109,29 @@ void runCommand() {
             free(name);
             free(value);
         }
-    }
-    else if (strcmp_P(command, PSTR("get")) == 0) {
-        if (mode != CONFIGURATION_MODE) {
+        break;
+#if COMMAND_GET
+    case 320: // get
+        if (mode != CONFIGURATION_MODE)
             printCommandUnavailableInThisMode();
-        }
         else
             commandGet(strsep_P(&commandLine, PSTR(" ")));
-    }
-    else if (strcmp_P(command, PSTR("reset")) == 0) {
-        if (mode != CONFIGURATION_MODE) {
+        break;
+#endif
+    case 547: // reset
+        if (mode != CONFIGURATION_MODE)
             printCommandUnavailableInThisMode();
-        }
         else
             commandReset();
-    }
-    else if (strcmp_P(command, PSTR("last")) == 0) {
+        break;
+#if COMMAND_LAST
+    case 436: // last
         commandLast();
-    }
-    else if (strcmp_P(command, PSTR("clock")) == 0) {
-        if (mode != CONFIGURATION_MODE) {
+        break;
+#endif
+    case 524: // clock
+        if (mode != CONFIGURATION_MODE)
             printCommandUnavailableInThisMode();
-        }
         else {
             char* hours, * minutes, * seconds;
             hours = (char*)malloc(3 * sizeof(char));
@@ -141,11 +148,11 @@ void runCommand() {
             free(minutes);
             free(seconds);
         }
-    }
-    else if (strcmp_P(command, PSTR("date")) == 0) {
-        if (mode != CONFIGURATION_MODE) {
+        break;
+    case 414: // date
+        if (mode != CONFIGURATION_MODE)
             printCommandUnavailableInThisMode();
-        }
+
         else {
             char* day, * month, * year;
             day = (char*)malloc(3 * sizeof(char));
@@ -162,28 +169,19 @@ void runCommand() {
             free(month);
             free(year);
         }
-    }
-    else if (strcmp_P(command, PSTR("day")) == 0) {
-        if (mode != CONFIGURATION_MODE) {
+        break;
+    case 318: // day
+        if (mode != CONFIGURATION_MODE)
             printCommandUnavailableInThisMode();
-        }
         else
             commandDay(strsep_P(&commandLine, PSTR(" ")));
-    }
-#if SETTINGS_IN_EEPROM
-    else if (strcmp_P(command, PSTR("eeprom")) == 0) {
-        long value;
-        for (int i = 0; i < EEPROM.length(); i++) {
-            Serial.print(i);
-            Serial.print(" : ");
-            Serial.print(EEPROM.get(i, value));
-            Serial.print("\n");
-        }
+    case 774: // version
+        printVersion();
         Serial.println();
-    }
-#endif
-    else {
+        break;
+    default:
         printUnknownCommand();
+        break;
     }
 
     free(commandLine);
@@ -194,6 +192,10 @@ void printPrompt() {
     if (!liveMode)
         Serial.print(F("\n\r> "));
 }
+void printBuffer() {
+    Serial.print(inputBuffer);
+}
+#if COMMAND_HELP
 void printHelpCommand() {
     Serial.print(F("Commande : "));
 }
@@ -210,58 +212,47 @@ void printHelpArguments() {
     Serial.print(F("Arguments :"));
 }
 void printHelpListDash() {
-    printSpaces(3);
-    Serial.print(F("-"));
-    printSpaces(1);
+    Serial.print(F("   - "));
 }
+#endif
 void printUnknownCommand() {
-    Serial.print(F("Commande inconnue.\n\r"));
-}
-void printBuffer() {
-    Serial.print(inputBuffer);
+    Serial.println(F("Inconnue"));
 }
 void printModeAlreadyEnabled() {
-    Serial.print(F("Ce mode est déjà activé.\n\r"));
-}
-void printSpaces(int n) {
-    for (int i = 0; i < n; i++)
-        Serial.print(F(" "));
+    Serial.println(F("Déjà en cours"));
 }
 void printSensorEnabled(int id) {
-    char* name;
-    strcpy_P(name, sensors[id]->name);
-    Serial.print(F("Le capteur "));
+    char name[MAX_NAME_LENGTH];
+    strcpy_P(name, sensors[id].name);
+    Serial.print(F("Capteur "));
     Serial.print(name);
-    Serial.println(F("a été activé."));
+    Serial.println(F(" activé"));
 }
 void printSensorDisabled(int id) {
-    char* name;
-    strcpy_P(name, sensors[id]->name);
-    Serial.print(F("Le capteur "));
+    char name[MAX_NAME_LENGTH];
+    strcpy_P(name, sensors[id].name);
+    Serial.print(F("Capteur "));
     Serial.print(name);
-    Serial.println(F("a été désactivé."));
+    Serial.println(F(" désactivé"));
 }
 void printCommandUnavailableInThisMode() {
-    Serial.println(F("Cette commande n'est pas disponible dans ce mode.\n\r"));
+    Serial.println(F("Indisponible dans ce mode"));
 }
 void printClock() {
-    Serial.print(F("Heure actuelle : "));
     Serial.print(getHour());
-    Serial.print(F(":"));
+    Serial.print(':');
     Serial.print(getMinute());
-    Serial.print(F(":"));
+    Serial.print(':');
     Serial.println(getSecond());
 }
 void printDate() {
-    Serial.print(F("Date actuelle : "));
     Serial.print(getDay());
-    Serial.print(F("/"));
+    Serial.print('/');
     Serial.print(getMonth());
-    Serial.print(F("/"));
+    Serial.print('/');
     Serial.println(getYearFull());
 }
 void printDayOfWeek() {
-    Serial.print(F("Jour actuel : "));
     switch (getDayOfWeek()) {
     case 1:
         Serial.println(F("Lundi"));
@@ -287,195 +278,226 @@ void printDayOfWeek() {
     }
 }
 void printDayModified() {
-    Serial.println(F("Jour modifié."));
+    Serial.println(F("Jour modifié"));
 }
 
+#if COMMAND_HELP
 void commandHelp(char* command) {
     if (!command) {
-        Serial.print(F("Liste des commandes disponibles :\n\r"
+        Serial.println(F("Liste des commandes disponibles :"));
 #if DETAILED_HELP_COMMAND
-            " - help [command?] : Affiche ce menu.\n\r"
-#else
-            " - help : Affiche ce menu.\n\r"
+        printHelpListDash();Serial.println(F("help [command?]"));
+        printHelpListDash();Serial.println(F("list"));
+        printHelpListDash();Serial.println(F("live"));
+#if COMMAND_LAST
+        printHelpListDash();Serial.println(F("last"));
 #endif
-            " - list : Affiche la liste des capteurs disponibles.\n\r"
-            " - live : Affiche les dernières données récoltées en temps réel.\n\r" // NOTE seconde ?
-            " - last : Affiche une fois les dernières données récoltées.\n\r"
-            " - enable [id?] : Active un ou plusieurs capteurs.\n\r"
-            " - disable [id?] : Désactive un ou plusieurs capteurs.\n\r"
-            " - set [name] [value] : Modifie les paramètres.\n\r"
-            " - get [name] : Affiche la valeur d'un paramètre.\n\r"
-            " - mode [mode?] : Change le mode de la station météo.\n\r"
-            " - reset : Réinitialise les paramètres.\n\r"
-            " - clock [hours?] [minutes?] [seconds?] : Affiche ou change l'heure.\n\r"
-            " - date [day?] [month?] [year?] : Affiche ou change la date.\n\r"
-            " - day [day?] : Affiche ou change le jour actuel.\n\r"
-        ));
+#if COMMAND_ENABLE
+        printHelpListDash();Serial.println(F("enable [id?]"));
+        printHelpListDash();Serial.println(F("disable [id?]"));
+#endif
+        printHelpListDash();Serial.println(F("set [name] [value]"));
+#if COMMAND_GET
+        printHelpListDash();Serial.println(F("get [name]"));
+#endif
+        printHelpListDash();Serial.println(F("mode [mode?]"));
+        printHelpListDash();Serial.println(F("reset"));
+        printHelpListDash();Serial.println(F("clock [hours?] [minutes?] [seconds?]"));
+        printHelpListDash();Serial.println(F("date [day?] [month?] [year?]"));
+        printHelpListDash();Serial.println(F("day [day?]"));
+        printHelpListDash();Serial.println(F("version"))
+#else 
+        Serial.println(F(" - help : Affiche ce menu"));
+        Serial.println(F(" - list : Affiche la liste des capteurs disponibles"));
+        Serial.println(F(" - live : Affiche les dernières données récoltées en temps réel"));
+#if COMMAND_LAST
+        Serial.println(F(" - last : Affiche une fois les dernières données récoltées"));
+#endif
+#if COMMAND_ENABLE
+        Serial.println(F(" - enable [id?] : Active un ou plusieurs capteurs"));
+        Serial.println(F(" - disable [id?] : Désactive un ou plusieurs capteurs"));
+#endif 
+        Serial.println(F(" - set [name] [value] : Modifie les paramètres"));
+#if COMMAND_GET
+        Serial.println(F(" - get [name] : Affiche la valeur d'un paramètre"));
+#endif
+        Serial.println(F(" - mode [mode?] : Change le mode de la station météo"));
+        Serial.println(F(" - reset : Réinitialise les paramètres"));
+        Serial.println(F(" - clock [hours?] [minutes?] [seconds?] : Affiche ou change l'heure"));
+        Serial.println(F(" - date [day?] [month?] [year?] : Affiche ou change la date"));
+        Serial.println(F(" - day [day?] : Affiche ou change le jour actuel"));
+        Serial.println(F(" - version : Affiche la version du logiciel"));
+#endif
     }
 #if DETAILED_HELP_COMMAND
-    else if (strcmp_P(command, PSTR("help")) == 0) {
-        // "Commande : HELP\n\r"
-        // "Mode nécessaire : /\n\r"
-        // "Description : Affiche ce menu.\n\r"
-        // "Syntaxe : help [command?]\n\r"
-        // "Arguments :\n\r"
-        // "    - command (optionnel) : Permet d'obtenir l'aide pour une commande particulière.\n\r"
-        printHelpCommand();Serial.println(F("HELP"));
-        printHelpNeededMode();Serial.println(F("/"));
-        printHelpDesciption();Serial.println(F("Affiche le menu d'aide."));
-        printHelpSyntax();Serial.println(F("help [command?]"));
-        printHelpArguments();
-        printHelpListDash();Serial.println(F("command (optionnel) : Permet d'obtenir l'aide pour une commande particulière."));
-    }
-    else if (strcmp_P(command, PSTR("list")) == 0) {
-        // "Commande : LIST\n\r"
-        // "Mode nécessaire : /\n\r"
-        // "Description : Affiche la liste des capteurs disponibles et quelques informations.\n\r"
-        // "Syntaxe : list\n\r"
-        printHelpCommand();Serial.println(F("LIST"));
-        printHelpNeededMode();Serial.println(F("/"));
-        printHelpDesciption();Serial.println(F("Affiche la liste des capteurs disponibles et quelques informations."));
-        printHelpSyntax();Serial.println(F("list"));
-    }
-    else if (strcmp_P(command, PSTR("live")) == 0) {
-        // "Commande : LIVE\n\r"
-        // "Mode nécessaire : maintenance\n\r"
-        // "Description : Affiche les dernières données récoltées en temps réel.\n\r"
-        // "Syntaxe : live\n\r"
-        printHelpCommand();Serial.println(F("LIVE"));
-        printHelpNeededMode();Serial.println(F("maintenance"));
-        printHelpDesciption();Serial.println(F("Affiche ou arrête d'afficher les données récoltées toutes les secondes."));
-        printHelpSyntax();Serial.println(F("live"));
-    }
-    // else if (strcmp(command, PSTR("last")) == 0)
-    //     Serial.print(F("Commande : LAST\n\r"
-    //         "Mode nécessaire : maintenance\n\r"
-    //         "Description : Affiche une fois les dernières données récoltées.\n\r"
-    //         "Syntaxe : last\n\r"));
-    else if (strcmp_P(command, PSTR("enable")) == 0) {
-        printHelpCommand();Serial.println(F("ENABLE"));
-        printHelpNeededMode();Serial.println(F("configuration"));
-        printHelpDesciption();Serial.println(F("Active un ou tous capteurs."));
-        printHelpSyntax();Serial.println(F("enable [id?]"));
-        printHelpArguments();
-        printHelpListDash();Serial.println(F("id (optionnel) : Le nom du capteur particulier."));
-    }
-    else if (strcmp_P(command, PSTR("disable")) == 0) {
-        printHelpCommand();Serial.println(F("DISABLE"));
-        printHelpNeededMode();Serial.println(F("configuration"));
-        printHelpDesciption();Serial.println(F("Désactive un ou tous capteurs."));
-        printHelpSyntax();Serial.println(F("disable [id?]"));
-        printHelpArguments();
-        printHelpListDash();Serial.println(F("id (optionnel) : Le nom du capteur particulier."));
-    }
-    else if (strcmp_P(command, PSTR("mode")) == 0) {
-        // "Commande : MODE\n\r"
-        // "Mode nécessaire : /\n\r"
-        // "Description : Affiche le mode actuel de la station météo ou le change.\n\r"
-        // "              Dans le cas de mode standard et économique, cela met fin à la connexion.\n\r"
-        // "              Les modes :\n\r"
-        // "                  - configuration : Permet de configurer les différents paramètres, la récupération des données est désactivé.\n\r"
-        // "                  - maintenance : Permet d'accéder aux données et de changer la carte SD.\n\r"
-        // "                                  L'enregistrement des données est désactivé.\n\r"
-        // "                  - economy : Désactive certains capteurs.\n\r"
-        // "                  - standard : Mode de récupération des données par défaut.\n\r"
-        // "Syntaxe : mode ['configuration' | 'maintenance' | 'economy' | 'standard'?]\n\r"
-        // "Arguments :\n\r"
-        // "    - 'configuration' | 'maintenance' | 'economy' | 'standard' (optionnel) :\n\r"
-        // "      Le mode de configuration.\n\r"
-        printHelpCommand();Serial.println(F("MODE"));
-        printHelpNeededMode();Serial.println(F("/"));
-        printHelpDesciption();Serial.println(F("Affiche le mode actuel de la station météo ou le change."));
-        printHelpSyntax();Serial.println(F("mode ['configuration' | 'maintenance' | 'economy' | 'standard'?]"));
-        printSpaces(14);Serial.println(F("Dans le cas de mode standard et économique, cela met fin à la connexion."));
-        printSpaces(14);Serial.println(F("Les modes :"));
-        printSpaces(14);printHelpListDash();Serial.println(F("configuration : Permet de configurer les différents paramètres, la récupération des données est désactivé."));
-        printSpaces(14);printHelpListDash();Serial.println(F("maintenance : Permet d'accéder aux données et de changer la carte SD."));
-        printSpaces(34);Serial.println(F("L'enregistrement des données est désactivé."));
-        printSpaces(14);printHelpListDash();Serial.println(F("economy : Désactive certains capteurs."));
-        printSpaces(14);printHelpListDash();Serial.println(F("standard : Mode de récupération des données par défaut."));
-        printHelpArguments();
-        printHelpListDash();Serial.println(F("'configuration' | 'maintenance' | 'economy' | 'standard' (optionnel) : Le mode de configuration."));
-    }
-    // else if (strcmp(command, PSTR("erase")) == 0)
-    //     Serial.print(F("Commande : ERASE\n\r"
-    //         "Mode nécessaire : maintenance\n\r"
-    //         "Description : Efface les données d'un ou tous capteurs.\n\r"
-    //         "Syntaxe : erase [id?]\n\r"
-    //         "Arguments :\n\r"
-    //         "    - id (optionnel) : Le nom du capteur particulier.\n\r"));
-    // else if (strcmp(command, PSTR("reset")) == 0)
-    //     Serial.print(F("Commande : RESET\n\r"
-    //         "Mode nécessaire : configuration\n\r"
-    //         "Description : Réinitialise les paramètres d'un ou tous capteurs.\n\r"
-    //         "Syntaxe : reset [id?]\n\r"
-    //         "Arguments :\n\r"
-    //         "    - id (optionnel) : Le nom du capteur particulier.\n\r"));
-    else if (strcmp_P(command, PSTR("set")) == 0) {
-        printHelpCommand();Serial.println(F("SET"));
-        printHelpNeededMode();Serial.println(F("configuration"));
-        printHelpDesciption();Serial.println(F("Affiche tous les paramètres ou modifie un paramètre"));
-        printHelpSyntax();Serial.println(F("set [nom] [valeur]"));
-        printHelpArguments();
-        printHelpListDash();Serial.println(F("nom (optionnel): Le nom du paramètre à modifier."));
-        printHelpListDash();Serial.println(F("id (optionnel) : Le nom du capteur particulier."));
-    }
-    else if (strcmp_P(command, PSTR("get")) == 0) {
-        printHelpCommand();Serial.println(F("GET"));
-        printHelpNeededMode();Serial.println(F("configuration"));
-        printHelpDesciption();Serial.println(F("Affiche la valeur d'un paramètre"));
-        printHelpSyntax();Serial.println(F("get {nom}"));
-        printHelpArguments();
-        printHelpListDash();Serial.println(F("nom: Le nom du paramètre à modifier."));
-    }
+    else {
+        int sum = 0; // Calcul de la somme des caractères de la commande pour un switch plus rapide
+        for (int i = 0; i < strlen(command); i++)
+            sum += command[i];
 
-    else
-        printUnknownCommand();
+        switch (sum) {
+        case 425: // help
+            printHelpCommand();Serial.println(F("HELP"));
+            printHelpNeededMode();Serial.println(F("/"));
+            printHelpDesciption();Serial.println(F("Affiche ce menu"));
+            printHelpSyntax();Serial.println(F("help [command?]"));
+            printHelpArguments();
+            printHelpListDash();Serial.println(F("command (optionnel) : Permet d'obtenir l'aide pour une commande particulière"));
+            break;
+        case 444: // list
+            printHelpCommand();Serial.println(F("LIST"));
+            printHelpNeededMode();Serial.println(F("/"));
+            printHelpDesciption();Serial.println(F("Affiche la liste des capteurs disponibles et quelques informations"));
+            printHelpSyntax();Serial.println(F("list"));
+            break;
+        case 432: // live
+            printHelpCommand();Serial.println(F("LIVE"));
+            printHelpNeededMode();Serial.println(F("maintenance"));
+            printHelpDesciption();Serial.println(F("Affiche ou arrête d'afficher les données récoltées toutes les secondes"));
+            printHelpSyntax();Serial.println(F("live"));
+            break;
+        case 421: // mode
+            printHelpCommand();Serial.println(F("MODE"));
+            printHelpNeededMode();Serial.println(F("/"));
+            printHelpDesciption();Serial.println(F("Affiche le mode actuel de la station météo ou le change"));
+            printHelpSyntax();Serial.println(F("mode ['configuration' | 'maintenance' | 'economy' | 'standard'?]"));
+            printSpaces(14);Serial.println(F("Dans le cas de mode standard et économique, cela met fin à la connexion"));
+            printSpaces(14);Serial.println(F("Les modes :"));
+            printSpaces(14);printHelpListDash();Serial.println(F("configuration : Permet de configurer les différents paramètres, la récupération des données est désactivé"));
+            printSpaces(14);printHelpListDash();Serial.println(F("maintenance : Permet d'accéder aux données et de changer la carte SD"));
+            printSpaces(34);Serial.println(F("L'enregistrement des données est désactivé"));
+            printSpaces(14);printHelpListDash();Serial.println(F("economy : Désactive certains capteurs"));
+            printSpaces(14);printHelpListDash();Serial.println(F("standard : Mode de récupération des données par défaut"));
+            printHelpArguments();
+            printHelpListDash();Serial.println(F("'configuration' | 'maintenance' | 'economy' | 'standard' (optionnel) : Le mode de configuration"));
+            break;
+#if COMMAND_ENABLE
+        case 615: // enable
+            printHelpCommand();Serial.println(F("ENABLE"));
+            printHelpNeededMode();Serial.println(F("configuration"));
+            printHelpDesciption();Serial.println(F("Active un ou tous capteurs"));
+            printHelpSyntax();Serial.println(F("enable [id?]"));
+            printHelpArguments();
+            printHelpListDash();Serial.println(F("id (optionnel) : Le nom du capteur particulier"));
+            break;
+        case 724: // disable
+            printHelpCommand();Serial.println(F("DISABLE"));
+            printHelpNeededMode();Serial.println(F("configuration"));
+            printHelpDesciption();Serial.println(F("Désactive un ou tous capteurs"));
+            printHelpSyntax();Serial.println(F("disable [id?]"));
+            printHelpArguments();
+            printHelpListDash();Serial.println(F("id (optionnel) : Le nom du capteur particulier"));
+            break;
+#endif
+        case 332: // set
+            printHelpCommand();Serial.println(F("SET"));
+            printHelpNeededMode();Serial.println(F("configuration"));
+            printHelpDesciption();Serial.println(F("Affiche tous les paramètres ou modifie un paramètre"));
+            printHelpSyntax();Serial.println(F("set [nom] [valeur]"));
+            printHelpArguments();
+            printHelpListDash();Serial.println(F("nom (optionnel): Le nom du paramètre à modifier"));
+            printHelpListDash();Serial.println(F("id (optionnel) : Le nom du capteur particulier"));
+            break;
+#if COMMAND_GET
+        case 320: // get
+            printHelpCommand();Serial.println(F("GET"));
+            printHelpNeededMode();Serial.println(F("configuration"));
+            printHelpDesciption();Serial.println(F("Affiche la valeur d'un paramètre"));
+            printHelpSyntax();Serial.println(F("get {nom}"));
+            printHelpArguments();
+            printHelpListDash();Serial.println(F("nom: Le nom du paramètre à modifier"));
+            break;
+#endif
+        case 547: // reset
+            printHelpCommand();Serial.println(F("RESET"));
+            printHelpNeededMode();Serial.println(F("configuration"));
+            printHelpDesciption();Serial.println(F("Réinitialise les paramètres de la station météo"));
+            printHelpSyntax();Serial.println(F("reset [id?]"));
+            printHelpArguments();
+            printHelpListDash();Serial.println(F("id (optionnel) : Le nom du capteur particulier"));
+            break;
+#if COMMAND_LAST
+        case 436: // last
+            printHelpCommand();Serial.println(F("LAST"));
+            printHelpNeededMode();Serial.println(F("/"));
+            printHelpDesciption();Serial.println(F("Affiche une fois les dernières données récoltées"));
+            printHelpSyntax();Serial.println(F("last"));
+            break;
+#endif
+        case 524: // clock
+            printHelpCommand();Serial.println(F("CLOCK"));
+            printHelpNeededMode();Serial.println(F("configuration"));
+            printHelpDesciption();Serial.println(F("Affiche ou change l'heure"));
+            printHelpSyntax();Serial.println(F("clock [hours?] [minutes?] [seconds?]"));
+            printHelpArguments();
+            printHelpListDash();Serial.println(F("hours (optionnel) : L'heure"));
+            printHelpListDash();Serial.println(F("minutes (optionnel) : Les minutes"));
+            printHelpListDash();Serial.println(F("seconds (optionnel) : Les secondes"));
+            break;
+        case 414: // date
+            printHelpCommand();Serial.println(F("DATE"));
+            printHelpNeededMode();Serial.println(F("configuration"));
+            printHelpDesciption();Serial.println(F("Affiche ou change la date"));
+            printHelpSyntax();Serial.println(F("date [day?] [month?] [year?]"));
+            printHelpArguments();
+            printHelpListDash();Serial.println(F("day (optionnel) : Le jour"));
+            printHelpListDash();Serial.println(F("month (optionnel) : Le mois"));
+            printHelpListDash();Serial.println(F("year (optionnel) : L'année"));
+            break;
+        case 318: // day
+            printHelpCommand();Serial.println(F("DAY"));
+            printHelpNeededMode();Serial.println(F("configuration"));
+            printHelpDesciption();Serial.println(F("Affiche ou change le jour actuel"));
+            printHelpSyntax();Serial.println(F("day [day?]"));
+            printHelpArguments();
+            printHelpListDash();Serial.println(F("day (optionnel) : Le jour"));
+            break;
+        case 774: // version
+            printHelpCommand();Serial.println(F("VERSION"));
+            printHelpNeededMode();Serial.println(F("/"));
+            printHelpDesciption();Serial.println(F("Affiche la version du logiciel"));
+            printHelpSyntax();Serial.println(F("version"));
+            break;
+        default:
+            printUnknownCommand();
+            break;
+        }
+    }
 #endif
 }
+#endif
+
 void commandList() {
 #if NUMBER_OF_SENSORS == 0
-    Serial.print(F("| Nom (id)                 | Activé ? | Économie ? |\n\r"
-        "|--------------------------|----------|------------|\n\r"
-        "| Pas de capteurs                                  |\n\r"));
+    Serial.println(F("| Nom (id)        | Activé ? | Économie ? |"));
+    Serial.println(F("|-----------------|----------|------------|"));
+    Serial.println(F("| Pas de capteurs...                      |"))
 #else
-    Serial.print(F("| Nom (id)                 | Activé ? | Économie ? |\n\r"
-        "|--------------------------|----------|------------|\n\r"));
 
-    char* name, * enabled, * economy, * line;
-    name = (char*)malloc(20 * sizeof(char));
-    enabled = (char*)malloc(3 * sizeof(char));
-    economy = (char*)malloc(3 * sizeof(char));
-    line = (char*)malloc(52 * sizeof(char));
+    Serial.println(F("| Nom (id)        | Activé ? | Économie ? |"));
+    Serial.println(F("|-----------------|----------|------------|"));
+
+    char name[MAX_NAME_LENGTH];
 
     for (int i = 0; i < NUMBER_OF_SENSORS; i++) {
+        strcpy_P(name, sensors[i].name);
 
-        strcpy_P(name, sensors[i]->name);
-        strcpy_P(enabled, sensors[i]->enabled ? PSTR("Oui") : PSTR("Non"));
-        strcpy_P(economy, sensors[i]->economy ? PSTR("Oui") : PSTR("Non"));
-
-        strcat_P(line, PSTR("| "));
-
-        strcat_P(line, name);
-        for (int j = 0; j < (24 - (int)strlen_P(name)); j++)
-            strcat_P(line, PSTR(" "));
-        strcat(line, PSTR(" | "));
-        strcat(line, enabled);
-        strcat(line, PSTR("      | "));
-        strcat(line, economy);
-        strcat(line, PSTR("        |\n\r"));
-        Serial.write(line);
+        Serial.print(F("| "));
+        Serial.print(name);
+        for (int j = 0; j < 16 - (int)strlen_P(sensors[i].name); j++)
+            Serial.print(' ');
+        Serial.print(F("| "));
+        Serial.print(getSetting(sensors[i].enabled) ? F("Oui") : F("Non"));
+        Serial.print(F("     | "));
+        Serial.print(getSetting(sensors[i].economy) ? F("Oui") : F("Non"));
+        Serial.println(F("       |"));
     };
 
-    free(name);
-    free(enabled);
-    free(economy);
-    free(line);
 #endif
 }
 void commandLive() {
     liveMode = true;
-    Serial.print(F("Mode live\n\r"));
+    Serial.println(F("Mode live"));
 }
 void commandMode(char* modeArg) {
     if (!modeArg) {
@@ -507,80 +529,111 @@ void commandMode(char* modeArg) {
             switchToMode(STANDARD_MODE);
     }
     else {
-        Serial.print(F("Mode inconnu."));
+        Serial.print(F("Inconnu"));
     }
 }
-void commandEnable(int id = NULL) {
-    if (id == NULL) {
+
+#if COMMAND_ENABLE
+void commandEnable(int id = -1) {
+    if (id == -1) {
         for (int i = 0; i < NUMBER_OF_SENSORS; i++)
-            setSetting(sensors[i]->enabled, true);
+            if (!getSetting(sensors[i].enabled)) {
+                setSetting(sensors[i].enabled, true);
+                printSensorEnabled(i);
+            }
     }
     else {
-        if (getSetting(sensors[id]->enabled))
-            Serial.print(F("Ce capteur est déjà activé.\n\r"));
+        if (getSetting(sensors[id].enabled))
+            Serial.println(F("Déjà activé"));
         else {
-            setSetting(sensors[id]->enabled, true);
+            setSetting(sensors[id].enabled, true);
             printSensorEnabled(id);
         }
     }
 }
-void commandDisable(int id = NULL) {
-    if (id == NULL) {
+void commandDisable(int id = -1) {
+    if (id == -1) {
         for (int i = 0; i < NUMBER_OF_SENSORS; i++)
-            setSetting(sensors[i]->enabled, false);
+            if (getSetting(sensors[i].enabled)) {
+                setSetting(sensors[i].enabled, false);
+                printSensorDisabled(i);
+            }
+
     }
     else {
-        if (!getSetting(sensors[id]->enabled))
-            Serial.print(F("Ce capteur est déjà désactivé.\n\r"));
+        if (!getSetting(sensors[id].enabled))
+            Serial.println(F("Déjà désactivé"));
         else {
-            setSetting(sensors[id]->enabled, false);
+            setSetting(sensors[id].enabled, false);
             printSensorDisabled(id);
         }
     }
 }
-void commandSet(char* variable, int value) {
-    Serial.print(variable);
-    Serial.println(value);
-    if (variable == NULL) {
-        char* name;
-        name = (char*)malloc(20 * sizeof(char));
+#endif
+
+void commandSet(char* setting, int value) {
+    if (setting == NULL) {
         for (int i = 0; i < NUMBER_OF_SETTINGS; i++) {
+            char name[MAX_SETTING_LENGTH];
             strcpy_P(name, settings[i].name);
 
             Serial.print(name);
-            printSpaces(20 - strlen(name));
+            for (int j = 0; j < MAX_SETTING_LENGTH - (int)strlen(name); j++)
+                Serial.print(' ');
             Serial.print(F("= "));
-            Serial.print(getSetting(i));
-            Serial.print(F("\n\r"));
+            Serial.println(getSetting(i));
         }
-        free(name);
         return;
     }
+
+    int sum = 0;
+    for (int i = 0; i < (int)strlen(setting); i++)
+        sum += setting[i];
+
     for (int i = 0; i < NUMBER_OF_SETTINGS; i++) {
-        if (strcmp_P(variable, settings[i].name) == 0) {
+
+        char name[MAX_SETTING_LENGTH];
+        strcpy_P(name, settings[i].name);
+        int settingNameSum = 0;
+        for (int j = 0; j < (int)strlen(name); j++)
+            settingNameSum += name[j];
+
+        Serial.print(settingNameSum);Serial.print(F(" "));Serial.print(sum);Serial.print(F(" "));Serial.print(name);Serial.print(" ");Serial.print(setting);Serial.println();
+        if (sum == settingNameSum) {
             setSetting(i, value);
-            Serial.print(F("Paramètre modifié.\n\r"));
+            Serial.println(F("Modifié"));
             return;
         }
     }
-    Serial.print(F("Paramètre inconnu.\n\r"));
+    Serial.println(F("Inconnu"));
 }
-void commandGet(char* variable) {
+
+#if COMMAND_GET
+void commandGet(char* setting) {
     for (int i = 0; i < NUMBER_OF_SETTINGS; i++) {
-        if (strcmp_P(variable, settings[i].name) == 0) {
-            Serial.print(getSetting(i));
+        if (strcmp_P(setting, settings[i].name) == 0) {
+            Serial.println(getSetting(i));
             return;
         }
     }
-    Serial.print(F("Paramètre inconnu.\n\r"));
+    Serial.println(F("Inconnu"));
 }
+#endif
+
 void commandReset() {
     resetSettings();
-    Serial.println(F("Paramètres réinitialisés."));
+    Serial.println(F("Paramètres réinitialisés"));
 }
+
+#if COMMAND_LAST
 void commandLast() {
+#if LIVE_MODE_SERIAL_OUTPUT == OUTPUT_CSV
+    printCSVHeader();
+#endif
     printData();
 }
+#endif
+
 void commandClock(int hours, int minutes, int seconds) {
     if (!hours || !minutes || !seconds) {
         readClock();
@@ -588,13 +641,13 @@ void commandClock(int hours, int minutes, int seconds) {
     }
     else {
         if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59 || seconds < 0 || seconds > 59) {
-            Serial.print(F("Heure invalide.\n\r"));
+            Serial.println(F("Heure invalide"));
             return;
         }
         setHour(hours);
         setMinute(minutes);
         setSecond(seconds);
-        Serial.print(F("Heure modifiée.\n\r"));
+        Serial.println(F("Heure modifiée"));
     }
 }
 void commandDate(int day, int month, int year) {
@@ -604,13 +657,13 @@ void commandDate(int day, int month, int year) {
     }
     else {
         if (day < 1 || day > 31 || month < 1 || month > 12 || year < 0) {
-            Serial.print(F("Date invalide.\n\r"));
+            Serial.println(F("Date invalide"));
             return;
         }
         setDay(day);
         setMonth(month);
         setYearFull(year);
-        Serial.println(F("Date modifiée.\n\r"));
+        Serial.println(F("Date modifiée"));
     }
 }
 void commandDay(char* day) {
@@ -620,40 +673,41 @@ void commandDay(char* day) {
     }
     else {
         int sum = 0;
-        for (int i = 0; i < strlen(day); i++)
+        for (int i = 0; i < (int)strlen(day); i++)
             sum += day[i];
         switch (sum) {
-            case 540:
-                setDayOfWeek(MONDAY);
-                printDayModified();
-                break;
-            case 525:
-                setDayOfWeek(TUESDAY);
-                printDayModified();
-                break;
-            case 843:
-                setDayOfWeek(WEDNESDAY);
-                printDayModified();
-                break;
-            case 529:
-                setDayOfWeek(THURSDAY);
-                printDayModified();
-                break;
-            case 849:
-                setDayOfWeek(FRIDAY);
-                printDayModified();
-                break;
-            case 627:
-                setDayOfWeek(SATURDAY);
-                printDayModified();
-                break;
-            case 825:
-                setDayOfWeek(SUNDAY);
-                printDayModified();
-                break;
-            default:
-                Serial.println(F("Jour invalide.\n\r"));
-                return;
+        case 540:
+            setDayOfWeek(MONDAY);
+            printDayModified();
+            break;
+        case 525:
+            setDayOfWeek(TUESDAY);
+            printDayModified();
+            break;
+        case 843:
+            setDayOfWeek(WEDNESDAY);
+            printDayModified();
+            break;
+        case 529:
+            setDayOfWeek(THURSDAY);
+            printDayModified();
+            break;
+        case 849:
+            setDayOfWeek(FRIDAY);
+            printDayModified();
+            break;
+        case 627:
+            setDayOfWeek(SATURDAY);
+            printDayModified();
+            break;
+        case 825:
+            setDayOfWeek(SUNDAY);
+            printDayModified();
+            break;
+        default:
+            Serial.println(F("Jour invalide"));
+            return;
         }
     }
 }
+#endif

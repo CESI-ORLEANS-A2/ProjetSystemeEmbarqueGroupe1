@@ -51,7 +51,7 @@ bool liveMode = false;
 #endif
 float lastMeasurements[NUMBER_OF_SENSORS];
 
-Sensor* sensors[NUMBER_OF_SENSORS];
+Sensor sensors[NUMBER_OF_SENSORS];
 
 void setup() {
     initSettings();
@@ -67,8 +67,8 @@ void setup() {
     // Initialisation des capteurs
     initTemperatureSensor();
     initHumiditySensor();
-    // initPressureSensor(); // TODO Capteur de pression
-    // initBrightnessSensor(); // TODO Capteur de luminosité
+    initPressureSensor(); 
+    initBrightnessSensor();
 
     initClock(); // Initialisation de l'horloge
 #if GPS_ENABLED
