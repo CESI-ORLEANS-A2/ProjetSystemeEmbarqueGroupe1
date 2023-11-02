@@ -100,9 +100,13 @@ void resetSettings() {
         settings[i].value = settings[i].defaultValue;
     }
 }
+<<<<<<< HEAD
+
+=======
 long getSetting(int id) {
     return settings[id].value;
 }
+>>>>>>> main
 void setSetting(int id, long value) {
 #if SETTINGS_IN_EEPROM
     EEPROM.put(id, value);

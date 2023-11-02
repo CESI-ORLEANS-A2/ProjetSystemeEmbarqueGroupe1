@@ -1,7 +1,6 @@
 #include "libs/bme.hpp"
 
 BME280 bme;
-
 bool isInit = false;
 
 void initBME() {

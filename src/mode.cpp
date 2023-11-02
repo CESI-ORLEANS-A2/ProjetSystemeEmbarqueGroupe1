@@ -62,6 +62,9 @@ void redButtonPressed() {
             switchToMode(previousMode);
             break;
         }
+    case CONFIGURATION_MODE:
+        switchToMode(previousMode);
+        break;
     }
 }
 
