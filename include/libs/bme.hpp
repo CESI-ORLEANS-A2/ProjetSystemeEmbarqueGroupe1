@@ -6,8 +6,8 @@
 extern BME280 bme;
 extern bool isInit;
 
-void initBME();
 
-#define readPressure() bme.getPressure()
-#define readHumidity() bme.getHumidity()
-#define readTemperature() bme.getTemperature()
+void initBME();
+float readTemperature();
+float readHumidity();
+float readPressure();

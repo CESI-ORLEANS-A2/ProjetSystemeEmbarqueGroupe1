@@ -10,3 +10,7 @@ void quitEconomyMode() {
 void runEconomyModeStep() {
     acquisition(&saveData);
 };
+
+void printSwitchToEconomy() {
+    Serial.println(F("Passage en mode économique"));
+}

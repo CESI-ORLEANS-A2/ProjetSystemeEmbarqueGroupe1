@@ -7,6 +7,19 @@ void initBME() {
     if (isInit) return;
     isInit = true;
 
-    if (!bme.init())
+    bool status = bme.init();
+
+    if (!status) 
         switchToErrorMode(ERROR_SENSOR_ACCESS);
+    
+}
+
+float readTemperature() {
+    return bme.getTemperature();
+}
+float readHumidity() {
+    return bme.getHumidity();
+}
+float readPressure() {
+    return bme.getTemperature();
 }

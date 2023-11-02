@@ -2,9 +2,7 @@
 #define Settings_h
 
 #include "consts.hpp"
-#if SETTINGS_IN_EEPROM
 #include <EEPROM.h>
-#endif
 
 /**
  * @brief Structure représentant un paramètre de la station météo.
@@ -29,14 +27,6 @@ struct Setting
      * @brief Valeur actuelle du paramètre
     */
     long value; 
-    /**
-     * @brief Valeur minimale du paramètre
-    */
-    int min;
-    /**
-     * @brief Valeur maximale du paramètre
-    */
-    int max;
 };
 
 /**
@@ -132,8 +122,13 @@ void resetSettings();
  * @brief Récupère la valeur d'un paramètre depuis le tableau settings.
  * 
  * Cette fonction ne met pas à jour les paramètres depuis l'EEPROM.
+ * 
+ * @return La valeur du paramètre
+ * 
+ * Références : 
+ * @ref settings
 */
-#define getSetting(id) settings[id].value
+long getSetting(int id);
 /**
  * @brief Sauvegarde la valeur d'un paramètre dans l'EEPROM.
  * 

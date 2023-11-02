@@ -63,9 +63,9 @@ extern Mode mode;
  */
 extern Mode previousMode;
 /**
- * @brief Contient une représentation (structure) de chaque capteur
+ * @brief Contient une représentation (class) de chaque capteur
  */
-extern Sensor sensors[NUMBER_OF_SENSORS];
+extern Sensor* sensors[NUMBER_OF_SENSORS];
 /**
  * @brief Si le port série est utilisé pour afficher les données en temps réel
  */

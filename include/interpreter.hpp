@@ -5,7 +5,17 @@
 #include "main.hpp"
 #include "settings.hpp"
 
-#if INTERPRETER
+enum DayOfWeek {
+    NOT_A_DAY,
+    MONDAY,
+    TUESDAY,
+    WEDNESDAY,
+    THURSDAY,
+    FRIDAY,
+    SATURDAY,
+    SUNDAY
+};
+
 /**
  * @brief Variable accueillant la commande entrée par l'utilisateur.
 */
@@ -14,6 +24,10 @@ extern char inputBuffer[INPUT_BUFFER_SIZE];
  * @brief Taille le ligne de commandé entrée par l'utilisateur.
 */
 extern int inputLength;
+/**
+ * @brief Un charactère espace en mémoire Flash.
+*/
+static const char* spaceChar;
 
 /**
  * @brief Initialise l'interpréteur de commandes.
@@ -70,17 +84,6 @@ void runCommand();
 */
 void printPrompt();
 /**
- * @brief Affiche la commande que l'utilisateur est en train d'entrer.
- *
- * Cela permet d'afficher à nouveau la commande entrée par l'utilisateur
- * si un message vient à être affiché.
- *
- * @ref inputBuffer()
-*/
-void printBuffer();
-
-#if COMMAND_HELP
-/**
  * @brief Affiche "Commande : "
 */
 void printHelpCommand();
@@ -106,15 +109,27 @@ void printHelpArguments();
  * @ref printSpaces()
 */
 void printHelpListDash();
-#endif // COMMAND_HELP
 /**
  * @brief Affiche "Commandes inconnues.\n\r"
 */
 void printUnknownCommand();
 /**
+ * @brief Affiche la commande que l'utilisateur est en train d'entrer.
+ *
+ * Cela permet d'afficher à nouveau la commande entrée par l'utilisateur
+ * si un message vient à être affiché.
+ *
+ * @ref inputBuffer()
+*/
+void printBuffer();
+/**
  * @brief Affiche "Ce mode est déja activé.\n\r"
 */
 void printModeAlreadyEnabled();
+/**
+ * @brief Affiche " " n fois.
+*/
+void printSpaces(int n);
 /**
  * @brief Affiche "Le capteur {{capteur}} a été activé."
 */
@@ -135,14 +150,14 @@ void printCommandUnavailableInThisMode();
  * Cette heure peut être modifiée grâce à la commande "clock hh mm ss".
 */
 void printClock();
-#else // NOT INTERPRETER
+#else 
 /**
  * @brief Affiche l'heure enregistrée sous le format "hh:mm:ss".
  *
  * Cette heure peut être modifiée grâce à la commande "CLOCK=hh:mm:ss".
 */
 void printClock();
-#endif // INTERPRETER
+#endif
 #if INTERPRETER
 /**
  * @brief Affiche la date enregistrée sous le format "jj/mm/aaaa".
@@ -150,14 +165,14 @@ void printClock();
  * Cette date peut être modifiée grâce à la commande "date jj mm aaaa".
 */
 void printDate();
-#else // NOT INTERPRETER
+#else
 /**
  * @brief Affiche la date enregistrée sous le format "jj/mm/aaaa".
  *
  * Cette date peut être modifiée grâce à la commande "DATE=jj/mm/aaaa".
 */
 void printDate();
-#endif // INTERPRETER
+#endif
 #if INTERPRETER
 /**
  * @brief Affiche le jour de la semaine enregistré.
@@ -165,14 +180,14 @@ void printDate();
  * Ce jour peut être modifié grâce à la commande "day [lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche]".
 */
 void printDayOfWeek();
-#else // NOT INTERPRETER
+#else
 /**
  * @brief Affiche le jour de la semaine enregistré.
  *
  * Ce jour peut être modifié grâce à la commande "DAY=[MON|TUE|WED|THU|FRI|SAT|SUN]".
 */
 void printDayOfWeek();
-#endif // INTERPRETER
+#endif
 #if INTERPRETER
 /**
  * @brief Affiche "Jour modifié.".
@@ -180,16 +195,15 @@ void printDayOfWeek();
  * Ce jour peut être modifié grâce à la commande "day [lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche]".
 */
 void printDayModified();
-#else // NOT INTERPRETER
+#else
 /**
  * @brief Affiche "Jour modifié.".
  *
  * Ce jour peut être modifié grâce à la commande "DAY=[MON|TUE|WED|THU|FRI|SAT|SUN]".
 */
 void printDayModified();
-#endif // INTERPRETER
+#endif
 
-#if COMMAND_HELP
 /**
  * @brief Affiche la liste des commandes disponibles.
  *
@@ -206,7 +220,6 @@ void printDayModified();
  * @ref printUnknownCommand()
 */
 void commandHelp(char* command);
-#endif // COMMAND_HELP
 /**
  * @brief Affiche la liste des capteurs disponibles.
  *
@@ -243,8 +256,7 @@ void commandMode(char* mode);
  * @ref getSetting()
  * @ref NUMBER_OF_SENSORS
 */
-#if COMMAND_ENABLE
-void commandEnable(int id = -1);
+void commandEnable(int id = NULL);
 /**
  * @brief Désactive un capteur ou tous.
  *
@@ -253,7 +265,7 @@ void commandEnable(int id = -1);
  * @ref getSetting()
  * @ref NUMBER_OF_SENSORS
 */
-void commandDisable(int id = -1);
+void commandDisable(int id = NULL);
 /**
  * @brief Change la valeur d'un paramètre.
  *
@@ -261,9 +273,7 @@ void commandDisable(int id = -1);
  * @ref setSetting()
  * @ref NUMBER_OF_SETTINGS
 */
-#endif // COMMAND_ENABLE
 void commandSet(char* variable, int value);
-#if COMMAND_GET
 /*
  * @brief Affiche la valeur d'un paramètre.
 
@@ -272,67 +282,20 @@ void commandSet(char* variable, int value);
  * @ref NUMBER_OF_SETTINGS
 */
 void commandGet(char* variable);
-#endif // COMMAND_GET
 /**
  * @brief Réinitialise les paramètres de la station météo.
  *
- * Références :
  * @ref resetSettings()
 */
 void commandReset();
-#if COMMAND_LAST
 /**
  * @brief Affiche les dernières données enregistrées.
  *
- * Références :
  * @ref printData()
 */
 void commandLast();
-#endif // COMMAND_LAST
-/**
- * @brief Afficher ou change l'heure enregistrée.
- *
- * Syntaxe : clock [hh?] [mm?] [ss?]
- * Si au moins un des trois arguments n'est fourni, affiche l'heure enregistrée.
- * Sinon, change l'heure enregistrée.
- *
- * Références :
- * @ref readClock()
- * @ref printClock()
- * @ref setHour()
- * @ref setMinute()
- * @ref setSecond()
-*/
 void commandClock(int hours, int minutes, int seconds);
-/**
- * @brief Afficher ou change la date enregistrée.
- *
- * Syntaxe : date [jj?] [mm?] [aaaa?]
- * Si au moins un des trois arguments n'est fourni, affiche la date enregistrée.
- * Sinon, change la date enregistrée.
- *
- * Références :
- * @ref readClock()
- * @ref printDate()
- * @ref setDay()
- * @ref setMonth()
- * @ref setYear()
-*/
 void commandDate(int day, int month, int year);
-/**
- * @brief Afficher ou change le jour de la semaine enregistré.
- *
- * Syntaxe : day [lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche]
- * Si aucun argument n'est fourni, affiche le jour de la semaine enregistré.
- * Sinon, change le jour de la semaine enregistré.
- *
- * Références :
- * @ref readClock()
- * @ref printDayOfWeek()
- * @ref setDayOfWeek()
- * @ref printDayModified()
-*/
 void commandDay(char* day);
-#endif // INTERPRETER
 
-#endif // Interpreter_h
+#endif

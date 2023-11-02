@@ -7,4 +7,5 @@ void switchToMaintenanceMode();
 void quitMaintenanceMode();
 void runMaintenanceModeStep();
 
+void printSwitchToMaintenance();
 void printLiveMode();

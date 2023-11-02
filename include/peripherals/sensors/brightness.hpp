@@ -2,4 +2,5 @@
 
 void initBrightnessSensor();
 
-float measureBrightness();
+void initBrightness();
+// long measureBrightness();

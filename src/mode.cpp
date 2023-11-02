@@ -58,6 +58,9 @@ void redButtonPressed() {
             printBuffer();
 #endif
             break;
+        case CONFIGURATION_MODE:
+            switchToMode(previousMode);
+            break;
         }
     case CONFIGURATION_MODE:
         switchToMode(previousMode);

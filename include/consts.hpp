@@ -3,11 +3,6 @@
 
 #include <Arduino.h>
 
-/**
- * @brief Version du logiciel
-*/
-#define VERSION F("0.1.0")
-
 // ACTIVER/DESACTIVER DES FONCTIONNALITES
 /**
  * @brief Si l'interpréteur doit être activé
@@ -20,7 +15,7 @@
  *
  * Si l'interpréteur est désactivé, il ne sera pas compilé.
  */
-#define INTERPRETER false 
+#define INTERPRETER true 
 /**
  * @brief Si la commande help doit afficher les détails des commandes
  *
@@ -60,22 +55,7 @@
  * Le format CSV est plus difficile à traiter pour un ordinateur, mais prend moins de place.
  */
 #define LIVE_MODE_SERIAL_OUTPUT OUTPUT_CSV
-/**
- * @brief Si la commande last doit être activée
-*/
-#define COMMAND_LAST false
-/**
- * @brief Si la commande get doit être activée
-*/
-#define COMMAND_GET false
-/**
- * @brief Si les commandes enable et disable doivent être activées
-*/
-#define COMMAND_ENABLE false
-/**
- * @brief Si la commande help doit être activée
-*/
-#define COMMAND_HELP false
+#define MAX_NAME_LENGTH 20
 
 // PARAMETRES
 /**
@@ -131,33 +111,15 @@
  * donc elle ne peut pas être utilisée pour représenter une erreur car elle peut être
  * renvoyée normalement par un capteur.
 */
-#define ACQUISITION_ERROR_VALUE NAN // -999
+#define ACQUISITION_ERROR_VALUE -999
 /**
  * @brief Taille maximale d'une ligne de données à enregistrer sur la carte SD ou à afficher dans le port série
 */
+#if LIVE_MODE_SERIAL_OUTPUT==OUTPUT_JSON
+#define MAX_LINE_SIZE 200
+#else 
 #define MAX_LINE_SIZE 100
-/**
- * @brief Minimum d'espace libre sur la carte SD en octets
- * 
- * Si l'espace libre sur la carte SD est inférieur à cette valeur,
- * la station météo passera en mode erreur.
- * 
- * Par défaut, elle est définie à 2ko pour éviter de remplir la carte SD
- * au maximum et donc éviter la perte de données.
-*/
-#define MIN_SD_FREE_BYTES 2000
-/**
- * @brief Longueur maximum d'une commande de l'interpréteur
-*/
-#define MAX_COMMAND_LENGTH 30
-/**
- * @brief Longueur maximum du nom d'un paramètre 
-*/
-#define MAX_SETTING_LENGTH 20
-/**
- * @brief Longueur maximum d'un nom de capteur
-*/
-#define MAX_NAME_LENGTH 20
+#endif
 
 // ERRORS
 /** @brief Erreur de communication avec l'horloge RTC */
@@ -197,28 +159,9 @@
 /** @brief Pin de communication série du GPS */
 #define GPS_TX_PIN 9
 
-// JOUR DE LA SEMAINE
-enum DayOfWeek {
-    NOT_A_DAY,
-    /** @brief Lundi */
-    MONDAY,
-    /** @brief Mardi */
-    TUESDAY,
-    /** @brief Mercredi */
-    WEDNESDAY,
-    /** @brief Jeudi */
-    THURSDAY,
-    /** @brief Vendredi */
-    FRIDAY,
-    /** @brief Samedi */
-    SATURDAY,
-    /** @brief Dimanche */
-    SUNDAY
-};
-
 // CAPTEURS
 /** @brief Nombre de capteurs disponibles */
-#define NUMBER_OF_SENSORS 4
+#define NUMBER_OF_SENSORS 2
 /** @brief Position du capteur de température dans la liste de capteurs */
 #define TEMPERATURE_SENSOR 0
 /** @brief Position du capteur d'humidité dans la liste de capteurs */
@@ -230,7 +173,7 @@ enum DayOfWeek {
 
 // CAPTEUR DE TEMPERATURE
 /** @brief Nom du capteur de température (chaine de caractère sauvegardée dans la mémoire Flash) */
-#define TEMPERATURE_SENSOR_NAME (char*) F("Temperature")
+#define TEMPERATURE_SENSOR_NAME (const char*) F("Temperature")
 /** @brief Pin utilisé ou adresse du capteur de température */
 #define TEMPERATURE_SENSOR_DEVICE PIN5
 /** @brief Si le capteur de température est activé */
@@ -240,7 +183,7 @@ enum DayOfWeek {
 
 // CAPTEUR D'HUMIDITE
 /** @brief Nom du capteur d'humidité (chaine de caractère sauvegardée dans la mémoire Flash) */
-#define HUMIDITY_SENSOR_NAME (char*) F("Humidity")
+#define HUMIDITY_SENSOR_NAME (const char*) F("Humidity")
 /** @brief Pin utilisé ou adresse du capteur d'humidité */
 #define HUMIDITY_SENSOR_DEVICE PIN6
 /** @brief Si le capteur d'humidité est activé */
@@ -250,7 +193,7 @@ enum DayOfWeek {
 
 // CAPTEUR DE PRESSION
 /** @brief Nom du capteur de pression (chaine de caractère sauvegardée dans la mémoire Flash) */
-#define PRESSURE_SENSOR_NAME (char*) F("Pressure")
+#define PRESSURE_SENSOR_NAME (const char*) F("Pressure")
 /** @brief Pin utilisé ou adresse du capteur de pression */
 #define PRESSURE_SENSOR_DEVICE PIN7
 /** @brief Si le capteur de pression est activé */
@@ -260,7 +203,7 @@ enum DayOfWeek {
 
 // CAPTEUR DE LUMINOSITE
 /** @brief Nom du capteur de luminosité (chaine de caractère sauvegardée dans la mémoire Flash) */
-#define BRIGHTNESS_SENSOR_NAME (char*) F("Brightness")
+#define BRIGHTNESS_SENSOR_NAME (const char*) F("Brightness")
 /** @brief Pin utilisé ou adresse du capteur de luminosité. */
 #define BRIGHTNESS_SENSOR_DEVICE A0 
 /** @brief Si le capteur de luminosité est activé. */
@@ -271,13 +214,8 @@ enum DayOfWeek {
 
 // SETTINGS
 
-#if INTERPRETER
 /** @brief Nombre de paramètres modifiables disponibles */
 #define NUMBER_OF_SETTINGS 19
-#else 
-/** @brief Nombre de paramètres modifiables disponibles */
-#define NUMBER_OF_SETTINGS 15
-#endif
 /**
  * @brief Délai entre chaque acquisition en millisecondes (par défaut 1min)
  *
@@ -286,33 +224,25 @@ enum DayOfWeek {
 */
 #define SETTING_ACQUISITION_DELAY 0
 #define SETTING_NAME_ACQUISITION_DELAY (char *) F("LOG_INTERVALL")
-#define SETTING_DEFAULT_ACQUISITION_DELAY  1000 // 600000 // 10 minutes
-#define SETTING_ACQUISITION_DELAY_MIN 1000 // 1 seconde
-#define SETTING_ACQUISITION_DELAY_MAX 86400000 // 1 jour
+#define SETTING_DEFAULT_ACQUISITION_DELAY  1000 // 60e3
 /**
  * @brief Taille maximale du fichier de sortie en octets (par défaut 4ko)
  */
 #define SETTING_FILE_MAX_SIZE 1
 #define SETTING_NAME_FILE_MAX_SIZE (char *) F("FILE_MAX_SIZE")
 #define SETTING_DEFAULT_FILE_MAX_SIZE  4096
-#define SETTING_FILE_MAX_SIZE_MIN 1024 // 1ko
-#define SETTING_FILE_MAX_SIZE_MAX 1048576 // 1Mo
 /**
  * @brief Délai d'attente avant de passer en mode erreur en millisecondes (par défaut 30s)
  */
 #define SETTING_ACQUISITION_TIMEOUT 2
 #define SETTING_NAME_ACQUISITION_TIMEOUT (char *) F("TIMEOUT")
 #define SETTING_DEFAULT_ACQUISITION_TIMEOUT  30000
-#define SETTING_ACQUISITION_TIMEOUT_MIN 1000 // 1 seconde
-#define SETTING_ACQUISITION_TIMEOUT_MAX 60000 // 1 minute
 /**
  * @brief Si l'acquisition du capteur de luminosité est activé.
  */
 #define SETTING_BRIGHTNESS_ENABLED 3
 #define SETTING_NAME_BRIGHTNESS_ENABLED (char *) F("LUMIN")
 #define SETTING_DEFAULT_BRIGHTNESS_ENABLED  true
-#define SETTING_BRIGHTNESS_ENABLED_MIN 0
-#define SETTING_BRIGHTNESS_ENABLED_MAX 1
 /**
  * @brief Valeur de luminosité basse (par défaut 255)
  *
@@ -322,8 +252,6 @@ enum DayOfWeek {
 #define SETTING_BRIGHTNESS_LOW 4
 #define SETTING_NAME_BRIGHTNESS_LOW (char *) F("LUMIN_LOW")
 #define SETTING_DEFAULT_BRIGHTNESS_LOW  255
-#define SETTING_BRIGHTNESS_LOW_MIN 0
-#define SETTING_BRIGHTNESS_LOW_MAX 1023
 /**
  * @brief Valeur de luminosité haute (par défaut 768)
  *
@@ -333,16 +261,18 @@ enum DayOfWeek {
 #define SETTING_BRIGHTNESS_HIGH 5
 #define SETTING_NAME_BRIGHTNESS_HIGH (char *) F("LUMIN_HIGH")
 #define SETTING_DEFAULT_BRIGHTNESS_HIGH  768
-#define SETTING_BRIGHTNESS_HIGH_MIN 0
-#define SETTING_BRIGHTNESS_HIGH_MAX 1023
+/**
+ * @brief Si l'acquisition du capteur de luminosité est activé en mode économique.
+*/
+#define SETTING_BRIGHTNESS_ECONOMY_ENABLED 15
+#define SETTING_NAME_BRIGHTNESS_ECONOMY_ENABLED (char *) F("LUMIN_ECO")
+#define SETTING_DEFAULT_BRIGHTNESS_ECONOMY_ENABLED  true
 /**
  * @brief Si l'acquisition du capteur de température est activé.
  */
 #define SETTING_TEMPERATURE_ENABLED 6
 #define SETTING_NAME_TEMPERATURE_ENABLED (char *) F("TEMP_AIR")
 #define SETTING_DEFAULT_TEMPERATURE_ENABLED  true
-#define SETTING_TEMPERATURE_ENABLED_MIN 0
-#define SETTING_TEMPERATURE_ENABLED_MAX 1
 /**
  * @brief Valeur de température basse (par défaut -10)
  *
@@ -352,8 +282,6 @@ enum DayOfWeek {
 #define SETTING_TEMPERATURE_MIN 7
 #define SETTING_NAME_TEMPERATURE_MIN (char *) F("TMIN_TEMP_AIR")
 #define SETTING_DEFAULT_TEMPERATURE_MIN  -10
-#define SETTING_TEMPERATURE_MIN_MIN -40
-#define SETTING_TEMPERATURE_MIN_MAX 85
 /**
  * @brief Valeur de température haute (par défaut 60)
  *
@@ -363,16 +291,18 @@ enum DayOfWeek {
 #define SETTING_TEMPERATURE_MAX 8
 #define SETTING_NAME_TEMPERATURE_MAX (char *) F("TMAX_TEMP_AIR")
 #define SETTING_DEFAULT_TEMPERATURE_MAX  60
-#define SETTING_TEMPERATURE_MAX_MIN -40
-#define SETTING_TEMPERATURE_MAX_MAX 85
+/**
+ * @brief Si l'acquisition du capteur de température est activé en mode économique.
+*/
+#define SETTING_TEMPERATURE_ECONOMY_ENABLED 16
+#define SETTING_NAME_TEMPERATURE_ECONOMY_ENABLED (char *) F("TEMP_AIR_ECO")
+#define SETTING_DEFAULT_TEMPERATURE_ECONOMY_ENABLED  true
 /**
  * @brief Si l'acquisition du capteur d'humidité est activé.
  */
 #define SETTING_HUMIDITY_ENABLED 9
 #define SETTING_NAME_HUMIDITY_ENABLED (char *) F("HYGR")
 #define SETTING_DEFAULT_HUMIDITY_ENABLED  true
-#define SETTING_HUMIDITY_ENABLED_MIN 0
-#define SETTING_HUMIDITY_ENABLED_MAX 1
 /**
  * @brief Valeur d'humidité basse (par défaut 0)
  *
@@ -382,8 +312,6 @@ enum DayOfWeek {
 #define SETTING_HUMIDITY_MIN 10
 #define SETTING_NAME_HUMIDITY_MIN (char *) F("HYGR_MINT")
 #define SETTING_DEFAULT_HUMIDITY_MIN  0 
-#define SETTING_HUMIDITY_MIN_MIN -40
-#define SETTING_HUMIDITY_MIN_MAX 85
 /**
  * @brief Valeur d'humidité haute (par défaut 50)
  *
@@ -393,18 +321,20 @@ enum DayOfWeek {
 #define SETTING_HUMIDITY_MAX 11
 #define SETTING_NAME_HUMIDITY_MAX (char *) F("HYGR_MAXT")
 #define SETTING_DEFAULT_HUMIDITY_MAX  50
-#define SETTING_HUMIDITY_MAX_MIN -40
-#define SETTING_HUMIDITY_MAX_MAX 85
+/**
+ * @brief Si l'acquisition du capteur d'humidité est activé en mode économique.
+*/
+#define SETTING_HUMIDITY_ECONOMY_ENABLED 17
+#define SETTING_NAME_HUMIDITY_ECONOMY_ENABLED (char *) F("HYGR_ECO")
+#define SETTING_DEFAULT_HUMIDITY_ECONOMY_ENABLED  true
 /**
  * @brief Si l'acquisition du capteur de pression est activé.
  */
 #define SETTING_PRESSURE_ENABLED 12
 #define SETTING_NAME_PRESSURE_ENABLED (char *) F("PRESSURE")
 #define SETTING_DEFAULT_PRESSURE_ENABLED  true
-#define SETTING_PRESSURE_ENABLED_MIN 0
-#define SETTING_PRESSURE_ENABLED_MAX 1
 /**
- * @brief Valeur de pression basse (par défaut 850 hPa)
+ * @brief Valeur de pression basse (par défaut 850)
  *
  * Une valeur plus basse engendre une erreur.
  * La valeur doit être comprise entre 300 et 1100 et inférieur à la valeur haute.
@@ -412,10 +342,8 @@ enum DayOfWeek {
 #define SETTING_PRESSURE_MIN 13
 #define SETTING_NAME_PRESSURE_MIN (char *) F("PRESSURE_MIN")
 #define SETTING_DEFAULT_PRESSURE_MIN  850
-#define SETTING_PRESSURE_MIN_MIN 300
-#define SETTING_PRESSURE_MIN_MAX 1100
 /**
- * @brief Valeur de pression haute (par défaut 1080 hPa)
+ * @brief Valeur de pression haute (par défaut 1080)
  *
  * Une valeur plus haute engendre une erreur.
  * La valeur doit être comprise entre 300 et 1100 et supérieur à la valeur basse.
@@ -423,42 +351,12 @@ enum DayOfWeek {
 #define SETTING_PRESSURE_MAX 14
 #define SETTING_NAME_PRESSURE_MAX (char *) F("PRESSURE_MAX")
 #define SETTING_DEFAULT_PRESSURE_MAX  1080
-#define SETTING_PRESSURE_MAX_MIN 300
-#define SETTING_PRESSURE_MAX_MAX 1100
-
-#if INTERPRETER
-/**
- * @brief Si l'acquisition du capteur de luminosité est activé en mode économique.
-*/
-#define SETTING_BRIGHTNESS_ECONOMY_ENABLED 15
-#define SETTING_NAME_BRIGHTNESS_ECONOMY_ENABLED (char *) F("LUMIN_ECO")
-#define SETTING_DEFAULT_BRIGHTNESS_ECONOMY_ENABLED  true
-#define SETTING_BRIGHTNESS_ECONOMY_ENABLED_MIN 0
-#define SETTING_BRIGHTNESS_ECONOMY_ENABLED_MAX 1
-/**
- * @brief Si l'acquisition du capteur de température est activé en mode économique.
-*/
-#define SETTING_TEMPERATURE_ECONOMY_ENABLED 16
-#define SETTING_NAME_TEMPERATURE_ECONOMY_ENABLED (char *) F("TEMP_AIR_ECO")
-#define SETTING_DEFAULT_TEMPERATURE_ECONOMY_ENABLED  true
-#define SETTING_TEMPERATURE_ECONOMY_ENABLED_MIN 0
-#define SETTING_TEMPERATURE_ECONOMY_ENABLED_MAX 1
-/**
- * @brief Si l'acquisition du capteur d'humidité est activé en mode économique.
-*/
-#define SETTING_HUMIDITY_ECONOMY_ENABLED 17
-#define SETTING_NAME_HUMIDITY_ECONOMY_ENABLED (char *) F("HYGR_ECO")
-#define SETTING_DEFAULT_HUMIDITY_ECONOMY_ENABLED  true
-#define SETTING_HUMIDITY_ECONOMY_ENABLED_MIN 0
-#define SETTING_HUMIDITY_ECONOMY_ENABLED_MAX 1
 /**
  * @brief Si l'acquisition du capteur de pression est activé en mode économique.
 */
 #define SETTING_PRESSURE_ECONOMY_ENABLED 18
 #define SETTING_NAME_PRESSURE_ECONOMY_ENABLED (char *) F("PRESSURE_ECO")
 #define SETTING_DEFAULT_PRESSURE_ECONOMY_ENABLED  true
-#define SETTING_PRESSURE_ECONOMY_ENABLED_MIN 0
-#define SETTING_PRESSURE_ECONOMY_ENABLED_MAX 1
-#endif
+
 
 #endif

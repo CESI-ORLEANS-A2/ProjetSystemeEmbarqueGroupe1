@@ -2,14 +2,14 @@
 
 void initTemperatureSensor() {
     initBME();
-    sensors[TEMPERATURE_SENSOR] = {
-        .name = TEMPERATURE_SENSOR_NAME,
-        .enabled = SETTING_TEMPERATURE_ENABLED,
-#if INTERPRETER
-        .economy = SETTING_TEMPERATURE_ECONOMY_ENABLED,
-#endif
-        .measure = &measureTemperature
-    };
+    sensors[TEMPERATURE_SENSOR] = new Sensor(
+        TEMPERATURE_SENSOR_NAME,
+        TEMPERATURE_SENSOR_DEVICE,
+        SETTING_TEMPERATURE_ENABLED,
+        SETTING_TEMPERATURE_ECONOMY_ENABLED,
+        NULL,
+        &measureTemperature
+    );
 }
 
 float measureTemperature() {
