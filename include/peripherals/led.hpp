@@ -3,6 +3,8 @@
 
 extern ChainableLED led;
 extern int ledCounter;
+extern int fact;
+extern void (*color)();
 
 void initLED();
 void switchLEDToRed();
@@ -17,3 +19,5 @@ void switchLEDToRedWhite();
 void switchLEDToRed2White();
 
 void initLEDLoop(void (*switchLED)(), const int factor);
+
+void LEDLoopTimer(void (*switchLED)(), const int factor);
