@@ -3,38 +3,51 @@
 void switchToMaintenanceMode() {
     previousMode = mode;
     mode = MAINTENANCE_MODE;
-    switchLEDToYellow();
+    
+    switchLEDToOrange();
 
     unmount();
+
+    // On affiche l'en-tête CSV si besoin
+#if !INTERPRETER
+    printCSVHeader();
+#endif // !NTERPRETER
 }
 void quitMaintenanceMode() {
     mount();
 }
 void runMaintenanceModeStep() {
 #if INTERPRETER
+    // Si le mode live est activé, on vérifie si des données sont disponibles sur le port série
     if (liveMode) {
         if (Serial.available()) {
             int data = Serial.read();
+            // Si la donnée est un retour à la ligne, on quitte le mode live
             if (data == '\n') {
                 stopLiveMode();
                 Serial.print(F("\n\r> "));
                 return;
             }
         }
-        acquisition(&printData);
+        // Si le mode live est activé, on réalise l'acquisition des données
+        // et on les affiche sur le port série si l'acquisition est terminée
+        if (acquisition()) printData();
     }
-    else acquisition(NULL);
-#else
-    acquisition(&printData);
-#endif
+#else // INTERPRETER
+    // On réalise l'acquisition des données
+    // et on les affiche sur le port série si l'acquisition est terminée
+    if (acquisition()) printData();
+#endif // INTERPRETER
 };
-void printSwitchToMaintenance() {
-    Serial.println(F("Passage en mode maintenance"));
-}
+
+#if INTERPRETER
 void printLiveMode() {
     Serial.println(F("Mode live activé"));
 
+    // On affiche l'en-tête CSV si besoin
 #if LIVE_MODE_SERIAL_OUTPUT==OUTPUT_CSV
     printCSVHeader();
-#endif
+#endif // LIVE_MODE_SERIAL_OUTPUT==OUTPUT_CSV
 }
+
+#endif // INTERPRETER
