@@ -8,60 +8,44 @@
 #include "settings.hpp"
 
 /**
- * @brief Classe représentant un capteur
+ * @brief Structure représentant un capteur
  *
  * Cette classe contient les informations relatives à un capteur.
  *
  * Elle permet de faciliter la récupération des données des capteurs en fournissant
  * une interface commune pour tous les capteurs. Elle fourni notamment une méthode d'initialisation
  * et une méthode de mesure.
+ * 
+ * Cette structure contient : 
+ *  - L'adresse mémoire Flash du nom du capteur
+ *  - L'identifiant associé au paramètre réprésentant l'état du capteur
+ *  - L'identifiant associé au paramètre réprésentant l'état du capteur en mode économie
+ *  - Un pointeur vers la fonction de mesure du capteur
  */
-class Sensor {
-public:
+struct Sensor {
     /**
-     * @brief Constructeur de la classe Sensor
-     *
-     * @param name Nom du capteur
-     * @param device Adresse ou pin du capteur
-     * @param enabled Si le capteur est activé
-     * @param economy Si le capteur est activé en mode économique
-     * @param init Fonction d'initialisation du capteur
-     * @param measure Fonction de mesure du capteur
-     *
-     * Références : 
-     * @ref Sensor::init()
-     * @ref Sensor::initI2C()
-     * @ref Sensor::initAnalog()
-     * @ref I2C_PROTOCOL
-     * @ref ANALOG_PROTOCOL
-     */
-    Sensor(
-        const char* name,
-        int device,
-        int enabled,
-        int economy,
-        void (*init)() = NULL,
-        float (*measure)() = NULL
-    );
-
-    const char* name;
-    const int device;
+     * @brief Adresse mémoire Flash du nom du capteur
+    */
+    char* name;
+    /**
+     * @brief Identifiant associé au paramètre réprésentant l'état du capteur
+    */
     int enabled;
-    int economy;
-    void (*init)();
-    float (*measure)();
-
+#if INTERPRETER
     /**
-     * @brief Fonction d'acquisition des données du capteur
-     *
-     * @return Valeur (nombre réel) mesurée par le capteur
-     *
-     * Références : 
-     * @ref Sensor::measure()
-     * @ref Sensor::enabled
-     * @ref getSetting()
-     */
-    float acquisition();
+     * @brief Identifiant associé au paramètre réprésentant l'état du capteur en mode économie
+    */
+    int economy;
+#endif
+    /**
+     * @brief Pointeur vers la fonction de mesure du capteur
+    */
+    float (*measure)();
 };
+
+/**
+ * @brief Contient une représentation (structure) de chaque capteur
+ */
+extern Sensor sensors[NUMBER_OF_SENSORS];
 
 #endif
