@@ -19,6 +19,10 @@ extern unsigned long previousAcquisition;
  * Lorsque le nombre d'erreur atteint 0, l'acquisition est terminée. 
 */
 extern int numberOfErrors;
+/**
+ * @brief Nombre d'acquisitions successives en erreur.
+*/
+extern int sensorsTimeout;
 #if GPS_ENABLED
 /**
  * @brief Indique si le GPS est en erreur.
@@ -75,6 +79,6 @@ extern int GPSCounter;
  * L'acquisition continue tant qu'il reste au moins une erreur sauf si la durée d'acquisition
  * dépasse une valeur maximale.
 */
-void acquisition(void (*callback)());
+bool acquisition();
 
 #endif

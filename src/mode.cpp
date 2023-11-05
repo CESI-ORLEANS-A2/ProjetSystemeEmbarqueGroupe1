@@ -5,63 +5,43 @@
 void redButtonPressed() {
     switch (mode) {
     case STANDARD_MODE:
-#if INTERPRETER
-        // On active le mode live puisqu'on utilise les boutons pour changer de mode
-        liveMode = true;
-#endif
-
-        Serial.println();
-        switchToMode(MAINTENANCE_MODE);
-#if INTERPRETER // Permet de réafficher les informations affichées sur la console série 
-        printLiveMode();
-        printPrompt();
-        printBuffer();
-#endif
-        break;
     case ECONOMY_MODE:
+
 #if INTERPRETER
         // On active le mode live puisqu'on utilise les boutons pour changer de mode
         liveMode = true;
-#endif
+#endif // INTERPRETER
 
         Serial.println();
         switchToMode(MAINTENANCE_MODE);
-#if INTERPRETER // Permet de réafficher les informations affichées sur la console série 
+
+#if INTERPRETER 
+        // Permet de réafficher les informations affichées sur la console série 
         printLiveMode();
         printPrompt();
         printBuffer();
-#endif
+#endif // INTERPRETER
+
         break;
     case MAINTENANCE_MODE:
-        switch (previousMode) {
-        case ECONOMY_MODE:
+        if (previousMode == STANDARD_MODE || previousMode == ECONOMY_MODE) {
+
 #if INTERPRETER
-            stopLiveMode(); // Met fin au mode live
-#endif
+            // Met fin au mode live
+            stopLiveMode();
+#endif // INTERPRETER
 
             Serial.println();
-            switchToMode(ECONOMY_MODE);
-#if INTERPRETER // Permet de réafficher les informations affichées sur la console série 
-            printPrompt();
-            printBuffer();
-#endif
-            break;
-        case STANDARD_MODE:
-#if INTERPRETER
-            stopLiveMode(); // Met fin au mode live
-#endif
-
-            Serial.println();
-            switchToMode(STANDARD_MODE);
-#if INTERPRETER // Permet de réafficher les informations affichées sur la console série 
-            printPrompt();
-            printBuffer();
-#endif
-            break;
-        case CONFIGURATION_MODE:
             switchToMode(previousMode);
-            break;
+
+#if INTERPRETER 
+            // Permet de réafficher les informations affichées sur la console série 
+            printPrompt();
+            printBuffer();
+#endif // INTERPRETER
+
         }
+        break;
     case CONFIGURATION_MODE:
         switchToMode(previousMode);
         break;
@@ -73,22 +53,26 @@ void redButtonPressed() {
 void greenButtonPressed() {
     switch (mode) {
     case STANDARD_MODE:
-
         Serial.println();
         switchToMode(ECONOMY_MODE);
-#if INTERPRETER // Permet de réafficher les informations affichées sur la console série
+
+#if INTERPRETER 
+        // Permet de réafficher les informations affichées sur la console série
         printPrompt();
         printBuffer();
-#endif
+#endif // INTERPRETER
+
         break;
     case ECONOMY_MODE:
-
         Serial.println();
         switchToMode(STANDARD_MODE);
-#if INTERPRETER // Permet de réafficher les informations affichées sur la console série
+
+#if INTERPRETER 
+        // Permet de réafficher les informations affichées sur la console série
         printPrompt();
         printBuffer();
-#endif
+#endif // INTERPRETER
+
         break;
     }
 }
@@ -99,32 +83,34 @@ void stopLiveMode() {
     liveMode = false;
     Serial.println(F("Fin du mode live"));
 }
-#endif
+#endif // INTERPRETER
 
 void switchToMode(int newMode) {
 #if INTERPRETER
     if (previousMode == MAINTENANCE_MODE) stopLiveMode();
-#endif
+#endif // INTERPRETER
 
     switch (newMode) {
     case STANDARD_MODE:
+        Serial.println(F("Passage en mode standard"));
         switchToStandardMode();
         break;
     case ECONOMY_MODE:
+        Serial.println(F("Passage en mode economique"));
         switchToEconomyMode();
         break;
     case CONFIGURATION_MODE:
+        Serial.println(F("Passage en mode configuration"));
         switchToConfigurationMode();
         break;
     case MAINTENANCE_MODE:
+        Serial.println(F("Passage en mode maintenance"));
         switchToMaintenanceMode();
         break;
     case ERROR_MODE:
         switchToErrorMode(UNKNOWN_ERROR);
         break;
     }
-    Serial.print(F("Passage en mode "));
-    printMode();
 };
 
 void printMode() {

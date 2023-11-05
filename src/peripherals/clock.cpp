@@ -2,37 +2,6 @@
 
 DS1307 clock;
 
-void initClock() {
-    clock.begin();
-}
-bool readClock() {
-    clock.getTime();
-    return true;
-}
-int getHour() {
-    return clock.hour;
-}
-int getMinute() {
-    return clock.minute;
-}
-int getSecond() {
-    return clock.second;
-}
-int getDay() {
-    return clock.dayOfMonth;
-}
-int getMonth() {
-    return clock.month;
-}
-int getYear() {
-    return clock.year;
-}
-int getYearFull() {
-    return clock.year + 2000;
-}
-int getDayOfWeek() {
-    return clock.dayOfWeek;
-}
 void setHour(int hour) {
     clock.hour = hour;
     clock.setTime();

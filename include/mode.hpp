@@ -7,17 +7,18 @@
  * @brief Réalise le changement de mode lorsqu'on appuie sur le bouton rouge pendant BUTTON_DELAY.
  *
  * Références : 
- * @ref mode
- * @ref liveMode
- * @ref previousMode
- * @ref stopLiveMode()
- * @ref switchToMode()
  * @ref MAINTENANCE_MODE
  * @ref STANDARD_MODE
  * @ref ECONOMY_MODE
  * @ref CONFIGURATION_MODE
- * Avec L'interpréteur :
+ * @ref mode
+ * @ref previousMode
+ * @ref switchToMode()
+ * 
+ * Avec L'interpréteur avancé :
+ * @ref liveMode
  * @ref printLiveMode()
+ * @ref stopLiveMode()
  * @ref printPrompt()
  * @ref printBuffer()
 */
@@ -26,16 +27,18 @@ void redButtonPressed();
  * @brief Réalise le changement de mode lorsqu'on appuie sur le bouton vert pendant BUTTON_DELAY.
  *
  * Références : 
- * @ref mode
- * @ref switchToMode()
  * @ref STANDARD_MODE
  * @ref ECONOMY_MODE
+ * @ref mode
+ * @ref switchToMode()
  *
- * Avec l'interpréteur :
+ * Avec l'interpréteur avancé :
  * @ref printMode()
  * @ref printBuffer()
 */
 void greenButtonPressed();
+
+#if INTERPRETER
 /**
  * @brief Met fin au mode live.
  *
@@ -43,6 +46,8 @@ void greenButtonPressed();
  * @ref liveMode
 */
 void stopLiveMode();
+#endif // INTERPRETER
+
 /**
  * @brief Change le mode actuel.
  * 
@@ -53,31 +58,32 @@ void stopLiveMode();
  * - CONFIGURATION_MODE
  * 
  * Références : 
- * @ref previousMode
- * @ref stopLiveMode()
- * @ref switchToStandardMode()
- * @ref switchToEconomyMode()
- * @ref switchToMaintenanceMode()
- * @ref switchToConfigurationMode()
  * @ref MAINTEANCE_MODE
  * @ref ECONOMY_MODE
  * @ref CONFIGURATION_MODE
  * @ref STANDARD_MODE
  * @ref ERROR_MODE
  * @ref UNKNOWN_MODE
- * Avec l'interpréteur :
+ * @ref switchToStandardMode()
+ * @ref switchToEconomyMode()
+ * @ref switchToMaintenanceMode()
+ * @ref switchToConfigurationMode()
+ * 
+ * Avec l'interpréteur avancé :
+ * @ref previousMode
  * @ref printMode()
+ * @ref stopLiveMode()
 */
 void switchToMode(int newMode);
 /**
  * @brief Affiche le mode actuel dans le moniteur série.
  * 
  * Références : 
- * @ref mode
  * @ref CONFIGURATION_MODE
  * @ref MAINTENANCE_MODE
  * @ref CONFIGURATION_MODE
+ * @ref mode
 */
 void printMode();
 
-#endif
+#endif // Mode_h

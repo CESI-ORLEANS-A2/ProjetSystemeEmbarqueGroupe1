@@ -2,6 +2,7 @@
 #define Main_h
 
 #include <Arduino.h>
+#include <avr/wdt.h>
 
 #include "consts.hpp"
 #include "debugTools.hpp"
@@ -63,10 +64,6 @@ extern Mode mode;
  */
 extern Mode previousMode;
 /**
- * @brief Contient une représentation (class) de chaque capteur
- */
-extern Sensor* sensors[NUMBER_OF_SENSORS];
-/**
  * @brief Si le port série est utilisé pour afficher les données en temps réel
  */
 extern bool liveMode;
@@ -74,7 +71,5 @@ extern bool liveMode;
  * @brief 
  */
 extern float lastMeasurements[NUMBER_OF_SENSORS];
-
-int freeRam();
 
 #endif

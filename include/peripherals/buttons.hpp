@@ -17,8 +17,8 @@ void initButtons();
  * @brief Initialise les interruptions sur les boutons.
  * 
  * Références : 
- * @ref createTimer()
- * @ref stopTimer()
+ * @ref createTimer1()
+ * @ref stopTimer1()
  * @ref redButtonPressed()
  * @ref greenButtonPressed()
  * @ref RED_BUTTON_PIN
@@ -31,7 +31,16 @@ void initButtonsInterrupt();
  * 
  * Elle fait la distinction entre les deux boutons et créer un compteur avec
  * la fonction correspondante.
+ * 
+ * Références :
+ * @ref BUTTON_DELAY
+ * @ref GREEN_BUTTON_PIN
+ * @ref RED_BUTTON_PIN
+ * @ref createTimer1()
+ * @ref stopTimer1()
+ * @ref redButtonPressed()
+ * @ref greenButtonPressed()
 */
 void buttonPressed();
 
-#endif
+#endif // Buttons_h

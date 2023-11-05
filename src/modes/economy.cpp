@@ -3,14 +3,14 @@
 void switchToEconomyMode() {
     previousMode = mode;
     mode = ECONOMY_MODE;
+    switchLEDToBlue();
 };
 void quitEconomyMode() {
     
 }
 void runEconomyModeStep() {
-    acquisition(&saveData);
+    // Acquisition des données
+    // Si l'acquisition est terminée (la fonction acquisition renvoie true), 
+    // on sauvegarde les données dans un fichier
+    if (acquisition()) saveData();
 };
-
-void printSwitchToEconomy() {
-    Serial.println(F("Passage en mode économique"));
-}
