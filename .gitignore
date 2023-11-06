@@ -1,6 +1,5 @@
-.pio
+.pio/
 .vscode/
 .tmp/
 docs/
-
 Notes.md

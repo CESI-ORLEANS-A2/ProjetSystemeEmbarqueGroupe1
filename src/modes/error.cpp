@@ -18,6 +18,7 @@ void switchToErrorMode(int error) {
         switchLEDToRed2Green();
         break;
     case ERROR_SD_FULL:
+        Serial.println(F("La carte SD est pleine"));
         switchLEDToRedWhite();
         break;
     case ERROR_SD_ACCESS:

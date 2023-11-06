@@ -51,15 +51,13 @@ bool liveMode = false;
 #endif
 float lastMeasurements[NUMBER_OF_SENSORS];
 
-Sensor* sensors[NUMBER_OF_SENSORS];
-
 void setup() {
     initSettings();
 #if SETTINGS_IN_EEPROM
     updateSettingsFromEEPROM();
 #endif
     initLED(); // Initialisation de la LED
-    initTimer(); // Initialisation du compteur
+    initTimer1(); // Initialisation du compteur
 
     initSerial(); // Initialisation du port série
     initButtons(); // Initialisation des boutons (sans les interruptions)
@@ -67,8 +65,8 @@ void setup() {
     // Initialisation des capteurs
     initTemperatureSensor();
     initHumiditySensor();
-    // initPressureSensor(); // TODO Capteur de pression
-    // initBrightnessSensor(); // TODO Capteur de luminosité
+    initPressureSensor();
+    initBrightnessSensor();
 
     initClock(); // Initialisation de l'horloge
 #if GPS_ENABLED
@@ -77,6 +75,8 @@ void setup() {
 
     if (digitalRead(RED_BUTTON_PIN) == LOW) // Si le bouton rouge est appuyé au démarrage, on passe en mode configuration
         switchToConfigurationMode();
+    else if (digitalRead(GREEN_BUTTON_PIN) == LOW)
+        switchToMaintenanceMode();
     else { // Sinon, on monte la carte SD et on passe la LED en vert
         mount();
         switchLEDToGreen();
@@ -90,8 +90,6 @@ void setup() {
 }
 
 void loop() {
-
-
 #if INTERPRETER
     runInterpreterStep(); // On exécute une étape de l'interpréteur
 #endif

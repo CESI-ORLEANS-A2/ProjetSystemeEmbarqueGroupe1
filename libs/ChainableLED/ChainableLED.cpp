@@ -39,12 +39,14 @@ float hue2rgb(float p, float q, float t);
 ChainableLED::ChainableLED(byte clk_pin, byte data_pin, byte number_of_leds) :
     _clk_pin(clk_pin), _data_pin(data_pin), _num_leds(number_of_leds)
 {
-    _led_state = (byte*) calloc(_num_leds*3, sizeof(byte));
+    byte buf[_num_leds*3];
+    _led_state = buf;
+    // _led_state = (byte*) calloc(_num_leds*3, sizeof(byte));
 }
 
 ChainableLED::~ChainableLED()
 {
-    free(_led_state);
+    // free(_led_state);
 }
 
 // --------------------------------------------------------------------------------------

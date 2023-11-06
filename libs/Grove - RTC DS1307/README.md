@@ -1,9 +1,11 @@
-## RTC_DS1307
+# RTC_DS1307
 
 ![](https://statics3.seeedstudio.com/images/101020013%201.jpg)
 
 [Grove - RTC
 ](https://www.seeedstudio.com/s/Grove-RTC-p-758.html)
+
+# Description
 
 The RTC module is based on the clock chip DS1307, which supports the I2C protocol. It utilizes a Lithium cell battery (CR1225). The clock/calendar provides seconds, minutes, hours, day, date, month, and year. The end of the month date is automatically adjusted for months with fewer than 31 days, including corrections for leap years. The clock operates in either the 24-hour or 12-hour format with AM/PM indicator. And it is valid up to 2100. In order to gain a robust performance, you must put a 3-Volt CR1225 lithium cell in the battery-holder. If you use the primary power only, the module may not work normally, because the crystal may not oscillate.
 

@@ -14,10 +14,9 @@ void switchToConfigurationMode() {
     switchLEDToYellow();
 
     // Démontage de la carte SD
-    unmount(); 
-
+  
     // Mise à jour de la dernière activité de l'utilisateur
-    lastActivity = millis(); 
+    lastActivity = millis();
 };
 void quitConfigurationMode() {
     // Remontage de la carte SD
@@ -40,11 +39,11 @@ void runConfigurationModeStep() {
             break;
         }
 
-// Interpréteur de commande simple
-#if !INTERPRETER
     // Si des caractères sont disponibles sur le port série, on met à jour la dernière activité
     if (Serial.available()) updateLastActivity();
 
+    // Interpréteur de commande simple
+#if !INTERPRETER
     // Lecture des caractères entrés par l'utilisateur
     while (Serial.available()) {
         int data = Serial.read();
@@ -151,7 +150,7 @@ void configurationRunCommand(char* command) {
         for (int i = 0; i < 3; i++) {
             sum += command[i];
         }
-        switch (sum) {
+        switch (sum) { // TODO Vérifier les valeurs
         case 291: // MON
             setDayOfWeek(MONDAY);
             break;

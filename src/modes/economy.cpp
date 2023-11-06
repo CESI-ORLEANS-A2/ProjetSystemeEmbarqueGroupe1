@@ -3,7 +3,6 @@
 void switchToEconomyMode() {
     previousMode = mode;
     mode = ECONOMY_MODE;
-
     switchLEDToBlue();
 };
 void quitEconomyMode() {
@@ -15,4 +14,3 @@ void runEconomyModeStep() {
     // on sauvegarde les données dans un fichier
     if (acquisition()) saveData();
 };
-

@@ -2,16 +2,19 @@
 #include "consts.hpp"
 #include "modes/error.hpp"
 
+/**
+ * @brief Port série utilisé pour communiquer avec le GPS
+*/
 extern SoftwareSerial GPSSerial;
 
 /**
  * @brief Contient la dernière valeur de lattitude acquise par le GPS. 
 */
-extern float lastNorth;
+extern char lastLatitude[12];
 /**
  * @brief Contient la dernière valeur de longitude acquise par le GPS.
 */
-extern float lastWest;
+extern char lastLongitude[12];
 
 /**
  * @brief Initialise le GPS

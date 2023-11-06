@@ -4,22 +4,12 @@ BME280 bme;
 bool isInit = false;
 
 void initBME() {
+    // Si le capteur est déjà initialisé, on ne fait rien
     if (isInit) return;
     isInit = true;
 
-    bool status = bme.init();
-
-    if (!status) 
+    // Initialise le capteur BME280
+    // Si il y a une erreur lors de l'initialisation, on passe en mode erreur
+    if (!bme.init())
         switchToErrorMode(ERROR_SENSOR_ACCESS);
-    
-}
-
-float readTemperature() {
-    return bme.getTemperature();
-}
-float readHumidity() {
-    return bme.getHumidity();
-}
-float readPressure() {
-    return bme.getTemperature();
 }
