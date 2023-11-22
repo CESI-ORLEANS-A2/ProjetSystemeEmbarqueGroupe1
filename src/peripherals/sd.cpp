@@ -39,14 +39,14 @@ void getFileName(char* fileName) {
     else if (revisionNumber < 100) strcat_P(fileName, PSTR("0"));
     strcat(fileName, itoa(revisionNumber, buf, 10));
 
-    strcat_P(fileName, PSTR(".LOG"));
+    strcat_P(fileName, FILE_EXTENSION);
 }
 
 void saveData() {
     // if (SD.bytesPerCluster() * SD.freeClusterCount() < MIN_SD_FREE_BYTES) {
     //     switchToErrorMode(ERROR_SD_FULL);
     //     return;
-    // } // TODO A refaire
+    // }
 
     // Réinitialisation du numéro de révision si on change de jour
     if (lastDay != getDay()) {
@@ -56,6 +56,8 @@ void saveData() {
 
     char fileName[20] = "";
     getFileName(fileName);
+
+    noInterrupts();
 
     // Ouverture du fichier
     File32 dataFile = SD.open(fileName, FILE_WRITE);
@@ -73,6 +75,9 @@ void saveData() {
         // Ouverture du fichier
         dataFile = SD.open(fileName, FILE_WRITE);
     }
+
+    interrupts();
+
     // Si on n'a pas pu ouvrir le fichier, on passe en mode erreur
     // Sinon on écrit les données
     if (dataFile) {

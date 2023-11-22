@@ -95,6 +95,18 @@
 */
 #define LED_STATIC_ACQUISITION true
 #endif
+/**
+ * @brief Fichier de données de la station météo
+*/
+#define CSV_EXTENSION PSTR(".csv")
+/**
+ * @brief Fichier de données de la station météo
+*/
+#define LOG_EXTENSION PSTR(".LOG")
+/**
+ * @brief Extension des fichiers de données
+*/
+#define FILE_EXTENSION CSV_EXTENSION
 
 // PARAMETRES
 /**
@@ -328,7 +340,7 @@ enum DayOfWeek {
 */
 #define SETTING_ACQUISITION_DELAY 0
 #define SETTING_NAME_ACQUISITION_DELAY (char *) F("LOG_INTERVALL")
-#define SETTING_DEFAULT_ACQUISITION_DELAY 30000 // 600000 // 10 minutes
+#define SETTING_DEFAULT_ACQUISITION_DELAY 3000 // 600000 // 10 minutes
 #define SETTING_ACQUISITION_DELAY_MIN 1000 // 1 seconde
 #define SETTING_ACQUISITION_DELAY_MAX 86400000 // 1 jour
 /**

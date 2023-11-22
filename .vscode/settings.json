@@ -1,8 +1,5 @@
 {
 	"spellright.language": ["fr"],
-	"spellright.documentTypes": [
-		"latex",
-		"plaintext"
-	],
+	"spellright.documentTypes": ["markdown", "latex"],
 	"cmake.configureOnOpen": false
 }

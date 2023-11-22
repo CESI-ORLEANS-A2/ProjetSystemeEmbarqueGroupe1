@@ -42,6 +42,7 @@
 // #define USE_LONG_FILE_NAMES 0
 #define SDFAT_FILE_TYPE 1
 #define CHECK_FLASH_PROGRAMMING 0  // May cause SD to sleep at high current.
+#define MAINTAIN_FREE_CLUSTER_COUNT 1
 //
 // Options can be set in a makefile or an IDE like platformIO
 // if they are in a #ifndef/#endif block below.

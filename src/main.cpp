@@ -74,9 +74,9 @@ void setup() {
 #endif
 
     if (digitalRead(RED_BUTTON_PIN) == LOW) // Si le bouton rouge est appuyé au démarrage, on passe en mode configuration
-        switchToConfigurationMode();
+        switchToMode(CONFIGURATION_MODE);
     else if (digitalRead(GREEN_BUTTON_PIN) == LOW)
-        switchToMaintenanceMode();
+        switchToMode(MAINTENANCE_MODE);
     else { // Sinon, on monte la carte SD et on passe la LED en vert
         mount();
         switchLEDToGreen();

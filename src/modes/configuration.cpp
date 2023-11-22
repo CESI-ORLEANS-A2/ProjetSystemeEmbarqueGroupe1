@@ -14,6 +14,7 @@ void switchToConfigurationMode() {
     switchLEDToYellow();
 
     // Démontage de la carte SD
+    unmount();
   
     // Mise à jour de la dernière activité de l'utilisateur
     lastActivity = millis();

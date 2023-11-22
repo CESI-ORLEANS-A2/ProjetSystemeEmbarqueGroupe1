@@ -90,6 +90,21 @@ void switchToMode(int newMode) {
     if (previousMode == MAINTENANCE_MODE) stopLiveMode();
 #endif // INTERPRETER
 
+    switch (mode) {
+    case STANDARD_MODE:
+        quitStandardMode();
+        break;
+    case ECONOMY_MODE:
+        quitEconomyMode();
+        break;
+    case CONFIGURATION_MODE:
+        quitConfigurationMode();
+        break;
+    case MAINTENANCE_MODE:
+        quitMaintenanceMode();
+        break;
+    }
+
     switch (newMode) {
     case STANDARD_MODE:
         Serial.println(F("Passage en mode standard"));

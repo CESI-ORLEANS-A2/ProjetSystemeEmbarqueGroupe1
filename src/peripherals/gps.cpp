@@ -23,6 +23,7 @@ bool readGPS() {
 
         if (data == '$') { // Si on lit le début d'une ligne
             while ((data = GPSSerial.read()) != '\n') { // On lit les données jusqu'à la fin de la ligne
+                Serial.println(buf);
                 if (counter == -1) continue;
                 // Si la donnée lue est une virgule, on interprète les données lues et stockées dans le buffer
                 if (data == ',') {

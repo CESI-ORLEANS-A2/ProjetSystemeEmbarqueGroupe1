@@ -76,7 +76,7 @@ void switchLEDToRedYellow();
  * 
  * Correspond à l'erreur d'accès aux données d'un capteur.
  * 
- * L'erreur n'est pas bloquante. 
+ * L'erreur est bloquante. 
 */
 void switchLEDToRedGreen();
 /**
@@ -84,7 +84,7 @@ void switchLEDToRedGreen();
  * 
  * Correspond à la réception de données incohérentes d'un capteur.
  * 
- * L'erreur n'est pas bloquante.
+ * L'erreur est bloquante.
 */
 void switchLEDToRed2Green();
 /**

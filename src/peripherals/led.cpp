@@ -42,10 +42,11 @@ void switchLEDToRedYellow() {
     // initLEDTimer(&switchLEDToRed, &switchLEDToYellow, 1, 10, LED_BLINK_FREQUENCY);
 }
 void switchLEDToRedGreen() {
-    // initLEDLoop(&switchLEDToGreen, 1);
-    initLEDTimer(&switchLEDToRed, &switchLEDToGreen, 1, 10, LED_BLINK_FREQUENCY);
+    initLEDLoop(&switchLEDToGreen, 1);
+    // initLEDTimer(&switchLEDToRed, &switchLEDToGreen, 1, 10, LED_BLINK_FREQUENCY);
 }
 void switchLEDToRed2Green() {
+    // initLEDLoop(&switchLEDToGreen, 2);
     initLEDTimer(&switchLEDToRed, &switchLEDToGreen, 2, 10, LED_BLINK_FREQUENCY);
 }
 void switchLEDToRedWhite() {

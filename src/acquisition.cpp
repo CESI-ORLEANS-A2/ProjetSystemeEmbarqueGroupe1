@@ -115,7 +115,7 @@ bool acquisition() {
     else // Si il reste des erreurs, on vérifie si l'acquisition n'a pas dépassé le délais d'acquisition
         if (millis() - previousAcquisition > getSetting(SETTING_ACQUISITION_TIMEOUT)) {
             if (sensorsTimeout > 1) {
-                switchToErrorMode(ERROR_SENSOR_ACCESS);
+                switchToErrorMode(ERROR_INCONSISTENT_DATA);
             }
             else {
                 // switchToErrorMode(ERROR_ACQUISITION_TIMEOUT);
