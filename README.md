@@ -18,6 +18,7 @@ Maquettage d'une station météo sur Arduino permettant l'enregistrement sur une
   - [Diagramme de composants](#diagramme-de-composants)
   - [Diagramme d'état](#diagramme-détat)
   - [Diagramme de séquences](#diagramme-de-séquences)
+- [Photos](#photos)
 
 # Contexte
 
@@ -223,3 +224,7 @@ Finalement, nous nous sommes penchés sur l’horloge. Les fonctions utilisées 
 L’horloge est donc initialiser avec la commande RTC.begin(). Elle répond ensuite au appelle de la fonction RTC.now() en envoyant la date à l’instant t.
 
 ![](assets/diagramme_sequences_part4.png)
+
+# Photos
+
+![](assets/photo.jpg)
